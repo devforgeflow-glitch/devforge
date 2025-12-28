@@ -1,0 +1,116 @@
+{
+  "app": {
+    "name": "DevForge",
+    "tagline": "Construimos Software con IA que Escala",
+    "description": "Plataforma completa para feedback y gestion de productos"
+  },
+  "nav": {
+    "home": "Inicio",
+    "features": "Recursos",
+    "pricing": "Precios",
+    "docs": "Documentacion",
+    "blog": "Blog",
+    "contact": "Contacto",
+    "login": "Iniciar Sesion",
+    "signup": "Registrarse",
+    "dashboard": "Panel",
+    "logout": "Cerrar Sesion",
+    "settings": "Configuracion"
+  },
+  "theme": {
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Sistema"
+  },
+  "language": "Idioma",
+  "actions": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Crear",
+    "submit": "Enviar",
+    "confirm": "Confirmar",
+    "back": "Volver",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "export": "Exportar",
+    "import": "Importar",
+    "copy": "Copiar",
+    "share": "Compartir",
+    "login": "Iniciar Sesion",
+    "logout": "Cerrar Sesion",
+    "signup": "Registrarse",
+    "view": "Ver",
+    "clear": "Limpiar"
+  },
+  "status": {
+    "loading": "Cargando...",
+    "saving": "Guardando...",
+    "success": "Exito!",
+    "error": "Error",
+    "empty": "No se encontraron elementos",
+    "noResults": "Sin resultados para tu busqueda",
+    "active": "Activo",
+    "inactive": "Inactivo",
+    "pending": "Pendiente",
+    "completed": "Completado"
+  },
+  "validation": {
+    "required": "Este campo es obligatorio",
+    "email": "Ingresa un email valido",
+    "minLength": "Minimo {min} caracteres",
+    "maxLength": "Maximo {max} caracteres",
+    "passwordMismatch": "Las contrasenas no coinciden"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados",
+    "privacy": "Privacidad",
+    "terms": "Terminos de Servicio",
+    "madeWith": "Hecho con",
+    "description": "Plataforma completa para feedback y gestion de productos digitales.",
+    "product": "Producto",
+    "company": "Empresa",
+    "legal": "Legal",
+    "about": "Acerca de",
+    "contact": "Contacto"
+  },
+  "auth": {
+    "loginTitle": "Inicia sesion en tu cuenta",
+    "signupTitle": "Crear nueva cuenta",
+    "email": "Email",
+    "password": "Contrasena",
+    "confirmPassword": "Confirmar contrasena",
+    "name": "Nombre",
+    "forgotPassword": "Olvidaste tu contrasena?",
+    "noAccount": "No tienes una cuenta?",
+    "hasAccount": "Ya tienes una cuenta?",
+    "orContinueWith": "O continua con"
+  },
+  "errors": {
+    "generic": "Algo salio mal. Intenta de nuevo.",
+    "notFound": "Pagina no encontrada",
+    "unauthorized": "Necesitas iniciar sesion para acceder a esta pagina",
+    "forbidden": "No tienes permiso para acceder a esta pagina",
+    "serverError": "Error del servidor. Intenta mas tarde."
+  },
+  "feedback": {
+    "title": "Comentarios",
+    "description": "Comparte tu opinion",
+    "placeholder": "Describe tu sugerencia o problema...",
+    "category": {
+      "bug": "Error",
+      "feature": "Funcion",
+      "improvement": "Mejora",
+      "question": "Pregunta"
+    },
+    "priority": {
+      "low": "Baja",
+      "medium": "Media",
+      "high": "Alta",
+      "critical": "Critica"
+    }
+  }
+}

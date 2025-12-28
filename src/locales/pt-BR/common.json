@@ -1,0 +1,116 @@
+{
+  "app": {
+    "name": "DevForge",
+    "tagline": "Construimos Software com IA que Escala",
+    "description": "Plataforma completa para feedback e gestao de produtos"
+  },
+  "nav": {
+    "home": "Inicio",
+    "features": "Recursos",
+    "pricing": "Precos",
+    "docs": "Documentacao",
+    "blog": "Blog",
+    "contact": "Contato",
+    "login": "Entrar",
+    "signup": "Criar Conta",
+    "dashboard": "Painel",
+    "logout": "Sair",
+    "settings": "Configuracoes"
+  },
+  "theme": {
+    "light": "Claro",
+    "dark": "Escuro",
+    "system": "Sistema"
+  },
+  "language": "Idioma",
+  "actions": {
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "create": "Criar",
+    "submit": "Enviar",
+    "confirm": "Confirmar",
+    "back": "Voltar",
+    "next": "Proximo",
+    "previous": "Anterior",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "export": "Exportar",
+    "import": "Importar",
+    "copy": "Copiar",
+    "share": "Compartilhar",
+    "login": "Entrar",
+    "logout": "Sair",
+    "signup": "Criar Conta",
+    "view": "Ver",
+    "clear": "Limpar"
+  },
+  "status": {
+    "loading": "Carregando...",
+    "saving": "Salvando...",
+    "success": "Sucesso!",
+    "error": "Erro",
+    "empty": "Nenhum item encontrado",
+    "noResults": "Nenhum resultado para sua busca",
+    "active": "Ativo",
+    "inactive": "Inativo",
+    "pending": "Pendente",
+    "completed": "Concluido"
+  },
+  "validation": {
+    "required": "Este campo e obrigatorio",
+    "email": "Digite um email valido",
+    "minLength": "Minimo de {min} caracteres",
+    "maxLength": "Maximo de {max} caracteres",
+    "passwordMismatch": "As senhas nao coincidem"
+  },
+  "footer": {
+    "rights": "Todos os direitos reservados",
+    "privacy": "Privacidade",
+    "terms": "Termos de Uso",
+    "madeWith": "Feito com",
+    "description": "Plataforma completa para feedback e gestao de produtos digitais.",
+    "product": "Produto",
+    "company": "Empresa",
+    "legal": "Legal",
+    "about": "Sobre",
+    "contact": "Contato"
+  },
+  "auth": {
+    "loginTitle": "Entrar na sua conta",
+    "signupTitle": "Criar nova conta",
+    "email": "Email",
+    "password": "Senha",
+    "confirmPassword": "Confirmar senha",
+    "name": "Nome",
+    "forgotPassword": "Esqueceu a senha?",
+    "noAccount": "Nao tem uma conta?",
+    "hasAccount": "Ja tem uma conta?",
+    "orContinueWith": "Ou continue com"
+  },
+  "errors": {
+    "generic": "Algo deu errado. Tente novamente.",
+    "notFound": "Pagina nao encontrada",
+    "unauthorized": "Voce precisa estar logado para acessar esta pagina",
+    "forbidden": "Voce nao tem permissao para acessar esta pagina",
+    "serverError": "Erro no servidor. Tente novamente mais tarde."
+  },
+  "feedback": {
+    "title": "Feedback",
+    "description": "Compartilhe sua opiniao",
+    "placeholder": "Descreva sua sugestao ou problema...",
+    "category": {
+      "bug": "Bug",
+      "feature": "Funcionalidade",
+      "improvement": "Melhoria",
+      "question": "Duvida"
+    },
+    "priority": {
+      "low": "Baixa",
+      "medium": "Media",
+      "high": "Alta",
+      "critical": "Critica"
+    }
+  }
+}

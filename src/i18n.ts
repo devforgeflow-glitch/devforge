@@ -14,6 +14,11 @@ export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = 'pt-BR';
 
-export default getRequestConfig(async ({ locale }) => ({
-  messages: (await import(`./locales/${locale}/common.json`)).default,
-}));
+export default getRequestConfig(async ({ locale }) => {
+  // Usa locale padrao se nao estiver definido
+  const resolvedLocale = locale || defaultLocale;
+
+  return {
+    messages: (await import(`./locales/${resolvedLocale}/common.json`)).default,
+  };
+});

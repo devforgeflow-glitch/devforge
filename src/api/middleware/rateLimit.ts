@@ -59,13 +59,14 @@ export function rateLimitMiddleware(config: Partial<RateLimitConfig> = {}) {
       const requestId = `${now}:${Math.random()}`;
 
       const pipeline = redis.multi();
-      pipeline.zRemRangeByScore(key, 0, windowStart);
-      pipeline.zAdd(key, { score: now, value: requestId });
-      pipeline.zCard(key);
+      pipeline.zremrangebyscore(key, 0, windowStart);
+      pipeline.zadd(key, now, requestId);
+      pipeline.zcard(key);
       pipeline.expire(key, Math.ceil(windowMs / 1000));
 
       const results = await pipeline.exec();
-      const count = results?.[2] as number;
+      // results[2] contem [error, count] do zcard
+      const count = (results?.[2]?.[1] as number) || 0;
 
       res.setHeader('X-RateLimit-Limit', max.toString());
       res.setHeader('X-RateLimit-Remaining', Math.max(0, max - count).toString());

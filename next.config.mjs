@@ -1,4 +1,3 @@
-import type { NextConfig } from 'next';
 import withPWAInit from 'next-pwa';
 import createNextIntlPlugin from 'next-intl/plugin';
 
@@ -137,7 +136,8 @@ const securityHeaders = [
   },
 ];
 
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
 
   // Security Headers para todas as paginas
@@ -211,9 +211,6 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
-
-  // Turbopack
-  turbopack: {},
 };
 
 // Compor plugins: i18n + PWA

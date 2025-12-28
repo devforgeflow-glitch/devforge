@@ -192,9 +192,12 @@ const techStack = [
 ];
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
+  // Fallback para pt-BR se locale nao estiver definido
+  const resolvedLocale = locale || 'pt-BR';
+
   return {
     props: {
-      messages: (await import(`../locales/${locale}/common.json`)).default,
+      messages: (await import(`../locales/${resolvedLocale}/common.json`)).default,
     },
   };
 }

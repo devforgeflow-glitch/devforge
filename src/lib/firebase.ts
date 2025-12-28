@@ -8,6 +8,7 @@ import { getStorage, type FirebaseStorage } from 'firebase/storage';
  *
  * Configuracao do Firebase para uso no frontend.
  * Usa variaveis de ambiente NEXT_PUBLIC_*.
+ * So inicializa se as chaves estiverem configuradas.
  *
  * @version 1.0.0
  */
@@ -23,20 +24,36 @@ const firebaseConfig = {
 };
 
 /**
+ * Verifica se o Firebase esta configurado
+ */
+const isFirebaseConfigured = Boolean(
+  firebaseConfig.apiKey &&
+    firebaseConfig.authDomain &&
+    firebaseConfig.projectId
+);
+
+/**
  * Inicializa Firebase App (singleton)
  */
-function initializeFirebase(): FirebaseApp {
+function initializeFirebase(): FirebaseApp | null {
+  if (!isFirebaseConfigured) {
+    console.warn(
+      '[Firebase] Variaveis de ambiente nao configuradas. Firebase desabilitado.'
+    );
+    return null;
+  }
+
   if (getApps().length > 0) {
     return getApps()[0];
   }
   return initializeApp(firebaseConfig);
 }
 
-// Instancias singleton
-const app: FirebaseApp = initializeFirebase();
-const auth: Auth = getAuth(app);
-const db: Firestore = getFirestore(app);
-const storage: FirebaseStorage = getStorage(app);
+// Instancias singleton (podem ser null se nao configurado)
+const app: FirebaseApp | null = initializeFirebase();
+const auth: Auth | null = app ? getAuth(app) : null;
+const db: Firestore | null = app ? getFirestore(app) : null;
+const storage: FirebaseStorage | null = app ? getStorage(app) : null;
 
-export { app, auth, db, storage };
+export { app, auth, db, storage, isFirebaseConfigured };
 export default app;

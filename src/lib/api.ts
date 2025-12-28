@@ -120,15 +120,18 @@ async function request<T>(
     }
   }
 
+  // Extrai body das options para tratar separadamente
+  const { body, ...restOptions } = options;
+
   const config: RequestInit = {
-    ...options,
+    ...restOptions,
     headers,
     credentials: 'include', // Sempre incluir cookies
   };
 
   // Serializa body se necessario
-  if (options.body && typeof options.body !== 'string') {
-    config.body = JSON.stringify(options.body);
+  if (body !== undefined) {
+    config.body = typeof body === 'string' ? body : JSON.stringify(body);
   }
 
   try {

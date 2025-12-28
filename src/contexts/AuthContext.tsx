@@ -17,7 +17,7 @@ import {
   updateProfile,
   type User as FirebaseUser,
 } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
+import { auth, isFirebaseConfigured } from '@/lib/firebase';
 
 /**
  * Contexto de Autenticacao
@@ -40,6 +40,7 @@ interface AuthContextValue {
   user: User | null;
   loading: boolean;
   error: string | null;
+  isConfigured: boolean;
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (email: string, password: string, name: string) => Promise<void>;
   signOut: () => Promise<void>;
@@ -73,6 +74,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   // Observar mudancas no estado de autenticacao
   useEffect(() => {
+    // Se Firebase nao esta configurado, nao observar
+    if (!isFirebaseConfigured || !auth) {
+      setLoading(false);
+      return;
+    }
+
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
         setUser(mapFirebaseUser(firebaseUser));
@@ -89,6 +96,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
    * Login com email e senha
    */
   const signIn = useCallback(async (email: string, password: string) => {
+    if (!auth) {
+      setError('Firebase nao configurado');
+      throw new Error('Firebase nao configurado');
+    }
     setError(null);
     setLoading(true);
     try {
@@ -107,6 +118,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
    */
   const signUp = useCallback(
     async (email: string, password: string, name: string) => {
+      if (!auth) {
+        setError('Firebase nao configurado');
+        throw new Error('Firebase nao configurado');
+      }
       setError(null);
       setLoading(true);
       try {
@@ -132,6 +147,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
    * Logout
    */
   const signOut = useCallback(async () => {
+    if (!auth) {
+      setError('Firebase nao configurado');
+      throw new Error('Firebase nao configurado');
+    }
     setError(null);
     try {
       await firebaseSignOut(auth);
@@ -147,6 +166,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
    * Recuperacao de senha
    */
   const resetPassword = useCallback(async (email: string) => {
+    if (!auth) {
+      setError('Firebase nao configurado');
+      throw new Error('Firebase nao configurado');
+    }
     setError(null);
     try {
       await sendPasswordResetEmail(auth, email);
@@ -168,6 +191,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     user,
     loading,
     error,
+    isConfigured: isFirebaseConfigured,
     signIn,
     signUp,
     signOut,

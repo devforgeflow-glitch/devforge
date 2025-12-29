@@ -1,0 +1,232 @@
+'use client';
+
+import { useEffect } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import {
+  Home,
+  LayoutDashboard,
+  FileText,
+  BarChart3,
+  Settings,
+  HelpCircle,
+  MessageSquare,
+  Star,
+  Zap,
+  X,
+  LogIn,
+  UserPlus,
+} from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import { useAuth, useLayout } from '@/contexts';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui';
+
+/**
+ * Sidebar - Menu Lateral de Navegacao
+ *
+ * Menu lateral colapsavel com navegacao para usuarios
+ * publicos e autenticados.
+ *
+ * @version 1.0.0
+ */
+
+interface NavLink {
+  href: string;
+  label: string;
+  icon: React.ElementType;
+  badge?: string;
+}
+
+/**
+ * Links publicos (visiveis para usuarios NAO logados)
+ */
+const PUBLIC_LINKS: NavLink[] = [
+  { href: '/', label: 'Inicio', icon: Home },
+  { href: '/features', label: 'Recursos', icon: Zap },
+  { href: '/pricing', label: 'Planos', icon: Star },
+  { href: '/about', label: 'Sobre', icon: HelpCircle },
+];
+
+/**
+ * Links para usuarios autenticados
+ */
+const USER_LINKS: NavLink[] = [
+  { href: '/app/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/app/surveys', label: 'Pesquisas', icon: FileText },
+  { href: '/app/analytics', label: 'Analytics', icon: BarChart3 },
+  { href: '/app/settings', label: 'Configuracoes', icon: Settings },
+];
+
+/**
+ * Componente de Link do Menu
+ */
+function NavItem({ link, isActive, onClick }: { link: NavLink; isActive: boolean; onClick: () => void }) {
+  const Icon = link.icon;
+
+  return (
+    <Link
+      href={link.href}
+      onClick={onClick}
+      className={cn(
+        'flex items-center gap-3 px-4 py-3 rounded-lg transition-colors',
+        isActive
+          ? 'bg-primary/10 text-primary font-medium'
+          : 'text-muted-foreground hover:bg-accent hover:text-foreground'
+      )}
+    >
+      <Icon className="h-5 w-5 flex-shrink-0" />
+      <span>{link.label}</span>
+      {link.badge && (
+        <span className="ml-auto text-xs bg-primary text-primary-foreground px-2 py-0.5 rounded-full">
+          {link.badge}
+        </span>
+      )}
+    </Link>
+  );
+}
+
+/**
+ * Sidebar Component
+ */
+export function Sidebar() {
+  const t = useTranslations();
+  const router = useRouter();
+  const { user } = useAuth();
+  const { isSidebarOpen, closeSidebar } = useLayout();
+
+  // Fechar sidebar ao navegar
+  useEffect(() => {
+    const handleRouteChange = () => {
+      closeSidebar();
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events, closeSidebar]);
+
+  // Fechar com ESC
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeSidebar();
+      }
+    };
+
+    if (isSidebarOpen) {
+      document.addEventListener('keydown', handleEsc);
+      // Prevenir scroll do body
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEsc);
+      document.body.style.overflow = '';
+    };
+  }, [isSidebarOpen, closeSidebar]);
+
+  const links = user ? USER_LINKS : PUBLIC_LINKS;
+
+  return (
+    <>
+      {/* Backdrop */}
+      <div
+        className={cn(
+          'fixed inset-0 bg-black/50 z-40 transition-opacity duration-300',
+          isSidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        )}
+        onClick={closeSidebar}
+        aria-hidden="true"
+      />
+
+      {/* Sidebar */}
+      <aside
+        className={cn(
+          'fixed top-0 left-0 z-50 h-full w-72 bg-background border-r shadow-xl',
+          'transform transition-transform duration-300 ease-in-out',
+          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        )}
+      >
+        {/* Header da Sidebar */}
+        <div className="flex items-center justify-between h-14 px-4 border-b">
+          <Link href="/" className="flex items-center gap-2" onClick={closeSidebar}>
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
+              <svg
+                className="h-5 w-5 text-primary-foreground"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                />
+              </svg>
+            </div>
+            <span className="text-xl font-bold gradient-text">DevForge</span>
+          </Link>
+          <button
+            onClick={closeSidebar}
+            className="p-2 rounded-md hover:bg-accent transition-colors"
+            aria-label="Fechar menu"
+          >
+            <X className="h-5 w-5" />
+          </button>
+        </div>
+
+        {/* Navegacao */}
+        <nav className="flex flex-col h-[calc(100%-3.5rem)] overflow-y-auto">
+          <div className="flex-1 p-4 space-y-1">
+            {links.map((link) => (
+              <NavItem
+                key={link.href}
+                link={link}
+                isActive={router.pathname === link.href}
+                onClick={closeSidebar}
+              />
+            ))}
+          </div>
+
+          {/* Footer da Sidebar */}
+          <div className="p-4 border-t">
+            {user ? (
+              <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-muted/50">
+                <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center font-bold text-sm text-primary-foreground">
+                  {user.displayName?.substring(0, 2).toUpperCase() || 'U'}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium truncate">
+                    {user.displayName || 'Usuario'}
+                  </p>
+                  <p className="text-xs text-muted-foreground truncate">{user.email}</p>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-2">
+                <Link href="/auth/login" onClick={closeSidebar}>
+                  <Button variant="outline" className="w-full justify-start gap-2">
+                    <LogIn className="h-4 w-4" />
+                    {t('actions.login')}
+                  </Button>
+                </Link>
+                <Link href="/auth/signup" onClick={closeSidebar}>
+                  <Button className="w-full justify-start gap-2 rounded-full">
+                    <UserPlus className="h-4 w-4" />
+                    {t('actions.signup')}
+                  </Button>
+                </Link>
+              </div>
+            )}
+          </div>
+        </nav>
+      </aside>
+    </>
+  );
+}
+
+export default Sidebar;

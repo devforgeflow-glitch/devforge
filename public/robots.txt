@@ -1,0 +1,74 @@
+# ==============================================================================
+# robots.txt - DevForge
+# Plataforma de Pesquisas e Feedbacks
+# ==============================================================================
+
+# Regras para todos os crawlers
+User-agent: *
+
+# Paginas permitidas (publicas)
+Allow: /
+Allow: /docs
+Allow: /pricing
+Allow: /about
+Allow: /features
+Allow: /surveys/public/
+
+# Paginas bloqueadas (privadas/admin)
+Disallow: /admin/
+Disallow: /api/
+Disallow: /app/
+Disallow: /dashboard/
+Disallow: /_next/
+Disallow: /_dev/
+
+# Bloquear parametros de busca que podem criar conteudo duplicado
+Disallow: /*?sortBy=
+Disallow: /*?page=
+Disallow: /*?search=
+Disallow: /*?filter=
+
+# Bloquear arquivos de sistema
+Disallow: /*.json$
+Disallow: /*.xml$
+
+# ==============================================================================
+# Regras especificas para Googlebot
+# ==============================================================================
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /app/
+Disallow: /dashboard/
+
+# Permitir CSS e JS para renderizacao
+Allow: /_next/static/
+
+# ==============================================================================
+# Regras para Googlebot-Image
+# ==============================================================================
+User-agent: Googlebot-Image
+Allow: /
+Allow: /images/
+Disallow: /admin/
+
+# ==============================================================================
+# Regras para Bingbot
+# ==============================================================================
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /app/
+Disallow: /dashboard/
+
+# ==============================================================================
+# Sitemap
+# ==============================================================================
+Sitemap: https://devforge.com/sitemap.xml
+
+# ==============================================================================
+# Host preferencial (canonical domain)
+# ==============================================================================
+Host: https://devforge.com

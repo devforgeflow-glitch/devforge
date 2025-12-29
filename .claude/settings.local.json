@@ -10,7 +10,20 @@
       "Bash(git push:*)",
       "Bash(npm install)",
       "Bash(npm test)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(npx vercel:*)",
+      "Bash(npm install:*)",
+      "Bash(cat:*)",
+      "WebFetch(domain:devforge-one.vercel.app)",
+      "Bash(curl:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(npm ls:*)",
+      "Bash(npm run lint)",
+      "Bash(npx eslint:*)",
+      "Bash(npx storybook build:*)",
+      "WebFetch(domain:devforge-q0a54wpgp-devf-orge.vercel.app)",
+      "WebFetch(domain:devforge-i0ybm7769-devf-orge.vercel.app)"
     ]
   }
 }

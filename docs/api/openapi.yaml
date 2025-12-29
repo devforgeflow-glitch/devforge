@@ -1,0 +1,764 @@
+openapi: 3.1.0
+info:
+  title: DevForge API
+  description: |
+    API REST para a plataforma DevForge de pesquisas e feedbacks.
+
+    ## Autenticacao
+
+    A API usa autenticacao JWT Bearer. Inclua o token no header:
+    ```
+    Authorization: Bearer <seu-token>
+    ```
+
+    ## Rate Limiting
+
+    - 100 requests/minuto para endpoints publicos
+    - 1000 requests/minuto para endpoints autenticados
+
+    ## Erros
+
+    A API retorna erros no formato padrao:
+    ```json
+    {
+      "error": {
+        "code": "VALIDATION_ERROR",
+        "message": "Descricao do erro",
+        "details": {}
+      }
+    }
+    ```
+  version: 1.0.0
+  contact:
+    name: DevForge Support
+    email: suporte@devforge.com
+    url: https://devforge.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: https://api.devforge.com/v1
+    description: Producao
+  - url: https://api-staging.devforge.com/v1
+    description: Staging
+  - url: http://localhost:3000/api
+    description: Desenvolvimento Local
+
+tags:
+  - name: Surveys
+    description: Gerenciamento de pesquisas
+  - name: Responses
+    description: Coleta e consulta de respostas
+  - name: Analytics
+    description: Metricas e analises
+  - name: AI
+    description: Funcionalidades de IA
+  - name: Health
+    description: Status do servico
+
+paths:
+  /health:
+    get:
+      tags:
+        - Health
+      summary: Verificar status do servico
+      description: Retorna o status de saude da API e seus componentes
+      operationId: getHealth
+      responses:
+        '200':
+          description: Servico saudavel
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+  /surveys:
+    get:
+      tags:
+        - Surveys
+      summary: Listar pesquisas
+      description: Retorna lista de pesquisas do usuario autenticado
+      operationId: listSurveys
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: status
+          in: query
+          description: Filtrar por status
+          schema:
+            $ref: '#/components/schemas/SurveyStatus'
+        - name: limit
+          in: query
+          description: Numero maximo de resultados
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+        - name: offset
+          in: query
+          description: Offset para paginacao
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+      responses:
+        '200':
+          description: Lista de pesquisas
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  surveys:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Survey'
+                  total:
+                    type: integer
+                  limit:
+                    type: integer
+                  offset:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+    post:
+      tags:
+        - Surveys
+      summary: Criar pesquisa
+      description: Cria uma nova pesquisa
+      operationId: createSurvey
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSurveyInput'
+      responses:
+        '201':
+          description: Pesquisa criada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Survey'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /surveys/{id}:
+    get:
+      tags:
+        - Surveys
+      summary: Obter pesquisa
+      description: Retorna detalhes de uma pesquisa
+      operationId: getSurvey
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID da pesquisa
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Detalhes da pesquisa
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Survey'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    patch:
+      tags:
+        - Surveys
+      summary: Atualizar pesquisa
+      description: Atualiza uma pesquisa existente
+      operationId: updateSurvey
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSurveyInput'
+      responses:
+        '200':
+          description: Pesquisa atualizada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Survey'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags:
+        - Surveys
+      summary: Deletar pesquisa
+      description: Remove uma pesquisa (apenas se nao tiver respostas)
+      operationId: deleteSurvey
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Pesquisa deletada
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /surveys/{id}/responses:
+    get:
+      tags:
+        - Responses
+      summary: Listar respostas
+      description: Retorna respostas de uma pesquisa
+      operationId: listResponses
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: Lista de respostas
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  responses:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SurveyResponse'
+                  total:
+                    type: integer
+
+    post:
+      tags:
+        - Responses
+      summary: Enviar resposta
+      description: Envia resposta para uma pesquisa (endpoint publico)
+      operationId: submitResponse
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubmitResponseInput'
+      responses:
+        '201':
+          description: Resposta enviada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  responseId:
+                    type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /surveys/{id}/analytics:
+    get:
+      tags:
+        - Analytics
+      summary: Obter analytics
+      description: Retorna metricas e estatisticas da pesquisa
+      operationId: getSurveyAnalytics
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: period
+          in: query
+          description: Periodo de analise
+          schema:
+            type: string
+            enum: [7d, 30d, 90d, 1y]
+            default: 30d
+      responses:
+        '200':
+          description: Analytics da pesquisa
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SurveyAnalytics'
+
+  /ai/generate-questions:
+    post:
+      tags:
+        - AI
+      summary: Gerar perguntas com IA
+      description: Gera perguntas de pesquisa baseado no contexto fornecido
+      operationId: generateQuestions
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - context
+              properties:
+                context:
+                  type: string
+                  description: Contexto/objetivo da pesquisa
+                  example: Quero medir a satisfacao dos clientes com nosso suporte
+                count:
+                  type: integer
+                  minimum: 1
+                  maximum: 10
+                  default: 5
+                types:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/QuestionType'
+      responses:
+        '200':
+          description: Perguntas geradas
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  questions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Question'
+                  tokens:
+                    type: object
+                    properties:
+                      prompt:
+                        type: integer
+                      completion:
+                        type: integer
+
+  /ai/analyze-sentiment:
+    post:
+      tags:
+        - AI
+      summary: Analisar sentimento
+      description: Analisa o sentimento de um texto
+      operationId: analyzeSentiment
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - text
+              properties:
+                text:
+                  type: string
+                  description: Texto para analise
+      responses:
+        '200':
+          description: Resultado da analise
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SentimentAnalysis'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    SurveyStatus:
+      type: string
+      enum:
+        - draft
+        - active
+        - paused
+        - closed
+
+    QuestionType:
+      type: string
+      enum:
+        - text
+        - rating
+        - nps
+        - choice
+        - date
+        - matrix
+
+    Question:
+      type: object
+      required:
+        - id
+        - type
+        - text
+        - required
+      properties:
+        id:
+          type: string
+        type:
+          $ref: '#/components/schemas/QuestionType'
+        text:
+          type: string
+        description:
+          type: string
+        required:
+          type: boolean
+        options:
+          type: array
+          items:
+            type: string
+        minValue:
+          type: integer
+        maxValue:
+          type: integer
+        order:
+          type: integer
+
+    SurveySettings:
+      type: object
+      properties:
+        allowAnonymous:
+          type: boolean
+          default: true
+        requireEmail:
+          type: boolean
+          default: false
+        showProgressBar:
+          type: boolean
+          default: true
+        randomizeQuestions:
+          type: boolean
+          default: false
+        limitResponses:
+          type: integer
+        expiresAt:
+          type: string
+          format: date-time
+        redirectUrl:
+          type: string
+          format: uri
+
+    Survey:
+      type: object
+      properties:
+        id:
+          type: string
+        organizationId:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        questions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Question'
+        settings:
+          $ref: '#/components/schemas/SurveySettings'
+        status:
+          $ref: '#/components/schemas/SurveyStatus'
+        responseCount:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+        publishedAt:
+          type: string
+          format: date-time
+
+    CreateSurveyInput:
+      type: object
+      required:
+        - title
+      properties:
+        title:
+          type: string
+          minLength: 1
+          maxLength: 200
+        description:
+          type: string
+          maxLength: 1000
+        questions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Question'
+        settings:
+          $ref: '#/components/schemas/SurveySettings'
+
+    UpdateSurveyInput:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        questions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Question'
+        settings:
+          $ref: '#/components/schemas/SurveySettings'
+        status:
+          $ref: '#/components/schemas/SurveyStatus'
+
+    Answer:
+      type: object
+      required:
+        - questionId
+        - value
+      properties:
+        questionId:
+          type: string
+        value:
+          oneOf:
+            - type: string
+            - type: number
+            - type: array
+              items:
+                type: string
+
+    SurveyResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        surveyId:
+          type: string
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Answer'
+        respondent:
+          type: object
+          properties:
+            email:
+              type: string
+            name:
+              type: string
+        sentiment:
+          $ref: '#/components/schemas/SentimentAnalysis'
+        completedAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+
+    SubmitResponseInput:
+      type: object
+      required:
+        - answers
+      properties:
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Answer'
+        respondent:
+          type: object
+          properties:
+            email:
+              type: string
+              format: email
+            name:
+              type: string
+
+    SurveyAnalytics:
+      type: object
+      properties:
+        surveyId:
+          type: string
+        period:
+          type: string
+        totalResponses:
+          type: integer
+        completionRate:
+          type: number
+        averageTime:
+          type: string
+        npsScore:
+          type: number
+        npsDistribution:
+          type: object
+          properties:
+            promoters:
+              type: integer
+            passives:
+              type: integer
+            detractors:
+              type: integer
+        responsesByDay:
+          type: array
+          items:
+            type: object
+            properties:
+              date:
+                type: string
+              count:
+                type: integer
+
+    SentimentAnalysis:
+      type: object
+      properties:
+        sentiment:
+          type: string
+          enum:
+            - positive
+            - neutral
+            - negative
+        score:
+          type: number
+          minimum: -1
+          maximum: 1
+        confidence:
+          type: number
+          minimum: 0
+          maximum: 1
+        keywords:
+          type: array
+          items:
+            type: string
+
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - healthy
+            - degraded
+            - unhealthy
+        timestamp:
+          type: string
+          format: date-time
+        version:
+          type: string
+        services:
+          type: object
+          properties:
+            database:
+              type: string
+            cache:
+              type: string
+            queue:
+              type: string
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            details:
+              type: object
+
+  responses:
+    BadRequest:
+      description: Requisicao invalida
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: VALIDATION_ERROR
+              message: Dados de entrada invalidos
+              details:
+                title: Campo obrigatorio
+
+    Unauthorized:
+      description: Nao autenticado
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: UNAUTHORIZED
+              message: Token de autenticacao invalido ou expirado
+
+    NotFound:
+      description: Recurso nao encontrado
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: NOT_FOUND
+              message: Pesquisa nao encontrada
+
+    TooManyRequests:
+      description: Limite de requisicoes excedido
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              code: RATE_LIMIT_EXCEEDED
+              message: Limite de requisicoes excedido. Tente novamente em 60 segundos

@@ -4,10 +4,54 @@
     "tagline": "Construimos Software con IA que Escala",
     "description": "Plataforma completa para feedback y gestion de productos"
   },
+  "home": {
+    "badge": "Template Profesional Next.js + Firebase",
+    "title": "DevForge",
+    "subtitle": "FeedbackHub Platform",
+    "description": "Demostracion completa de arquitectura enterprise con Next.js 14, Firebase, Redis, BullMQ, i18n, Dark Mode, Storybook e integracion con IA.",
+    "cta": {
+      "primary": "Crear Cuenta",
+      "secondary": "Ver Documentacion"
+    },
+    "featuresTitle": "Recursos",
+    "featuresSubtitle": "Todas las funcionalidades que un proyecto enterprise necesita",
+    "techTitle": "Stack Tecnologico",
+    "techSubtitle": "Construido con las mejores tecnologias del mercado",
+    "ctaTitle": "Listo para comenzar?",
+    "ctaSubtitle": "Clona este repositorio y comienza tu proximo proyecto",
+    "ctaButton": "Ver en GitHub",
+    "features": {
+      "darkMode": {
+        "title": "Modo Oscuro",
+        "description": "Soporte completo a tema oscuro con next-themes y CSS variables."
+      },
+      "i18n": {
+        "title": "Internacionalizacion",
+        "description": "i18n con next-intl para PT-BR, EN y ES."
+      },
+      "security": {
+        "title": "18 Capas de Seguridad",
+        "description": "Helmet, CORS, CSRF, Rate Limiting, JWT, RBAC y mas."
+      },
+      "storybook": {
+        "title": "Storybook",
+        "description": "Documentacion visual de componentes con Storybook."
+      },
+      "ai": {
+        "title": "Integracion IA",
+        "description": "OpenAI y Anthropic para clasificacion y resumenes."
+      },
+      "bullmq": {
+        "title": "BullMQ",
+        "description": "Jobs en background con Redis y BullMQ."
+      }
+    }
+  },
   "nav": {
     "home": "Inicio",
     "features": "Recursos",
     "pricing": "Precios",
+    "about": "Acerca de",
     "docs": "Documentacion",
     "blog": "Blog",
     "contact": "Contacto",
@@ -70,6 +114,7 @@
     "privacy": "Privacidad",
     "terms": "Terminos de Servicio",
     "madeWith": "Hecho con",
+    "byTeam": "por el equipo DevForge",
     "description": "Plataforma completa para feedback y gestion de productos digitales.",
     "product": "Producto",
     "company": "Empresa",
@@ -87,7 +132,35 @@
     "forgotPassword": "Olvidaste tu contrasena?",
     "noAccount": "No tienes una cuenta?",
     "hasAccount": "Ya tienes una cuenta?",
-    "orContinueWith": "O continua con"
+    "orContinueWith": "O continua con",
+    "completeProfile": {
+      "meta": {
+        "title": "Completar Perfil | DevForge",
+        "description": "Completa tu perfil para continuar"
+      },
+      "title": "Completa tu perfil",
+      "description": "Necesitamos algunos datos mas para configurar tu cuenta",
+      "fields": {
+        "name": "Nombre completo",
+        "phone": "Telefono",
+        "company": "Empresa"
+      },
+      "placeholders": {
+        "name": "Tu nombre completo",
+        "phone": "+34 600 000 000",
+        "company": "Nombre de tu empresa"
+      },
+      "hints": {
+        "phone": "Opcional - para contacto y recuperacion de cuenta",
+        "company": "Opcional - para personalizacion"
+      },
+      "submit": "Continuar",
+      "terms": "Al continuar, aceptas nuestros Terminos de Servicio y Politica de Privacidad.",
+      "errors": {
+        "nameRequired": "El nombre es obligatorio",
+        "generic": "Error al guardar perfil. Intenta de nuevo."
+      }
+    }
   },
   "errors": {
     "generic": "Algo salio mal. Intenta de nuevo.",
@@ -111,6 +184,292 @@
       "medium": "Media",
       "high": "Alta",
       "critical": "Critica"
+    }
+  },
+  "features": {
+    "meta": {
+      "title": "Recursos | DevForge",
+      "description": "Conoce todos los recursos de la plataforma DevForge para encuestas y feedbacks"
+    },
+    "hero": {
+      "badge": "Plataforma Completa",
+      "title": "Todo lo que necesitas para",
+      "titleHighlight": "entender a tus clientes",
+      "description": "Desde el diseno de la encuesta hasta el analisis de resultados, ofrecemos herramientas poderosas y faciles de usar."
+    },
+    "highlights": {
+      "uptime": "Uptime garantizado",
+      "response": "Tiempo de respuesta",
+      "encryption": "Encriptacion",
+      "compliance": "Cumplimiento"
+    },
+    "cta": {
+      "start": "Comenzar Gratis",
+      "plans": "Ver Planes",
+      "title": "Listo para comenzar?",
+      "description": "Crea tu primera encuesta en menos de 5 minutos. Sin tarjeta de credito, sin compromiso.",
+      "button": "Crear Cuenta Gratuita"
+    },
+    "categories": {
+      "surveys": {
+        "title": "Creacion de Encuestas",
+        "description": "Herramientas poderosas para crear encuestas profesionales",
+        "editor": {
+          "title": "Editor Visual Intuitivo",
+          "description": "Crea encuestas arrastrando y soltando preguntas. Interfaz simple que cualquiera puede usar."
+        },
+        "ai": {
+          "title": "Generacion con IA",
+          "description": "Describe el objetivo de tu encuesta y nuestra IA genera preguntas relevantes automaticamente."
+        },
+        "types": {
+          "title": "6 Tipos de Pregunta",
+          "description": "Texto libre, calificacion por estrellas, NPS, opcion multiple, matriz y fecha."
+        },
+        "customization": {
+          "title": "Personalizacion Visual",
+          "description": "Personaliza colores, logo y estilo para combinar con tu marca."
+        }
+      },
+      "collection": {
+        "title": "Recoleccion de Respuestas",
+        "description": "Maximiza tus tasas de respuesta",
+        "link": {
+          "title": "Link Compartible",
+          "description": "Genera links unicos para cada encuesta. Comparte por email, WhatsApp o redes sociales."
+        },
+        "responsive": {
+          "title": "Diseno Responsivo",
+          "description": "Encuestas optimizadas para celular, tablet y escritorio. Responde desde cualquier dispositivo."
+        },
+        "anonymous": {
+          "title": "Respuestas Anonimas",
+          "description": "Opcion de recoger respuestas anonimas para feedback mas honesto."
+        },
+        "progress": {
+          "title": "Progreso Visual",
+          "description": "Barra de progreso muestra cuanto falta para completar. Aumenta la tasa de finalizacion."
+        }
+      },
+      "analytics": {
+        "title": "Analisis e Insights",
+        "description": "Transforma datos en decisiones",
+        "dashboard": {
+          "title": "Dashboard en Tiempo Real",
+          "description": "Observa las respuestas llegando en vivo. Metricas actualizadas instantaneamente."
+        },
+        "sentiment": {
+          "title": "Analisis de Sentimiento IA",
+          "description": "Nuestra IA analiza respuestas de texto e identifica sentimientos positivos, neutros o negativos."
+        },
+        "nps": {
+          "title": "NPS Automatico",
+          "description": "Calculo automatico del Net Promoter Score con distribucion de promotores, neutros y detractores."
+        },
+        "insights": {
+          "title": "Insights Inteligentes",
+          "description": "Recibe sugerencias de mejora basadas en los patrones identificados en las respuestas."
+        }
+      },
+      "integration": {
+        "title": "Integracion y Automatizacion",
+        "description": "Conecta con tus herramientas favoritas",
+        "api": {
+          "title": "API REST",
+          "description": "API completa para integrar encuestas en tu sistema. Documentacion OpenAPI incluida."
+        },
+        "webhooks": {
+          "title": "Webhooks",
+          "description": "Recibe notificaciones en tiempo real cuando lleguen nuevas respuestas."
+        },
+        "export": {
+          "title": "Exportacion Flexible",
+          "description": "Exporta datos en CSV, Excel o PDF. Integra con tus herramientas de BI."
+        },
+        "automation": {
+          "title": "Automatizaciones",
+          "description": "Configura acciones automaticas basadas en respuestas. Notifica equipos, crea tickets."
+        }
+      }
+    },
+    "security": {
+      "badge": "Seguridad Enterprise",
+      "title": "Tus datos protegidos con",
+      "titleHighlight": "18 capas de seguridad",
+      "description": "Implementamos las mejores practicas de seguridad del mercado para garantizar que tus datos y los de tus clientes esten siempre protegidos.",
+      "items": [
+        "Encriptacion AES-256 en reposo y transito",
+        "Autenticacion JWT con refresh tokens",
+        "Rate limiting y proteccion contra DDoS",
+        "Auditoria completa de acciones",
+        "Backup automatico diario",
+        "Cumplimiento LGPD y GDPR"
+      ]
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "Como Se Hizo | DevForge",
+      "description": "Conoce la arquitectura y tecnologias detras de DevForge"
+    },
+    "hero": {
+      "badge": "Open Source Friendly",
+      "title": "Construido con las",
+      "titleHighlight": "mejores tecnologias",
+      "description": "DevForge es un template enterprise-grade que demuestra arquitectura moderna, mejores practicas e integracion con IA."
+    },
+    "cta": {
+      "github": "Ver en GitHub",
+      "docs": "Documentacion"
+    },
+    "techStack": {
+      "title": "Stack Tecnologico",
+      "subtitle": "Tecnologias modernas y probadas",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "ai": "Inteligencia Artificial",
+      "devops": "DevOps"
+    },
+    "architecture": {
+      "title": "Arquitectura en Capas",
+      "subtitle": "Separacion clara de responsabilidades",
+      "presentation": "Presentacion",
+      "apiRoutes": "API Routes",
+      "services": "Servicios",
+      "infrastructure": "Infraestructura"
+    },
+    "security": {
+      "badge": "Enterprise Grade",
+      "title": "18 Capas de Seguridad",
+      "subtitle": "Proteccion completa en todas las capas de la aplicacion"
+    },
+    "timeline": {
+      "title": "Roadmap de Desarrollo",
+      "subtitle": "Construido en 4 fases incrementales",
+      "phase1": "Core",
+      "phase2": "Features",
+      "phase3": "Producto",
+      "phase4": "Polish"
+    },
+    "credits": {
+      "title": "Desarrollado con IA",
+      "description": "Este proyecto fue desarrollado en asociacion con Claude Code (Anthropic), demostrando como la IA puede acelerar el desarrollo de software de calidad.",
+      "claude": "Claude Code",
+      "developer": "Desarrollador"
+    }
+  },
+  "pricing": {
+    "meta": {
+      "title": "Planes y Precios | DevForge",
+      "description": "Elige el plan ideal para tus encuestas y feedbacks"
+    },
+    "hero": {
+      "badge": "Precios simples y transparentes",
+      "title": "Elige el plan ideal para",
+      "titleHighlight": "tu negocio",
+      "description": "Comienza gratis y actualiza cuando lo necesites. Sin cargos ocultos, sin sorpresas."
+    },
+    "plans": {
+      "free": {
+        "name": "Gratuito",
+        "description": "Para empezar a explorar",
+        "cta": "Comenzar Gratis"
+      },
+      "pro": {
+        "name": "Profesional",
+        "description": "Para equipos en crecimiento",
+        "cta": "Comenzar Prueba Gratis",
+        "popular": "Mas Popular"
+      },
+      "enterprise": {
+        "name": "Empresarial",
+        "description": "Para grandes organizaciones",
+        "cta": "Hablar con Ventas"
+      }
+    },
+    "features": {
+      "activeSurveys": "Hasta {count} encuestas activas",
+      "unlimitedSurveys": "Encuestas ilimitadas",
+      "responses": "{count} respuestas/mes",
+      "unlimitedResponses": "Respuestas ilimitadas",
+      "basicQuestions": "Tipos basicos de pregunta",
+      "allQuestions": "Todos los tipos de pregunta",
+      "csvExport": "Exportacion CSV",
+      "fullExport": "Exportacion CSV, PDF, Excel",
+      "emailSupport": "Soporte por email",
+      "prioritySupport": "Soporte prioritario",
+      "aiGeneration": "Generacion de preguntas con IA",
+      "aiSentiment": "Analisis de sentimiento IA",
+      "webhooks": "Webhooks",
+      "whitelabel": "White-label completo",
+      "api": "Acceso API",
+      "sso": "SSO / SAML",
+      "multiOrg": "Multi-organizacion",
+      "sla": "SLA 99.9%",
+      "accountManager": "Gerente de cuenta dedicado",
+      "onboarding": "Onboarding personalizado",
+      "allPro": "Todo del Profesional"
+    },
+    "limitations": {
+      "noAi": "Sin integracion IA",
+      "noWhitelabel": "Sin white-label",
+      "noApi": "Sin acceso API"
+    },
+    "comparison": {
+      "title": "Comparativo Completo",
+      "subtitle": "Ve todas las funcionalidades de cada plan",
+      "feature": "Funcionalidad",
+      "activeSurveys": "Encuestas activas",
+      "responsesMonth": "Respuestas/mes",
+      "teamMembers": "Miembros del equipo",
+      "aiGeneration": "Generacion IA",
+      "sentimentAnalysis": "Analisis de sentimiento",
+      "whitelabel": "White-label",
+      "apiAccess": "Acceso API",
+      "webhooks": "Webhooks",
+      "sso": "SSO / SAML",
+      "prioritySupport": "Soporte prioritario",
+      "unlimited": "Ilimitado"
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "subtitle": "Resuelve tus dudas sobre nuestros planes",
+      "q1": {
+        "question": "Puedo cancelar en cualquier momento?",
+        "answer": "Si! Puedes cancelar tu suscripcion en cualquier momento. Continuaras teniendo acceso hasta el final del periodo pagado."
+      },
+      "q2": {
+        "question": "Que pasa si excedo el limite de respuestas?",
+        "answer": "Recibiras un aviso cuando estes cerca del limite. Las respuestas excedentes seran almacenadas, pero necesitaras actualizar para acceder a los datos completos."
+      },
+      "q3": {
+        "question": "Ofrecen descuento por pago anual?",
+        "answer": "Si! Los pagos anuales tienen 20% de descuento. Contactanos para mas informacion."
+      },
+      "q4": {
+        "question": "Puedo cambiar de plan despues?",
+        "answer": "Claro! Puedes actualizar o reducir tu plan en cualquier momento. Los cambios se aplican inmediatamente."
+      }
+    },
+    "cta": {
+      "title": "Listo para comenzar?",
+      "description": "Unete a miles de empresas que usan DevForge para recoger feedbacks y mejorar sus productos.",
+      "start": "Comenzar Gratuitamente",
+      "contact": "Hablar con Ventas"
+    },
+    "period": "mes",
+    "currency": "$"
+  },
+  "pwa": {
+    "install": {
+      "title": "Instalar DevForge",
+      "description": "Accede mas rapido desde tu pantalla principal",
+      "button": "Instalar",
+      "later": "Ahora no"
+    },
+    "offline": {
+      "message": "Estas sin conexion. Algunas funciones pueden estar limitadas.",
+      "retry": "Intentar de nuevo"
     }
   }
 }

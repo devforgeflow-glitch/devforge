@@ -1,0 +1,218 @@
+{
+  "title": "Pesquisas",
+  "subtitle": "Gerencie suas pesquisas e colete feedbacks",
+  "create": {
+    "title": "Nova Pesquisa",
+    "button": "Criar Pesquisa",
+    "withAI": "Criar com IA",
+    "steps": {
+      "basics": "Informacoes Basicas",
+      "questions": "Perguntas",
+      "settings": "Configuracoes",
+      "preview": "Visualizar",
+      "publish": "Publicar"
+    }
+  },
+  "form": {
+    "title": "Titulo da pesquisa",
+    "titlePlaceholder": "Ex: Pesquisa de Satisfacao 2024",
+    "description": "Descricao",
+    "descriptionPlaceholder": "Descreva o objetivo da sua pesquisa...",
+    "type": "Tipo de pesquisa",
+    "category": "Categoria",
+    "language": "Idioma das respostas"
+  },
+  "types": {
+    "nps": {
+      "name": "NPS",
+      "description": "Net Promoter Score - Mede a lealdade do cliente"
+    },
+    "csat": {
+      "name": "CSAT",
+      "description": "Customer Satisfaction - Mede a satisfacao geral"
+    },
+    "ces": {
+      "name": "CES",
+      "description": "Customer Effort Score - Mede o esforco do cliente"
+    },
+    "custom": {
+      "name": "Personalizada",
+      "description": "Crie suas proprias perguntas"
+    }
+  },
+  "questions": {
+    "title": "Perguntas",
+    "add": "Adicionar Pergunta",
+    "addWithAI": "Gerar com IA",
+    "reorder": "Reordenar",
+    "duplicate": "Duplicar",
+    "delete": "Excluir",
+    "required": "Obrigatoria",
+    "optional": "Opcional",
+    "types": {
+      "text": "Texto livre",
+      "textarea": "Texto longo",
+      "rating": "Avaliacao (1-5)",
+      "nps": "NPS (0-10)",
+      "choice": "Multipla escolha",
+      "checkbox": "Caixas de selecao",
+      "dropdown": "Lista suspensa",
+      "matrix": "Matriz",
+      "date": "Data",
+      "email": "Email",
+      "phone": "Telefone"
+    },
+    "placeholders": {
+      "questionText": "Digite sua pergunta aqui...",
+      "option": "Opcao {number}",
+      "addOption": "Adicionar opcao"
+    }
+  },
+  "settings": {
+    "title": "Configuracoes",
+    "general": "Geral",
+    "responses": "Respostas",
+    "notifications": "Notificacoes",
+    "advanced": "Avancado",
+    "anonymous": {
+      "label": "Respostas anonimas",
+      "description": "Nao coletar dados de identificacao dos respondentes"
+    },
+    "multipleResponses": {
+      "label": "Permitir multiplas respostas",
+      "description": "Mesmo usuario pode responder mais de uma vez"
+    },
+    "showProgress": {
+      "label": "Mostrar progresso",
+      "description": "Exibir barra de progresso para o respondente"
+    },
+    "randomizeQuestions": {
+      "label": "Aleatorizar perguntas",
+      "description": "Ordem das perguntas sera diferente para cada respondente"
+    },
+    "responseLimit": {
+      "label": "Limite de respostas",
+      "placeholder": "Sem limite"
+    },
+    "expirationDate": {
+      "label": "Data de expiracao",
+      "placeholder": "Sem expiracao"
+    },
+    "redirectUrl": {
+      "label": "URL de redirecionamento",
+      "placeholder": "https://...",
+      "description": "Redirecionar apos conclusao"
+    },
+    "notifyOnResponse": {
+      "label": "Notificar novas respostas",
+      "description": "Receber email quando houver novas respostas"
+    },
+    "aiAnalysis": {
+      "label": "Analise com IA",
+      "description": "Analisar sentimento e gerar insights automaticamente"
+    }
+  },
+  "status": {
+    "draft": "Rascunho",
+    "active": "Ativo",
+    "paused": "Pausado",
+    "closed": "Encerrado",
+    "scheduled": "Agendado"
+  },
+  "actions": {
+    "edit": "Editar",
+    "preview": "Visualizar",
+    "share": "Compartilhar",
+    "duplicate": "Duplicar",
+    "archive": "Arquivar",
+    "delete": "Excluir",
+    "publish": "Publicar",
+    "unpublish": "Despublicar",
+    "pause": "Pausar",
+    "resume": "Retomar",
+    "export": "Exportar",
+    "viewResults": "Ver Resultados"
+  },
+  "share": {
+    "title": "Compartilhar Pesquisa",
+    "link": "Link da pesquisa",
+    "copy": "Copiar link",
+    "copied": "Link copiado!",
+    "qrCode": "QR Code",
+    "downloadQR": "Baixar QR Code",
+    "embed": "Incorporar",
+    "embedCode": "Codigo de incorporacao",
+    "email": "Enviar por email",
+    "socialMedia": "Redes sociais"
+  },
+  "list": {
+    "empty": {
+      "title": "Nenhuma pesquisa ainda",
+      "description": "Crie sua primeira pesquisa e comece a coletar feedbacks",
+      "action": "Criar primeira pesquisa"
+    },
+    "filters": {
+      "all": "Todas",
+      "active": "Ativas",
+      "draft": "Rascunhos",
+      "closed": "Encerradas"
+    },
+    "sort": {
+      "newest": "Mais recentes",
+      "oldest": "Mais antigas",
+      "mostResponses": "Mais respostas",
+      "alphabetical": "Alfabetica"
+    },
+    "search": "Buscar pesquisas..."
+  },
+  "responses": {
+    "title": "Respostas",
+    "total": "{count} respostas",
+    "today": "Hoje",
+    "thisWeek": "Esta semana",
+    "thisMonth": "Este mes",
+    "export": {
+      "title": "Exportar Respostas",
+      "format": "Formato",
+      "csv": "CSV",
+      "excel": "Excel",
+      "pdf": "PDF",
+      "dateRange": "Periodo",
+      "all": "Todas as respostas",
+      "filtered": "Apenas filtradas"
+    }
+  },
+  "analytics": {
+    "title": "Analytics",
+    "overview": "Visao Geral",
+    "responseRate": "Taxa de resposta",
+    "completionRate": "Taxa de conclusao",
+    "averageTime": "Tempo medio",
+    "sentiment": {
+      "title": "Analise de Sentimento",
+      "positive": "Positivo",
+      "neutral": "Neutro",
+      "negative": "Negativo"
+    },
+    "nps": {
+      "score": "NPS Score",
+      "promoters": "Promotores",
+      "passives": "Neutros",
+      "detractors": "Detratores"
+    }
+  },
+  "delete": {
+    "title": "Excluir pesquisa?",
+    "message": "Esta acao nao pode ser desfeita. Todas as respostas serao permanentemente excluidas.",
+    "confirm": "Sim, excluir",
+    "cancel": "Cancelar"
+  },
+  "ai": {
+    "generating": "Gerando perguntas com IA...",
+    "generated": "Perguntas geradas com sucesso!",
+    "contextPlaceholder": "Descreva o objetivo da pesquisa para a IA gerar perguntas relevantes...",
+    "regenerate": "Gerar novamente",
+    "accept": "Aceitar sugestoes",
+    "modify": "Modificar"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "title": "Dashboard",
+  "welcome": "Welcome, {name}!",
+  "welcomeBack": "Welcome back, {name}!",
+  "overview": "Overview",
+  "stats": {
+    "totalSurveys": "Total Surveys",
+    "activeSurveys": "Active Surveys",
+    "totalResponses": "Total Responses",
+    "responsesToday": "Responses Today",
+    "responseRate": "Response Rate",
+    "avgCompletionTime": "Avg. Time",
+    "npsScore": "NPS Score",
+    "satisfaction": "Satisfaction"
+  },
+  "charts": {
+    "responsesOverTime": "Responses Over Time",
+    "responsesByDevice": "Responses by Device",
+    "topSurveys": "Most Responded Surveys",
+    "sentimentDistribution": "Sentiment Distribution",
+    "completionFunnel": "Completion Funnel"
+  },
+  "periods": {
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "last7days": "Last 7 days",
+    "last30days": "Last 30 days",
+    "thisMonth": "This month",
+    "lastMonth": "Last month",
+    "thisYear": "This year",
+    "custom": "Custom"
+  },
+  "recentActivity": {
+    "title": "Recent Activity",
+    "empty": "No recent activity",
+    "newResponse": "New response on",
+    "surveyCreated": "Survey created",
+    "surveyPublished": "Survey published",
+    "surveyCompleted": "Response goal reached",
+    "viewAll": "View all"
+  },
+  "recentSurveys": {
+    "title": "Recent Surveys",
+    "empty": "No surveys yet",
+    "viewAll": "View all",
+    "responses": "{count} responses"
+  },
+  "quickActions": {
+    "title": "Quick Actions",
+    "createSurvey": "Create Survey",
+    "viewResponses": "View Responses",
+    "exportData": "Export Data",
+    "inviteTeam": "Invite Team",
+    "settings": "Settings"
+  },
+  "tips": {
+    "title": "Tips",
+    "tip1": {
+      "title": "Use AI to create questions",
+      "description": "Describe the objective and let AI suggest relevant questions"
+    },
+    "tip2": {
+      "title": "Share via QR Code",
+      "description": "Generate a QR Code to make survey access easier"
+    },
+    "tip3": {
+      "title": "Analyze sentiments",
+      "description": "Enable AI analysis to understand the tone of responses"
+    },
+    "dismiss": "Dismiss"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "empty": "No notifications",
+    "markAllRead": "Mark all as read",
+    "settings": "Notification settings"
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "surveys": "Surveys",
+    "responses": "Responses",
+    "analytics": "Analytics",
+    "team": "Team",
+    "integrations": "Integrations",
+    "settings": "Settings",
+    "help": "Help",
+    "billing": "Billing"
+  },
+  "header": {
+    "search": "Search...",
+    "notifications": "Notifications",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Sign out",
+    "upgrade": "Upgrade"
+  },
+  "empty": {
+    "title": "Get started!",
+    "description": "Create your first survey and start collecting valuable feedback.",
+    "action": "Create Survey"
+  },
+  "upgrade": {
+    "title": "Upgrade to unlock",
+    "features": "Access advanced features like AI analysis, unlimited exports and more.",
+    "action": "View plans"
+  }
+}

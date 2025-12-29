@@ -228,7 +228,7 @@ export async function optionalAuthMiddleware(
     }
 
     req.user = user;
-  } catch (error) {
+  } catch {
     logger.debug('Falha na autenticação opcional, continuando sem user');
   }
 

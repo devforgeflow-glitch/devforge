@@ -1,0 +1,107 @@
+{
+  "title": "Dashboard",
+  "welcome": "Bem-vindo, {name}!",
+  "welcomeBack": "Bem-vindo de volta, {name}!",
+  "overview": "Visao Geral",
+  "stats": {
+    "totalSurveys": "Total de Pesquisas",
+    "activeSurveys": "Pesquisas Ativas",
+    "totalResponses": "Total de Respostas",
+    "responsesToday": "Respostas Hoje",
+    "responseRate": "Taxa de Resposta",
+    "avgCompletionTime": "Tempo Medio",
+    "npsScore": "NPS Score",
+    "satisfaction": "Satisfacao"
+  },
+  "charts": {
+    "responsesOverTime": "Respostas ao Longo do Tempo",
+    "responsesByDevice": "Respostas por Dispositivo",
+    "topSurveys": "Pesquisas Mais Respondidas",
+    "sentimentDistribution": "Distribuicao de Sentimento",
+    "completionFunnel": "Funil de Conclusao"
+  },
+  "periods": {
+    "today": "Hoje",
+    "yesterday": "Ontem",
+    "last7days": "Ultimos 7 dias",
+    "last30days": "Ultimos 30 dias",
+    "thisMonth": "Este mes",
+    "lastMonth": "Mes passado",
+    "thisYear": "Este ano",
+    "custom": "Personalizado"
+  },
+  "recentActivity": {
+    "title": "Atividade Recente",
+    "empty": "Nenhuma atividade recente",
+    "newResponse": "Nova resposta em",
+    "surveyCreated": "Pesquisa criada",
+    "surveyPublished": "Pesquisa publicada",
+    "surveyCompleted": "Meta de respostas atingida",
+    "viewAll": "Ver todas"
+  },
+  "recentSurveys": {
+    "title": "Pesquisas Recentes",
+    "empty": "Nenhuma pesquisa ainda",
+    "viewAll": "Ver todas",
+    "responses": "{count} respostas"
+  },
+  "quickActions": {
+    "title": "Acoes Rapidas",
+    "createSurvey": "Criar Pesquisa",
+    "viewResponses": "Ver Respostas",
+    "exportData": "Exportar Dados",
+    "inviteTeam": "Convidar Equipe",
+    "settings": "Configuracoes"
+  },
+  "tips": {
+    "title": "Dicas",
+    "tip1": {
+      "title": "Use IA para criar perguntas",
+      "description": "Descreva o objetivo e deixe a IA sugerir perguntas relevantes"
+    },
+    "tip2": {
+      "title": "Compartilhe via QR Code",
+      "description": "Gere um QR Code para facilitar o acesso a pesquisa"
+    },
+    "tip3": {
+      "title": "Analise sentimentos",
+      "description": "Ative a analise de IA para entender o tom das respostas"
+    },
+    "dismiss": "Dispensar"
+  },
+  "notifications": {
+    "title": "Notificacoes",
+    "empty": "Nenhuma notificacao",
+    "markAllRead": "Marcar todas como lidas",
+    "settings": "Configurar notificacoes"
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "surveys": "Pesquisas",
+    "responses": "Respostas",
+    "analytics": "Analytics",
+    "team": "Equipe",
+    "integrations": "Integracoes",
+    "settings": "Configuracoes",
+    "help": "Ajuda",
+    "billing": "Faturamento"
+  },
+  "header": {
+    "search": "Buscar...",
+    "notifications": "Notificacoes",
+    "profile": "Perfil",
+    "settings": "Configuracoes",
+    "logout": "Sair",
+    "upgrade": "Fazer Upgrade"
+  },
+  "empty": {
+    "title": "Comece agora!",
+    "description": "Crie sua primeira pesquisa e comece a coletar feedbacks valiosos.",
+    "action": "Criar Pesquisa"
+  },
+  "upgrade": {
+    "title": "Faca upgrade para desbloquear",
+    "features": "Acesse recursos avancados como analise de IA, exportacao ilimitada e mais.",
+    "action": "Ver planos"
+  }
+}

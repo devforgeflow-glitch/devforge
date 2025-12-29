@@ -140,12 +140,30 @@ const securityHeaders = [
 const nextConfig = {
   reactStrictMode: true,
 
+  // Configuracao i18n nativa do Next.js (necessaria para router.push({ locale }))
+  i18n: {
+    locales: ['pt-BR', 'en', 'es'],
+    defaultLocale: 'pt-BR',
+    localeDetection: false, // Desabilita deteccao automatica para evitar redirects
+  },
+
   // Security Headers para todas as paginas
   async headers() {
     return [
       {
         source: '/:path*',
         headers: securityHeaders,
+      },
+    ];
+  },
+
+  // Rewrites para URLs amigaveis
+  // /s/:id (URL curta para usuarios) -> /survey-public/:id (codigo legivel para devs)
+  async rewrites() {
+    return [
+      {
+        source: '/s/:id',
+        destination: '/survey-public/:id',
       },
     ];
   },

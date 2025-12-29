@@ -63,7 +63,7 @@ export default async function handler(
 
     const httpStatus = status === 'healthy' ? 200 : status === 'degraded' ? 200 : 503;
     return res.status(httpStatus).json(response);
-  } catch (error) {
+  } catch {
     return res.status(503).json({
       status: 'unhealthy',
       timestamp: new Date().toISOString(),

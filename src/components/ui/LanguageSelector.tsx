@@ -27,7 +27,7 @@ const languages = [
 
 export function LanguageSelector() {
   const router = useRouter();
-  const t = useTranslations('common');
+  const t = useTranslations();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -47,6 +47,10 @@ export function LanguageSelector() {
   }, []);
 
   const changeLanguage = (locale: string) => {
+    // Salva preferencia no cookie
+    document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
+
+    // Navega para a mesma pagina com novo locale
     router.push(router.pathname, router.asPath, { locale });
     setIsOpen(false);
   };

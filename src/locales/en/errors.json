@@ -1,0 +1,116 @@
+{
+  "http": {
+    "400": {
+      "title": "Bad Request",
+      "message": "The request could not be processed. Please check the data sent."
+    },
+    "401": {
+      "title": "Unauthorized",
+      "message": "You need to sign in to access this resource."
+    },
+    "403": {
+      "title": "Access Denied",
+      "message": "You don't have permission to access this resource."
+    },
+    "404": {
+      "title": "Page Not Found",
+      "message": "The page you're looking for doesn't exist or has been moved."
+    },
+    "408": {
+      "title": "Request Timeout",
+      "message": "The request took too long to process. Please try again."
+    },
+    "429": {
+      "title": "Too Many Requests",
+      "message": "You've made too many requests. Please wait a few minutes and try again."
+    },
+    "500": {
+      "title": "Server Error",
+      "message": "An internal error occurred. Our team has been notified."
+    },
+    "502": {
+      "title": "Bad Gateway",
+      "message": "The server received an invalid response. Please try again in a few minutes."
+    },
+    "503": {
+      "title": "Service Unavailable",
+      "message": "The service is temporarily unavailable. Please try again soon."
+    },
+    "504": {
+      "title": "Gateway Timeout",
+      "message": "The server took too long to respond. Please try again."
+    }
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Please enter a valid email",
+    "url": "Please enter a valid URL",
+    "minLength": "Minimum {min} characters",
+    "maxLength": "Maximum {max} characters",
+    "min": "Minimum value is {min}",
+    "max": "Maximum value is {max}",
+    "pattern": "Invalid format",
+    "passwordStrength": "Password must have at least 8 characters, one uppercase, one lowercase and one number",
+    "passwordMismatch": "Passwords do not match",
+    "invalidDate": "Invalid date",
+    "futureDate": "Date must be in the future",
+    "pastDate": "Date must be in the past",
+    "invalidPhone": "Invalid phone number",
+    "invalidCPF": "Invalid CPF",
+    "invalidCNPJ": "Invalid CNPJ"
+  },
+  "auth": {
+    "invalidCredentials": "Invalid email or password",
+    "accountLocked": "Account temporarily locked. Please try again later",
+    "accountDisabled": "This account has been disabled",
+    "emailNotVerified": "Please verify your email before continuing",
+    "tokenExpired": "Your session has expired. Please sign in again",
+    "tokenInvalid": "Invalid or expired link",
+    "emailInUse": "This email is already being used",
+    "weakPassword": "Password too weak",
+    "socialAuthFailed": "Social authentication failed. Please try again"
+  },
+  "survey": {
+    "notFound": "Survey not found",
+    "closed": "This survey has been closed",
+    "expired": "This survey has expired",
+    "limitReached": "This survey has reached its response limit",
+    "alreadyResponded": "You have already responded to this survey",
+    "invalidAccess": "You don't have access to this survey",
+    "publishFailed": "Failed to publish survey. Make sure there are questions added",
+    "deleteFailed": "Failed to delete survey"
+  },
+  "upload": {
+    "fileTooLarge": "File is too large. Maximum size: {size}",
+    "invalidType": "File type not allowed. Use: {types}",
+    "uploadFailed": "Upload failed. Please try again",
+    "tooManyFiles": "Too many files. Maximum: {max}"
+  },
+  "payment": {
+    "cardDeclined": "Card declined. Please check the details or try another card",
+    "insufficientFunds": "Insufficient funds",
+    "expiredCard": "Card expired",
+    "invalidCard": "Invalid card details",
+    "paymentFailed": "Payment failed. Please try again",
+    "subscriptionCanceled": "Subscription canceled"
+  },
+  "network": {
+    "offline": "You are offline. Please check your internet connection",
+    "timeout": "Connection timed out. Please try again",
+    "connectionError": "Connection error. Please check your internet"
+  },
+  "generic": {
+    "unknownError": "An unexpected error occurred. Please try again",
+    "tryAgain": "Something went wrong. Please try again",
+    "contactSupport": "If the problem persists, please contact support",
+    "refreshPage": "Try refreshing the page"
+  },
+  "actions": {
+    "goHome": "Go to home",
+    "goBack": "Go back",
+    "tryAgain": "Try again",
+    "contactSupport": "Contact support",
+    "login": "Sign in",
+    "refresh": "Refresh page"
+  }
+}

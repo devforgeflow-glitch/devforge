@@ -13,12 +13,12 @@ import { Button } from '@/components/ui';
  */
 
 export default function HomePage() {
-  const t = useTranslations('common');
+  const t = useTranslations();
 
   return (
     <Layout
-      title="DevForge"
-      description="Plataforma completa para feedback e gestao de produtos"
+      title={t('home.title')}
+      description={t('app.description')}
     >
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20 sm:py-32">
@@ -43,32 +43,31 @@ export default function HomePage() {
                   d="M13 10V3L4 14h7v7l9-11h-7z"
                 />
               </svg>
-              Template Profissional Next.js + Firebase
+              {t('home.badge')}
             </div>
 
             {/* Titulo */}
             <h1 className="heading-1 mb-6">
-              <span className="gradient-text">DevForge</span>
+              <span className="gradient-text">{t('home.title')}</span>
               <br />
-              <span className="text-foreground">FeedbackHub Platform</span>
+              <span className="text-foreground">{t('home.subtitle')}</span>
             </h1>
 
             {/* Descricao */}
             <p className="mb-10 text-lg text-muted-foreground sm:text-xl">
-              Demonstracao completa de arquitetura enterprise com Next.js 14,
-              Firebase, Redis, BullMQ, i18n, Dark Mode, Storybook e integracao com IA.
+              {t('home.description')}
             </p>
 
             {/* CTAs */}
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link href="/signup">
+              <Link href="/auth/signup">
                 <Button size="lg" className="min-w-[200px]">
-                  {t('actions.signup')}
+                  {t('home.cta.primary')}
                 </Button>
               </Link>
               <Link href="/docs">
                 <Button variant="outline" size="lg" className="min-w-[200px]">
-                  Ver Documentacao
+                  {t('home.cta.secondary')}
                 </Button>
               </Link>
             </div>
@@ -80,23 +79,23 @@ export default function HomePage() {
       <section className="py-20 bg-muted/30">
         <div className="container-app">
           <div className="mx-auto max-w-2xl text-center mb-16">
-            <h2 className="heading-2 mb-4">{t('nav.features')}</h2>
+            <h2 className="heading-2 mb-4">{t('home.featuresTitle')}</h2>
             <p className="text-lg text-muted-foreground">
-              Todas as funcionalidades que um projeto enterprise precisa
+              {t('home.featuresSubtitle')}
             </p>
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature, index) => (
+            {featureKeys.map((key) => (
               <div
-                key={index}
+                key={key}
                 className="card p-6 hover:shadow-lg transition-shadow"
               >
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                  <span className="text-2xl">{feature.icon}</span>
+                  <span className="text-2xl">{featureIcons[key]}</span>
                 </div>
-                <h3 className="heading-4 mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <h3 className="heading-4 mb-2">{t(`home.features.${key}.title`)}</h3>
+                <p className="text-muted-foreground">{t(`home.features.${key}.description`)}</p>
               </div>
             ))}
           </div>
@@ -107,9 +106,9 @@ export default function HomePage() {
       <section className="py-20">
         <div className="container-app">
           <div className="mx-auto max-w-2xl text-center mb-16">
-            <h2 className="heading-2 mb-4">Stack Tecnologico</h2>
+            <h2 className="heading-2 mb-4">{t('home.techTitle')}</h2>
             <p className="text-lg text-muted-foreground">
-              Construido com as melhores tecnologias do mercado
+              {t('home.techSubtitle')}
             </p>
           </div>
 
@@ -130,9 +129,9 @@ export default function HomePage() {
       {/* CTA Final */}
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="container-app text-center">
-          <h2 className="heading-2 mb-4">Pronto para comecar?</h2>
+          <h2 className="heading-2 mb-4">{t('home.ctaTitle')}</h2>
           <p className="mb-8 text-lg opacity-90">
-            Clone este repositorio e comece seu proximo projeto
+            {t('home.ctaSubtitle')}
           </p>
           <Link href="https://github.com/devforge/template" target="_blank">
             <Button
@@ -140,7 +139,7 @@ export default function HomePage() {
               size="lg"
               className="bg-white text-primary hover:bg-white/90"
             >
-              Ver no GitHub
+              {t('home.ctaButton')}
             </Button>
           </Link>
         </div>
@@ -149,38 +148,16 @@ export default function HomePage() {
   );
 }
 
-const features = [
-  {
-    icon: '🌙',
-    title: 'Dark Mode',
-    description: 'Suporte completo a tema escuro com next-themes e CSS variables.',
-  },
-  {
-    icon: '🌐',
-    title: 'Internacionalizacao',
-    description: 'i18n com next-intl para PT-BR, EN e ES.',
-  },
-  {
-    icon: '🔐',
-    title: '18 Camadas de Seguranca',
-    description: 'Helmet, CORS, CSRF, Rate Limiting, JWT, RBAC e mais.',
-  },
-  {
-    icon: '📊',
-    title: 'Storybook',
-    description: 'Documentacao visual de componentes com Storybook.',
-  },
-  {
-    icon: '🤖',
-    title: 'Integracao IA',
-    description: 'OpenAI e Anthropic para classificacao e resumos.',
-  },
-  {
-    icon: '⚡',
-    title: 'BullMQ',
-    description: 'Jobs em background com Redis e BullMQ.',
-  },
-];
+const featureKeys = ['darkMode', 'i18n', 'security', 'storybook', 'ai', 'bullmq'] as const;
+
+const featureIcons: Record<string, string> = {
+  darkMode: '🌙',
+  i18n: '🌐',
+  security: '🔐',
+  storybook: '📊',
+  ai: '🤖',
+  bullmq: '⚡',
+};
 
 const techStack = [
   { icon: '⚛️', name: 'Next.js 14' },
@@ -192,12 +169,10 @@ const techStack = [
 ];
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
-  // Fallback para pt-BR se locale nao estiver definido
-  const resolvedLocale = locale || 'pt-BR';
-
+  const { loadMessages } = await import('@/i18n');
   return {
     props: {
-      messages: (await import(`../locales/${resolvedLocale}/common.json`)).default,
+      messages: await loadMessages(locale || 'pt-BR'),
     },
   };
 }

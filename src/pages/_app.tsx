@@ -2,7 +2,9 @@ import type { AppProps } from 'next/app';
 import { Inter } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { useRouter } from 'next/router';
-import { ThemeProvider, AuthProvider } from '@/contexts';
+import { ThemeProvider, AuthProvider, LayoutProvider } from '@/contexts';
+import { InstallPrompt, OfflineIndicator } from '@/components/pwa';
+import { CookieConsent } from '@/components/ui';
 import '@/styles/globals.css';
 
 /**
@@ -12,8 +14,9 @@ import '@/styles/globals.css';
  * - ThemeProvider (Dark Mode)
  * - AuthProvider (Firebase Auth)
  * - NextIntlClientProvider (i18n)
+ * - PWA Install Prompt e Offline Indicator
  *
- * @version 1.0.0
+ * @version 1.1.0
  */
 
 const inter = Inter({
@@ -38,9 +41,14 @@ export default function App({ Component, pageProps }: AppProps) {
         disableTransitionOnChange
       >
         <AuthProvider>
-          <main className={`${inter.variable} font-sans`}>
-            <Component {...pageProps} />
-          </main>
+          <LayoutProvider>
+            <main className={`${inter.variable} font-sans`}>
+              <OfflineIndicator position="top" />
+              <Component {...pageProps} />
+              <CookieConsent />
+              <InstallPrompt delay={15000} />
+            </main>
+          </LayoutProvider>
         </AuthProvider>
       </ThemeProvider>
     </NextIntlClientProvider>

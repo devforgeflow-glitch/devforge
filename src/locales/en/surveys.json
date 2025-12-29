@@ -1,0 +1,218 @@
+{
+  "title": "Surveys",
+  "subtitle": "Manage your surveys and collect feedback",
+  "create": {
+    "title": "New Survey",
+    "button": "Create Survey",
+    "withAI": "Create with AI",
+    "steps": {
+      "basics": "Basic Info",
+      "questions": "Questions",
+      "settings": "Settings",
+      "preview": "Preview",
+      "publish": "Publish"
+    }
+  },
+  "form": {
+    "title": "Survey title",
+    "titlePlaceholder": "E.g.: Customer Satisfaction Survey 2024",
+    "description": "Description",
+    "descriptionPlaceholder": "Describe the purpose of your survey...",
+    "type": "Survey type",
+    "category": "Category",
+    "language": "Response language"
+  },
+  "types": {
+    "nps": {
+      "name": "NPS",
+      "description": "Net Promoter Score - Measures customer loyalty"
+    },
+    "csat": {
+      "name": "CSAT",
+      "description": "Customer Satisfaction - Measures overall satisfaction"
+    },
+    "ces": {
+      "name": "CES",
+      "description": "Customer Effort Score - Measures customer effort"
+    },
+    "custom": {
+      "name": "Custom",
+      "description": "Create your own questions"
+    }
+  },
+  "questions": {
+    "title": "Questions",
+    "add": "Add Question",
+    "addWithAI": "Generate with AI",
+    "reorder": "Reorder",
+    "duplicate": "Duplicate",
+    "delete": "Delete",
+    "required": "Required",
+    "optional": "Optional",
+    "types": {
+      "text": "Short text",
+      "textarea": "Long text",
+      "rating": "Rating (1-5)",
+      "nps": "NPS (0-10)",
+      "choice": "Multiple choice",
+      "checkbox": "Checkboxes",
+      "dropdown": "Dropdown",
+      "matrix": "Matrix",
+      "date": "Date",
+      "email": "Email",
+      "phone": "Phone"
+    },
+    "placeholders": {
+      "questionText": "Type your question here...",
+      "option": "Option {number}",
+      "addOption": "Add option"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "general": "General",
+    "responses": "Responses",
+    "notifications": "Notifications",
+    "advanced": "Advanced",
+    "anonymous": {
+      "label": "Anonymous responses",
+      "description": "Don't collect respondent identification data"
+    },
+    "multipleResponses": {
+      "label": "Allow multiple responses",
+      "description": "Same user can respond more than once"
+    },
+    "showProgress": {
+      "label": "Show progress",
+      "description": "Display progress bar to respondent"
+    },
+    "randomizeQuestions": {
+      "label": "Randomize questions",
+      "description": "Question order will be different for each respondent"
+    },
+    "responseLimit": {
+      "label": "Response limit",
+      "placeholder": "No limit"
+    },
+    "expirationDate": {
+      "label": "Expiration date",
+      "placeholder": "No expiration"
+    },
+    "redirectUrl": {
+      "label": "Redirect URL",
+      "placeholder": "https://...",
+      "description": "Redirect after completion"
+    },
+    "notifyOnResponse": {
+      "label": "Notify on new responses",
+      "description": "Receive email when there are new responses"
+    },
+    "aiAnalysis": {
+      "label": "AI Analysis",
+      "description": "Analyze sentiment and generate insights automatically"
+    }
+  },
+  "status": {
+    "draft": "Draft",
+    "active": "Active",
+    "paused": "Paused",
+    "closed": "Closed",
+    "scheduled": "Scheduled"
+  },
+  "actions": {
+    "edit": "Edit",
+    "preview": "Preview",
+    "share": "Share",
+    "duplicate": "Duplicate",
+    "archive": "Archive",
+    "delete": "Delete",
+    "publish": "Publish",
+    "unpublish": "Unpublish",
+    "pause": "Pause",
+    "resume": "Resume",
+    "export": "Export",
+    "viewResults": "View Results"
+  },
+  "share": {
+    "title": "Share Survey",
+    "link": "Survey link",
+    "copy": "Copy link",
+    "copied": "Link copied!",
+    "qrCode": "QR Code",
+    "downloadQR": "Download QR Code",
+    "embed": "Embed",
+    "embedCode": "Embed code",
+    "email": "Send by email",
+    "socialMedia": "Social media"
+  },
+  "list": {
+    "empty": {
+      "title": "No surveys yet",
+      "description": "Create your first survey and start collecting feedback",
+      "action": "Create first survey"
+    },
+    "filters": {
+      "all": "All",
+      "active": "Active",
+      "draft": "Drafts",
+      "closed": "Closed"
+    },
+    "sort": {
+      "newest": "Newest",
+      "oldest": "Oldest",
+      "mostResponses": "Most responses",
+      "alphabetical": "Alphabetical"
+    },
+    "search": "Search surveys..."
+  },
+  "responses": {
+    "title": "Responses",
+    "total": "{count} responses",
+    "today": "Today",
+    "thisWeek": "This week",
+    "thisMonth": "This month",
+    "export": {
+      "title": "Export Responses",
+      "format": "Format",
+      "csv": "CSV",
+      "excel": "Excel",
+      "pdf": "PDF",
+      "dateRange": "Date range",
+      "all": "All responses",
+      "filtered": "Filtered only"
+    }
+  },
+  "analytics": {
+    "title": "Analytics",
+    "overview": "Overview",
+    "responseRate": "Response rate",
+    "completionRate": "Completion rate",
+    "averageTime": "Average time",
+    "sentiment": {
+      "title": "Sentiment Analysis",
+      "positive": "Positive",
+      "neutral": "Neutral",
+      "negative": "Negative"
+    },
+    "nps": {
+      "score": "NPS Score",
+      "promoters": "Promoters",
+      "passives": "Passives",
+      "detractors": "Detractors"
+    }
+  },
+  "delete": {
+    "title": "Delete survey?",
+    "message": "This action cannot be undone. All responses will be permanently deleted.",
+    "confirm": "Yes, delete",
+    "cancel": "Cancel"
+  },
+  "ai": {
+    "generating": "Generating questions with AI...",
+    "generated": "Questions generated successfully!",
+    "contextPlaceholder": "Describe the survey objective for AI to generate relevant questions...",
+    "regenerate": "Regenerate",
+    "accept": "Accept suggestions",
+    "modify": "Modify"
+  }
+}

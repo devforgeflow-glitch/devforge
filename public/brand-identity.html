@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevForge - Identidade Visual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Cores Principais */
+      --brand-primary: #6366f1;
+      --brand-primary-light: #818cf8;
+      --brand-primary-dark: #4f46e5;
+
+      --brand-secondary: #06b6d4;
+      --brand-secondary-light: #22d3ee;
+      --brand-secondary-dark: #0891b2;
+
+      --brand-accent: #f59e0b;
+      --brand-accent-light: #fbbf24;
+      --brand-accent-dark: #d97706;
+
+      --brand-success: #10b981;
+      --brand-success-light: #34d399;
+      --brand-success-dark: #059669;
+
+      /* Status */
+      --color-error: #ef4444;
+      --color-warning: #f59e0b;
+      --color-info: #3b82f6;
+
+      /* Neutros */
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+      --gray-950: #030712;
+
+      /* Light Mode */
+      --bg-primary: #ffffff;
+      --bg-secondary: #f9fafb;
+      --text-primary: #111827;
+      --text-secondary: #6b7280;
+      --border-color: #e5e7eb;
+    }
+
+    .dark {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --text-primary: #f9fafb;
+      --text-secondary: #94a3b8;
+      --border-color: #334155;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+      padding: 4rem 2rem;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .logo span {
+      color: var(--brand-accent-light);
+    }
+
+    .tagline {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      font-weight: 500;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 9999px;
+      padding: 0.75rem;
+      cursor: pointer;
+      z-index: 100;
+      transition: all 0.2s;
+    }
+
+    .theme-toggle:hover {
+      background: var(--brand-primary);
+      color: white;
+    }
+
+    /* Sections */
+    .section {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .section:last-child {
+      border-bottom: none;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    /* Color Palette */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .color-card {
+      background: var(--bg-secondary);
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .color-swatch {
+      height: 100px;
+      display: flex;
+      align-items: flex-end;
+      padding: 0.75rem;
+    }
+
+    .color-swatch span {
+      background: rgba(255,255,255,0.9);
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: #111827;
+    }
+
+    .color-info {
+      padding: 1rem;
+    }
+
+    .color-name {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .color-desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    /* Typography */
+    .type-scale {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .type-item {
+      display: flex;
+      align-items: baseline;
+      gap: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .type-label {
+      min-width: 100px;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .type-h1 { font-size: 3rem; font-weight: 800; letter-spacing: -0.02em; }
+    .type-h2 { font-size: 2.25rem; font-weight: 700; letter-spacing: -0.01em; }
+    .type-h3 { font-size: 1.5rem; font-weight: 600; }
+    .type-h4 { font-size: 1.25rem; font-weight: 600; }
+    .type-body { font-size: 1rem; }
+    .type-small { font-size: 0.875rem; color: var(--text-secondary); }
+    .type-mono { font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; background: var(--bg-secondary); padding: 0.125rem 0.5rem; border-radius: 0.25rem; }
+
+    /* Buttons */
+    .button-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--brand-primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-primary-dark);
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-secondary {
+      background: var(--brand-secondary);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: var(--brand-secondary-dark);
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+    }
+
+    .btn-accent {
+      background: var(--brand-accent);
+      color: white;
+    }
+
+    .btn-accent:hover {
+      background: var(--brand-accent-dark);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: var(--brand-primary);
+      color: var(--brand-primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--brand-primary);
+      color: white;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-primary);
+    }
+
+    .btn-ghost:hover {
+      background: var(--bg-secondary);
+    }
+
+    .btn-destructive {
+      background: var(--color-error);
+      color: white;
+    }
+
+    .btn-destructive:hover {
+      background: #dc2626;
+    }
+
+    .btn-sm { padding: 0.5rem 1rem; font-size: 0.75rem; }
+    .btn-lg { padding: 1rem 2rem; font-size: 1rem; }
+
+    /* Cards */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: all 0.2s;
+    }
+
+    .card-elevated {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-interactive:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      border-color: var(--brand-primary);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+
+    .card-desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .card-footer {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-primary { background: rgba(99, 102, 241, 0.1); color: var(--brand-primary); }
+    .badge-success { background: rgba(16, 185, 129, 0.1); color: var(--brand-success); }
+    .badge-warning { background: rgba(245, 158, 11, 0.1); color: var(--brand-accent); }
+    .badge-error { background: rgba(239, 68, 68, 0.1); color: var(--color-error); }
+
+    /* Form Elements */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 0.5rem;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--brand-primary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+
+    .form-input::placeholder {
+      color: var(--gray-400);
+    }
+
+    .form-hint {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+    }
+
+    .form-error {
+      font-size: 0.75rem;
+      color: var(--color-error);
+      margin-top: 0.5rem;
+    }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+    }
+
+    .stat-icon-primary { background: rgba(99, 102, 241, 0.1); color: var(--brand-primary); }
+    .stat-icon-secondary { background: rgba(6, 182, 212, 0.1); color: var(--brand-secondary); }
+    .stat-icon-accent { background: rgba(245, 158, 11, 0.1); color: var(--brand-accent); }
+    .stat-icon-success { background: rgba(16, 185, 129, 0.1); color: var(--brand-success); }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    /* Hero Section Example */
+    .hero-example {
+      background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 100%);
+      border-radius: 1rem;
+      padding: 4rem 2rem;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-example::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
+      animation: pulse-slow 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse-slow {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.7; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #fff 0%, var(--brand-secondary-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.125rem;
+      color: var(--gray-300);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+
+    .footer a {
+      color: var(--brand-primary);
+      text-decoration: none;
+    }
+
+    /* Gradient Text */
+    .gradient-text {
+      background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Glow effects */
+    .glow-primary {
+      box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+    }
+
+    .glow-secondary {
+      box-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
+    }
+
+    /* Code block */
+    .code-block {
+      background: var(--gray-900);
+      color: var(--gray-100);
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      overflow-x: auto;
+    }
+
+    .code-block .comment { color: var(--gray-500); }
+    .code-block .keyword { color: var(--brand-secondary-light); }
+    .code-block .string { color: var(--brand-success-light); }
+    .code-block .number { color: var(--brand-accent-light); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header { padding: 3rem 1rem; }
+      .logo { font-size: 2rem; }
+      .section { padding: 2rem 0; }
+      .hero-title { font-size: 1.75rem; }
+      .type-item { flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="5"/>
+      <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+    </svg>
+  </button>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <h1 class="logo">Dev<span>Forge</span></h1>
+      <p class="tagline">FeedbackHub - Plataforma de Pesquisas e Feedbacks</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Colors Section -->
+    <section class="section">
+      <h2 class="section-title">Paleta de Cores</h2>
+      <p class="section-subtitle">Cores principais da identidade visual DevForge</p>
+
+      <div class="color-grid">
+        <div class="color-card">
+          <div class="color-swatch" style="background: linear-gradient(135deg, #6366f1, #4f46e5);">
+            <span>#6366F1</span>
+          </div>
+          <div class="color-info">
+            <div class="color-name">Primary - Indigo</div>
+            <div class="color-desc">Cor principal para acoes e elementos de destaque</div>
+          </div>
+        </div>
+
+        <div class="color-card">
+          <div class="color-swatch" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">
+            <span>#06B6D4</span>
+          </div>
+          <div class="color-info">
+            <div class="color-name">Secondary - Cyan</div>
+            <div class="color-desc">Tecnologia e inovacao</div>
+          </div>
+        </div>
+
+        <div class="color-card">
+          <div class="color-swatch" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+            <span>#F59E0B</span>
+          </div>
+          <div class="color-info">
+            <div class="color-name">Accent - Amber</div>
+            <div class="color-desc">CTAs e elementos de atencao</div>
+          </div>
+        </div>
+
+        <div class="color-card">
+          <div class="color-swatch" style="background: linear-gradient(135deg, #10b981, #059669);">
+            <span>#10B981</span>
+          </div>
+          <div class="color-info">
+            <div class="color-name">Success - Emerald</div>
+            <div class="color-desc">Sucesso e confirmacoes</div>
+          </div>
+        </div>
+
+        <div class="color-card">
+          <div class="color-swatch" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
+            <span>#EF4444</span>
+          </div>
+          <div class="color-info">
+            <div class="color-name">Error - Red</div>
+            <div class="color-desc">Erros e acoes destrutivas</div>
+          </div>
+        </div>
+
+        <div class="color-card">
+          <div class="color-swatch" style="background: linear-gradient(135deg, #1f2937, #111827);">
+            <span>#1F2937</span>
+          </div>
+          <div class="color-info">
+            <div class="color-name">Dark - Slate</div>
+            <div class="color-desc">Backgrounds em dark mode</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography Section -->
+    <section class="section">
+      <h2 class="section-title">Tipografia</h2>
+      <p class="section-subtitle">Inter para textos, JetBrains Mono para codigo</p>
+
+      <div class="type-scale">
+        <div class="type-item">
+          <span class="type-label">H1 / 48px</span>
+          <span class="type-h1">FeedbackHub</span>
+        </div>
+        <div class="type-item">
+          <span class="type-label">H2 / 36px</span>
+          <span class="type-h2">Crie pesquisas incriveis</span>
+        </div>
+        <div class="type-item">
+          <span class="type-label">H3 / 24px</span>
+          <span class="type-h3">Analise com inteligencia artificial</span>
+        </div>
+        <div class="type-item">
+          <span class="type-label">H4 / 20px</span>
+          <span class="type-h4">Configure em minutos</span>
+        </div>
+        <div class="type-item">
+          <span class="type-label">Body / 16px</span>
+          <span class="type-body">Colete feedbacks de forma simples e profissional. Nossa plataforma oferece todas as ferramentas que voce precisa.</span>
+        </div>
+        <div class="type-item">
+          <span class="type-label">Small / 14px</span>
+          <span class="type-small">Texto secundario para informacoes complementares e dicas.</span>
+        </div>
+        <div class="type-item">
+          <span class="type-label">Mono</span>
+          <span class="type-mono">const survey = await createSurvey(data)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buttons Section -->
+    <section class="section">
+      <h2 class="section-title">Botoes</h2>
+      <p class="section-subtitle">Todos os botoes usam formato pilula (rounded-full)</p>
+
+      <h4 style="margin-bottom: 1rem; font-weight: 600;">Variantes</h4>
+      <div class="button-grid">
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-accent">Accent</button>
+        <button class="btn btn-outline">Outline</button>
+        <button class="btn btn-ghost">Ghost</button>
+        <button class="btn btn-destructive">Destructive</button>
+      </div>
+
+      <h4 style="margin-bottom: 1rem; font-weight: 600;">Tamanhos</h4>
+      <div class="button-grid" style="align-items: center;">
+        <button class="btn btn-primary btn-sm">Pequeno</button>
+        <button class="btn btn-primary">Medio</button>
+        <button class="btn btn-primary btn-lg">Grande</button>
+      </div>
+
+      <h4 style="margin-bottom: 1rem; font-weight: 600;">Com icones</h4>
+      <div class="button-grid">
+        <button class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+          Nova Pesquisa
+        </button>
+        <button class="btn btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+          Ver Resultados
+        </button>
+      </div>
+    </section>
+
+    <!-- Badges Section -->
+    <section class="section">
+      <h2 class="section-title">Badges</h2>
+      <p class="section-subtitle">Indicadores de status e categorias</p>
+
+      <div class="button-grid">
+        <span class="badge badge-primary">NPS</span>
+        <span class="badge badge-success">Ativo</span>
+        <span class="badge badge-warning">Pendente</span>
+        <span class="badge badge-error">Encerrado</span>
+      </div>
+    </section>
+
+    <!-- Cards Section -->
+    <section class="section">
+      <h2 class="section-title">Cards</h2>
+      <p class="section-subtitle">Containers de conteudo com diferentes estilos</p>
+
+      <div class="cards-grid">
+        <div class="card card-interactive">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Pesquisa de Satisfacao</div>
+              <div class="card-desc">Criada em 28/12/2024</div>
+            </div>
+            <span class="badge badge-success">Ativo</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
+            <span style="color: var(--text-secondary);">Respostas</span>
+            <span style="font-weight: 600;">247</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.875rem; margin-top: 0.5rem;">
+            <span style="color: var(--text-secondary);">NPS</span>
+            <span style="font-weight: 600; color: var(--brand-success);">+72</span>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-outline btn-sm">Editar</button>
+            <button class="btn btn-primary btn-sm">Ver Resultados</button>
+          </div>
+        </div>
+
+        <div class="card card-elevated">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Feedback de Produto</div>
+              <div class="card-desc">Criada em 25/12/2024</div>
+            </div>
+            <span class="badge badge-warning">Rascunho</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
+            <span style="color: var(--text-secondary);">Perguntas</span>
+            <span style="font-weight: 600;">12</span>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-outline btn-sm">Continuar</button>
+            <button class="btn btn-accent btn-sm">Publicar</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Avaliacao de Atendimento</div>
+              <div class="card-desc">Criada em 20/12/2024</div>
+            </div>
+            <span class="badge badge-error">Encerrado</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
+            <span style="color: var(--text-secondary);">Respostas</span>
+            <span style="font-weight: 600;">1,432</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.875rem; margin-top: 0.5rem;">
+            <span style="color: var(--text-secondary);">CSAT</span>
+            <span style="font-weight: 600; color: var(--brand-success);">94%</span>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-ghost btn-sm">Arquivar</button>
+            <button class="btn btn-primary btn-sm">Exportar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section">
+      <h2 class="section-title">Estatisticas</h2>
+      <p class="section-subtitle">Cards de metricas para dashboards</p>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon stat-icon-primary">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="stat-value gradient-text">12,847</div>
+          <div class="stat-label">Total de Respostas</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon stat-icon-secondary">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <div class="stat-value" style="color: var(--brand-secondary);">24</div>
+          <div class="stat-label">Pesquisas Ativas</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon stat-icon-success">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="20" x2="12" y2="10"/>
+              <line x1="18" y1="20" x2="18" y2="4"/>
+              <line x1="6" y1="20" x2="6" y2="16"/>
+            </svg>
+          </div>
+          <div class="stat-value" style="color: var(--brand-success);">+72</div>
+          <div class="stat-label">NPS Medio</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon stat-icon-accent">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <div class="stat-value" style="color: var(--brand-accent);">4.8</div>
+          <div class="stat-label">Avaliacao Media</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Forms Section -->
+    <section class="section">
+      <h2 class="section-title">Formularios</h2>
+      <p class="section-subtitle">Campos de entrada com diferentes estados</p>
+
+      <div style="max-width: 500px;">
+        <div class="form-group">
+          <label class="form-label">Titulo da Pesquisa <span style="color: var(--color-error);">*</span></label>
+          <input type="text" class="form-input" placeholder="Ex: Pesquisa de Satisfacao 2024">
+          <p class="form-hint">Este titulo sera exibido para os respondentes</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" placeholder="seu@email.com" value="usuario@email.com" style="border-color: var(--color-error);">
+          <p class="form-error">Este email ja esta em uso</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Descricao</label>
+          <textarea class="form-input" rows="4" placeholder="Descreva o objetivo da sua pesquisa..." style="resize: vertical;"></textarea>
+        </div>
+
+        <button class="btn btn-primary btn-lg" style="width: 100%;">Criar Pesquisa</button>
+      </div>
+    </section>
+
+    <!-- Hero Example -->
+    <section class="section">
+      <h2 class="section-title">Exemplo de Hero</h2>
+      <p class="section-subtitle">Secao de destaque para landing pages</p>
+
+      <div class="hero-example">
+        <div class="hero-content">
+          <h1 class="hero-title">Transforme feedbacks em insights poderosos</h1>
+          <p class="hero-subtitle">
+            Crie pesquisas profissionais, colete respostas e analise resultados com inteligencia artificial. Tudo em uma plataforma simples e intuitiva.
+          </p>
+          <div class="hero-buttons">
+            <button class="btn btn-accent btn-lg">
+              Comecar Gratis
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 8px;">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+            <button class="btn btn-lg" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2);">
+              Ver Demo
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Code Example -->
+    <section class="section">
+      <h2 class="section-title">Estilo de Codigo</h2>
+      <p class="section-subtitle">Formatacao para blocos de codigo</p>
+
+      <div class="code-block">
+        <span class="comment">// Criar uma nova pesquisa com IA</span><br>
+        <span class="keyword">const</span> survey = <span class="keyword">await</span> feedbackHub.<span class="keyword">createSurvey</span>({<br>
+        &nbsp;&nbsp;title: <span class="string">"Pesquisa de Satisfacao"</span>,<br>
+        &nbsp;&nbsp;type: <span class="string">"nps"</span>,<br>
+        &nbsp;&nbsp;aiGenerated: <span class="keyword">true</span>,<br>
+        &nbsp;&nbsp;maxResponses: <span class="number">1000</span><br>
+        });<br><br>
+        <span class="comment">// Analisar sentimento das respostas</span><br>
+        <span class="keyword">const</span> analysis = <span class="keyword">await</span> survey.<span class="keyword">analyzeSentiment</span>();
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>
+      <strong>DevForge</strong> - FeedbackHub<br>
+      Identidade visual criada para demonstrar capacidades tecnicas.
+    </p>
+    <p style="margin-top: 1rem;">
+      Desenvolvido com <a href="#">Next.js</a>, <a href="#">Tailwind CSS</a> e <a href="#">TypeScript</a>
+    </p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+    }
+
+    // Detecta preferencia do sistema
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.body.classList.add('dark');
+    }
+  </script>
+</body>
+</html>

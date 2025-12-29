@@ -6,7 +6,6 @@
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { randomBytes } from 'crypto';
-import { AuthorizationError } from '@/api/utils/errors';
 
 const CSRF_COOKIE_NAME = 'csrf-token';
 const CSRF_HEADER_NAME = 'x-csrf-token';

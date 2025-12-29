@@ -4,10 +4,54 @@
     "tagline": "We Build AI-Powered Software that Scales",
     "description": "Complete platform for feedback and product management"
   },
+  "home": {
+    "badge": "Professional Next.js + Firebase Template",
+    "title": "DevForge",
+    "subtitle": "FeedbackHub Platform",
+    "description": "Complete enterprise architecture demo with Next.js 14, Firebase, Redis, BullMQ, i18n, Dark Mode, Storybook and AI integration.",
+    "cta": {
+      "primary": "Create Account",
+      "secondary": "View Documentation"
+    },
+    "featuresTitle": "Features",
+    "featuresSubtitle": "All the features an enterprise project needs",
+    "techTitle": "Tech Stack",
+    "techSubtitle": "Built with the best technologies in the market",
+    "ctaTitle": "Ready to start?",
+    "ctaSubtitle": "Clone this repository and start your next project",
+    "ctaButton": "View on GitHub",
+    "features": {
+      "darkMode": {
+        "title": "Dark Mode",
+        "description": "Full dark theme support with next-themes and CSS variables."
+      },
+      "i18n": {
+        "title": "Internationalization",
+        "description": "i18n with next-intl for PT-BR, EN and ES."
+      },
+      "security": {
+        "title": "18 Security Layers",
+        "description": "Helmet, CORS, CSRF, Rate Limiting, JWT, RBAC and more."
+      },
+      "storybook": {
+        "title": "Storybook",
+        "description": "Visual component documentation with Storybook."
+      },
+      "ai": {
+        "title": "AI Integration",
+        "description": "OpenAI and Anthropic for classification and summaries."
+      },
+      "bullmq": {
+        "title": "BullMQ",
+        "description": "Background jobs with Redis and BullMQ."
+      }
+    }
+  },
   "nav": {
     "home": "Home",
     "features": "Features",
     "pricing": "Pricing",
+    "about": "About",
     "docs": "Documentation",
     "blog": "Blog",
     "contact": "Contact",
@@ -70,6 +114,7 @@
     "privacy": "Privacy",
     "terms": "Terms of Service",
     "madeWith": "Made with",
+    "byTeam": "by the DevForge team",
     "description": "Complete platform for feedback and digital product management.",
     "product": "Product",
     "company": "Company",
@@ -87,7 +132,35 @@
     "forgotPassword": "Forgot password?",
     "noAccount": "Don't have an account?",
     "hasAccount": "Already have an account?",
-    "orContinueWith": "Or continue with"
+    "orContinueWith": "Or continue with",
+    "completeProfile": {
+      "meta": {
+        "title": "Complete Profile | DevForge",
+        "description": "Complete your profile to continue"
+      },
+      "title": "Complete your profile",
+      "description": "We need a few more details to set up your account",
+      "fields": {
+        "name": "Full name",
+        "phone": "Phone",
+        "company": "Company"
+      },
+      "placeholders": {
+        "name": "Your full name",
+        "phone": "+1 (555) 000-0000",
+        "company": "Your company name"
+      },
+      "hints": {
+        "phone": "Optional - for contact and account recovery",
+        "company": "Optional - for personalization"
+      },
+      "submit": "Continue",
+      "terms": "By continuing, you agree to our Terms of Service and Privacy Policy.",
+      "errors": {
+        "nameRequired": "Name is required",
+        "generic": "Error saving profile. Please try again."
+      }
+    }
   },
   "errors": {
     "generic": "Something went wrong. Please try again.",
@@ -111,6 +184,292 @@
       "medium": "Medium",
       "high": "High",
       "critical": "Critical"
+    }
+  },
+  "features": {
+    "meta": {
+      "title": "Features | DevForge",
+      "description": "Discover all the features of the DevForge platform for surveys and feedback"
+    },
+    "hero": {
+      "badge": "Complete Platform",
+      "title": "Everything you need to",
+      "titleHighlight": "understand your customers",
+      "description": "From survey design to results analysis, we offer powerful and easy-to-use tools."
+    },
+    "highlights": {
+      "uptime": "Guaranteed uptime",
+      "response": "Response time",
+      "encryption": "Encryption",
+      "compliance": "Compliance"
+    },
+    "cta": {
+      "start": "Start for Free",
+      "plans": "View Plans",
+      "title": "Ready to start?",
+      "description": "Create your first survey in less than 5 minutes. No credit card, no commitment.",
+      "button": "Create Free Account"
+    },
+    "categories": {
+      "surveys": {
+        "title": "Survey Creation",
+        "description": "Powerful tools to create professional surveys",
+        "editor": {
+          "title": "Intuitive Visual Editor",
+          "description": "Create surveys by dragging and dropping questions. Simple interface anyone can use."
+        },
+        "ai": {
+          "title": "AI Generation",
+          "description": "Describe your survey goal and our AI generates relevant questions automatically."
+        },
+        "types": {
+          "title": "6 Question Types",
+          "description": "Free text, star rating, NPS, multiple choice, matrix, and date."
+        },
+        "customization": {
+          "title": "Visual Customization",
+          "description": "Customize colors, logo, and style to match your brand."
+        }
+      },
+      "collection": {
+        "title": "Response Collection",
+        "description": "Maximize your response rates",
+        "link": {
+          "title": "Shareable Link",
+          "description": "Generate unique links for each survey. Share via email, WhatsApp, or social media."
+        },
+        "responsive": {
+          "title": "Responsive Design",
+          "description": "Surveys optimized for mobile, tablet, and desktop. Answer from any device."
+        },
+        "anonymous": {
+          "title": "Anonymous Responses",
+          "description": "Option to collect anonymous responses for more honest feedback."
+        },
+        "progress": {
+          "title": "Visual Progress",
+          "description": "Progress bar shows how much is left to complete. Increases completion rate."
+        }
+      },
+      "analytics": {
+        "title": "Analysis and Insights",
+        "description": "Transform data into decisions",
+        "dashboard": {
+          "title": "Real-Time Dashboard",
+          "description": "Watch responses arrive live. Metrics updated instantly."
+        },
+        "sentiment": {
+          "title": "AI Sentiment Analysis",
+          "description": "Our AI analyzes text responses and identifies positive, neutral, or negative sentiments."
+        },
+        "nps": {
+          "title": "Automatic NPS",
+          "description": "Automatic Net Promoter Score calculation with distribution of promoters, neutrals, and detractors."
+        },
+        "insights": {
+          "title": "Smart Insights",
+          "description": "Receive improvement suggestions based on patterns identified in responses."
+        }
+      },
+      "integration": {
+        "title": "Integration and Automation",
+        "description": "Connect with your favorite tools",
+        "api": {
+          "title": "REST API",
+          "description": "Complete API to integrate surveys into your system. OpenAPI documentation included."
+        },
+        "webhooks": {
+          "title": "Webhooks",
+          "description": "Receive real-time notifications when new responses arrive."
+        },
+        "export": {
+          "title": "Flexible Export",
+          "description": "Export data in CSV, Excel, or PDF. Integrate with your BI tools."
+        },
+        "automation": {
+          "title": "Automations",
+          "description": "Configure automatic actions based on responses. Notify teams, create tickets."
+        }
+      }
+    },
+    "security": {
+      "badge": "Enterprise Security",
+      "title": "Your data protected with",
+      "titleHighlight": "18 security layers",
+      "description": "We implement market best practices to ensure your data and your customers' data are always protected.",
+      "items": [
+        "AES-256 encryption at rest and in transit",
+        "JWT authentication with refresh tokens",
+        "Rate limiting and DDoS protection",
+        "Complete action audit",
+        "Daily automatic backup",
+        "LGPD and GDPR compliance"
+      ]
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "How It Was Made | DevForge",
+      "description": "Discover the architecture and technologies behind DevForge"
+    },
+    "hero": {
+      "badge": "Open Source Friendly",
+      "title": "Built with the",
+      "titleHighlight": "best technologies",
+      "description": "DevForge is an enterprise-grade template that demonstrates modern architecture, best practices, and AI integration."
+    },
+    "cta": {
+      "github": "View on GitHub",
+      "docs": "Documentation"
+    },
+    "techStack": {
+      "title": "Tech Stack",
+      "subtitle": "Modern and battle-tested technologies",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "ai": "Artificial Intelligence",
+      "devops": "DevOps"
+    },
+    "architecture": {
+      "title": "Layered Architecture",
+      "subtitle": "Clear separation of responsibilities",
+      "presentation": "Presentation",
+      "apiRoutes": "API Routes",
+      "services": "Services",
+      "infrastructure": "Infrastructure"
+    },
+    "security": {
+      "badge": "Enterprise Grade",
+      "title": "18 Security Layers",
+      "subtitle": "Complete protection across all application layers"
+    },
+    "timeline": {
+      "title": "Development Roadmap",
+      "subtitle": "Built in 4 incremental phases",
+      "phase1": "Core",
+      "phase2": "Features",
+      "phase3": "Product",
+      "phase4": "Polish"
+    },
+    "credits": {
+      "title": "Developed with AI",
+      "description": "This project was developed in partnership with Claude Code (Anthropic), demonstrating how AI can accelerate quality software development.",
+      "claude": "Claude Code",
+      "developer": "Developer"
+    }
+  },
+  "pricing": {
+    "meta": {
+      "title": "Plans and Pricing | DevForge",
+      "description": "Choose the ideal plan for your surveys and feedback"
+    },
+    "hero": {
+      "badge": "Simple and transparent pricing",
+      "title": "Choose the ideal plan for",
+      "titleHighlight": "your business",
+      "description": "Start for free and upgrade when you need. No hidden fees, no surprises."
+    },
+    "plans": {
+      "free": {
+        "name": "Free",
+        "description": "To start exploring",
+        "cta": "Start Free"
+      },
+      "pro": {
+        "name": "Professional",
+        "description": "For growing teams",
+        "cta": "Start Free Trial",
+        "popular": "Most Popular"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "description": "For large organizations",
+        "cta": "Talk to Sales"
+      }
+    },
+    "features": {
+      "activeSurveys": "Up to {count} active surveys",
+      "unlimitedSurveys": "Unlimited surveys",
+      "responses": "{count} responses/month",
+      "unlimitedResponses": "Unlimited responses",
+      "basicQuestions": "Basic question types",
+      "allQuestions": "All question types",
+      "csvExport": "CSV export",
+      "fullExport": "CSV, PDF, Excel export",
+      "emailSupport": "Email support",
+      "prioritySupport": "Priority support",
+      "aiGeneration": "AI question generation",
+      "aiSentiment": "AI sentiment analysis",
+      "webhooks": "Webhooks",
+      "whitelabel": "Full white-label",
+      "api": "API access",
+      "sso": "SSO / SAML",
+      "multiOrg": "Multi-organization",
+      "sla": "99.9% SLA",
+      "accountManager": "Dedicated account manager",
+      "onboarding": "Personalized onboarding",
+      "allPro": "Everything in Professional"
+    },
+    "limitations": {
+      "noAi": "No AI integration",
+      "noWhitelabel": "No white-label",
+      "noApi": "No API access"
+    },
+    "comparison": {
+      "title": "Full Comparison",
+      "subtitle": "See all features of each plan",
+      "feature": "Feature",
+      "activeSurveys": "Active surveys",
+      "responsesMonth": "Responses/month",
+      "teamMembers": "Team members",
+      "aiGeneration": "AI generation",
+      "sentimentAnalysis": "Sentiment analysis",
+      "whitelabel": "White-label",
+      "apiAccess": "API access",
+      "webhooks": "Webhooks",
+      "sso": "SSO / SAML",
+      "prioritySupport": "Priority support",
+      "unlimited": "Unlimited"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Get answers about our plans",
+      "q1": {
+        "question": "Can I cancel anytime?",
+        "answer": "Yes! You can cancel your subscription at any time. You'll continue to have access until the end of the paid period."
+      },
+      "q2": {
+        "question": "What happens if I exceed the response limit?",
+        "answer": "You'll receive a warning when you're close to the limit. Excess responses will be stored, but you'll need to upgrade to access the complete data."
+      },
+      "q3": {
+        "question": "Do you offer a discount for annual payment?",
+        "answer": "Yes! Annual payments have a 20% discount. Contact us for more information."
+      },
+      "q4": {
+        "question": "Can I change plans later?",
+        "answer": "Of course! You can upgrade or downgrade your plan at any time. Changes are applied immediately."
+      }
+    },
+    "cta": {
+      "title": "Ready to start?",
+      "description": "Join thousands of companies using DevForge to collect feedback and improve their products.",
+      "start": "Start for Free",
+      "contact": "Talk to Sales"
+    },
+    "period": "month",
+    "currency": "$"
+  },
+  "pwa": {
+    "install": {
+      "title": "Install DevForge",
+      "description": "Access faster from your home screen",
+      "button": "Install",
+      "later": "Not now"
+    },
+    "offline": {
+      "message": "You are offline. Some features may be limited.",
+      "retry": "Try again"
     }
   }
 }

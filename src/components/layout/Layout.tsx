@@ -2,6 +2,7 @@ import { type ReactNode } from 'react';
 import Head from 'next/head';
 import { Header } from './Header';
 import { Footer } from './Footer';
+import { Sidebar } from './Sidebar';
 
 /**
  * Componente Layout
@@ -47,6 +48,7 @@ export function Layout({
 
       <div className="flex min-h-screen flex-col">
         <Header />
+        <Sidebar />
         <main className="flex-1">{children}</main>
         <Footer />
       </div>

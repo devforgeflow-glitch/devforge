@@ -65,3 +65,5 @@ public/workbox-*.js.map
 *.pem
 credentials.json
 service-account*.json
+*-firebase-adminsdk-*.json
+.env*.local

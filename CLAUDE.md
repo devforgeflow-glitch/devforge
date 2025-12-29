@@ -369,6 +369,452 @@ function MyComponent() {
 - ✅ Pluralização quando necessário
 - ❌ NUNCA hardcode textos em componentes
 
+### ⚠️ REGRA OBRIGATÓRIA - NOVAS PÁGINAS
+
+**TODA nova página criada DEVE ser traduzida para os 3 idiomas (PT-BR, EN, ES).**
+
+```markdown
+CHECKLIST ANTES DE CRIAR UMA NOVA PÁGINA:
+□ Adicionar todas as chaves de tradução em src/locales/pt-BR/common.json
+□ Adicionar todas as chaves de tradução em src/locales/en/common.json
+□ Adicionar todas as chaves de tradução em src/locales/es/common.json
+□ Usar useTranslations() hook para todos os textos
+□ Implementar getStaticProps com locale para carregar mensagens
+□ Testar a página nos 3 idiomas antes de commitar
+```
+
+**Estrutura padrão de página traduzida:**
+
+```tsx
+import { useTranslations } from 'next-intl';
+import { GetStaticPropsContext } from 'next';
+
+export default function NovaPagina() {
+  const t = useTranslations();
+
+  return (
+    <Layout title={t('novapagina.title')}>
+      <h1>{t('novapagina.hero.title')}</h1>
+      <p>{t('novapagina.hero.description')}</p>
+    </Layout>
+  );
+}
+
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
+  const { loadMessages } = await import('@/i18n');
+  return {
+    props: {
+      messages: await loadMessages(locale || 'pt-BR'),
+    },
+  };
+}
+```
+
+---
+
+## 📱 Responsividade (OBRIGATÓRIO)
+
+> **REGRA CRÍTICA:** Todo componente e página DEVE ser responsivo e funcionar em todos os dispositivos.
+
+### Breakpoints Padrão (Tailwind CSS)
+
+| Breakpoint | Tamanho | Dispositivos |
+|------------|---------|--------------|
+| `sm` | 640px+ | Celulares landscape |
+| `md` | 768px+ | Tablets |
+| `lg` | 1024px+ | Laptops |
+| `xl` | 1280px+ | Desktops |
+| `2xl` | 1536px+ | Monitores grandes |
+
+### Abordagem Mobile-First (OBRIGATÓRIO)
+
+```tsx
+// ✅ CORRETO: Mobile-first (começa do menor e adiciona para maiores)
+<div className="flex flex-col md:flex-row lg:gap-8">
+  <div className="w-full md:w-1/2 lg:w-1/3">
+    Conteúdo
+  </div>
+</div>
+
+// ❌ ERRADO: Desktop-first
+<div className="flex flex-row md:flex-col">
+  Conteúdo
+</div>
+```
+
+### Padrões de Responsividade
+
+```tsx
+// Grid responsivo
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+
+// Container com padding responsivo
+<div className="container mx-auto px-4 sm:px-6 lg:px-8">
+
+// Texto responsivo
+<h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl">
+
+// Espaçamento responsivo
+<section className="py-8 sm:py-12 lg:py-16">
+
+// Flexbox responsivo
+<div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+
+// Ocultar/mostrar por breakpoint
+<div className="hidden sm:block">Visível apenas em sm+</div>
+<div className="sm:hidden">Visível apenas em mobile</div>
+```
+
+### Checklist de Responsividade
+
+```markdown
+ANTES DE COMMITAR QUALQUER COMPONENTE/PÁGINA:
+□ Testado em 320px (celular pequeno)?
+□ Testado em 375px (iPhone padrão)?
+□ Testado em 768px (tablet)?
+□ Testado em 1024px (laptop)?
+□ Testado em 1440px (desktop)?
+□ Imagens com aspect-ratio ou object-fit?
+□ Textos não quebram de forma estranha?
+□ Botões e links são clicáveis (min 44px touch target)?
+□ Menus funcionam em mobile (hamburger menu)?
+□ Modais funcionam em mobile?
+```
+
+### Classes Utilitárias Responsivas
+
+```tsx
+// Container padrão do projeto
+<div className="container-app"> // Definido no globals.css
+
+// Seções com espaçamento padrão
+<section className="section-padding"> // py-12 md:py-16 lg:py-20
+
+// Grid de cards padrão
+<div className="card-grid"> // grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6
+```
+
+---
+
+## 📲 PWA - Progressive Web App (OBRIGATÓRIO)
+
+> **REGRA:** A aplicação DEVE funcionar como PWA para melhor experiência mobile.
+
+### Configuração Implementada
+
+O projeto usa `next-pwa` para gerar Service Worker automaticamente.
+
+```javascript
+// next.config.js
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === 'development',
+});
+```
+
+### Arquivos PWA Obrigatórios
+
+```
+public/
+├── manifest.json          # Manifesto da aplicação
+├── sw.js                  # Service Worker (gerado automaticamente)
+├── icons/
+│   ├── icon-72x72.png
+│   ├── icon-96x96.png
+│   ├── icon-128x128.png
+│   ├── icon-144x144.png
+│   ├── icon-152x152.png
+│   ├── icon-192x192.png
+│   ├── icon-384x384.png
+│   └── icon-512x512.png
+└── screenshots/           # Screenshots para install prompt
+    ├── screenshot-1.png
+    └── screenshot-2.png
+```
+
+### Manifesto (manifest.json)
+
+```json
+{
+  "name": "DevForge - FeedbackHub",
+  "short_name": "DevForge",
+  "description": "Plataforma completa para pesquisas e feedbacks",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F172A",
+  "theme_color": "#6366F1",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
+```
+
+### Meta Tags PWA (No _document.tsx ou Layout)
+
+```tsx
+<Head>
+  <meta name="application-name" content="DevForge" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="DevForge" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#6366F1" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+</Head>
+```
+
+### Checklist PWA
+
+```markdown
+VERIFICAR ANTES DO DEPLOY:
+□ manifest.json existe e está válido?
+□ Todos os ícones nos tamanhos corretos?
+□ Service Worker registra corretamente?
+□ App instala em dispositivos móveis?
+□ App funciona offline (páginas cacheadas)?
+□ Theme color definido corretamente?
+□ Splash screen configurado?
+□ Lighthouse PWA score > 90?
+```
+
+### Testando PWA
+
+```bash
+# Build de produção para testar PWA
+npm run build
+npm start
+
+# Verificar no Chrome DevTools:
+# 1. Application > Manifest
+# 2. Application > Service Workers
+# 3. Lighthouse > PWA audit
+```
+
+---
+
+## 🔥 Firestore - REGRAS CRÍTICAS (OBRIGATÓRIO)
+
+> **ERRO FATAL:** `Cannot use 'undefined' as a Firestore value`
+> Este erro quebra a aplicação e DEVE ser prevenido em TODO código.
+
+### Regra Principal
+
+**NUNCA envie valores `undefined` para o Firestore. SEMPRE sanitize os dados antes de salvar.**
+
+### Utilitário Obrigatório
+
+```typescript
+// SEMPRE usar sanitizeForFirestore antes de salvar no Firestore
+import { sanitizeForFirestore, prepareForFirestore } from '@/api/utils/firestore';
+
+// ❌ ERRADO: Pode ter campos undefined
+await db.collection('surveys').add({
+  title: data.title,
+  description: data.description, // pode ser undefined!
+  createdAt: new Date(),
+});
+
+// ✅ CORRETO: Sanitiza antes de salvar
+const sanitized = prepareForFirestore({
+  title: data.title,
+  description: data.description,
+});
+await db.collection('surveys').add(sanitized);
+```
+
+### Checklist de Prevenção
+
+```
+ANTES DE SALVAR NO FIRESTORE:
+□ Dados passaram por sanitizeForFirestore() ou prepareForFirestore()?
+□ Campos opcionais têm fallback (|| null, ?? '')?
+□ Arrays foram filtrados para remover undefined?
+□ Objetos aninhados foram sanitizados recursivamente?
+```
+
+### Padrões de Código
+
+```typescript
+// ✅ PADRÃO 1: Usar prepareForFirestore (adiciona timestamps)
+const data = prepareForFirestore({
+  title: input.title,
+  description: input.description || '', // fallback para string vazia
+  settings: input.settings ?? null,     // fallback para null
+}, false); // false = novo documento
+
+// ✅ PADRÃO 2: Usar preparePartialUpdate (para updates)
+const updateData = preparePartialUpdate({
+  title: input.title,        // undefined será removido
+  description: input.description,
+});
+await docRef.update(updateData);
+
+// ✅ PADRÃO 3: Validar campos obrigatórios
+const validated = validateAndSanitize(input, ['title', 'organizationId']);
+// Lança erro se campos obrigatórios forem undefined
+
+// ✅ PADRÃO 4: Sanitizar arrays
+const questions = (input.questions || [])
+  .filter(q => q !== undefined && q !== null)
+  .map(q => sanitizeForFirestore(q));
+```
+
+### Funções Disponíveis
+
+| Função | Uso |
+|--------|-----|
+| `sanitizeForFirestore(obj)` | Remove undefined recursivamente |
+| `prepareForFirestore(obj, isUpdate)` | Sanitiza + adiciona timestamps |
+| `preparePartialUpdate(obj)` | Para updates parciais (dot notation) |
+| `validateAndSanitize(obj, requiredFields)` | Valida obrigatórios + sanitiza |
+| `createDocument(collection, data)` | Helper para criar doc |
+| `updateDocument(collection, id, data)` | Helper para atualizar doc |
+
+### Regras de Ouro
+
+- ✅ SEMPRE usar funções de `@/api/utils/firestore`
+- ✅ SEMPRE validar entrada antes de salvar
+- ✅ SEMPRE usar fallbacks para campos opcionais (|| null, ?? '')
+- ✅ SEMPRE sanitizar objetos aninhados e arrays
+- ❌ NUNCA usar `db.collection().add()` direto sem sanitizar
+- ❌ NUNCA confiar que dados de input estão completos
+- ❌ NUNCA ignorar campos undefined - sempre remover ou converter
+
+---
+
+## 📅 Utilitários de Data (OBRIGATÓRIO)
+
+> **PROBLEMA:** Conversões de Timestamp/Date/ISO string sem tratamento causam crashes.
+> Documentação completa: `docs/VARREDURA_QUALIDADE_CODIGO.md`
+
+### Arquitetura de Utilitários
+
+```
+src/utils/formatDate.ts          # Base compartilhada (Frontend + Backend)
+src/api/utils/dateConverter.ts   # Extensão Backend (Firebase Timestamps)
+```
+
+### Funções Base (Frontend + Backend)
+
+```typescript
+import { toDate, formatDate, isValidDate } from '@/utils/formatDate';
+
+// Conversão segura para Date
+const date = toDate(timestamp);     // Date | null
+const date = toDate('2024-01-01');  // Date | null
+const date = toDate(1704067200000); // Date | null
+
+// Formatação segura
+formatDate(date);                   // "28/12/2024"
+formatDate(date, { time: true });   // "28/12/2024 14:30"
+formatDate(null, { fallback: '-' }); // "-"
+
+// Validação
+if (isValidDate(value)) { /* seguro usar */ }
+```
+
+### Funções Backend (Apenas API Routes)
+
+```typescript
+import { toTimestampSafe, toISOStringSafe, nowTimestamp } from '@/api/utils/dateConverter';
+
+// Conversão segura para Timestamp
+const ts = toTimestampSafe(date);     // Timestamp | null
+const ts = toTimestampSafe('2024-01-01'); // Timestamp | null
+
+// Timestamp atual
+const now = nowTimestamp();           // Timestamp
+
+// Conversão para ISO string
+const iso = toISOStringSafe(timestamp); // string | null
+```
+
+### Regras de Uso
+
+- ✅ SEMPRE usar `toDate()` antes de acessar propriedades de data
+- ✅ SEMPRE usar `toTimestampSafe()` ao salvar datas no Firestore
+- ✅ SEMPRE verificar null antes de usar o resultado
+- ❌ NUNCA usar `.toDate()` direto em valores que podem ser null
+- ❌ NUNCA usar `new Date(valor)` sem verificar resultado
+
+### Funções Disponíveis
+
+| Arquivo | Função | Retorno |
+|---------|--------|---------|
+| formatDate.ts | `toDate(value)` | `Date \| null` |
+| formatDate.ts | `formatDate(value, options)` | `string` |
+| formatDate.ts | `formatRelativeDate(value)` | `string` |
+| formatDate.ts | `isValidDate(value)` | `boolean` |
+| formatDate.ts | `compareDates(a, b)` | `-1 \| 0 \| 1 \| null` |
+| formatDate.ts | `addDays(value, days)` | `Date \| null` |
+| dateConverter.ts | `toTimestampSafe(value)` | `Timestamp \| null` |
+| dateConverter.ts | `nowTimestamp()` | `Timestamp` |
+| dateConverter.ts | `isExpired(value)` | `boolean` |
+| dateConverter.ts | `addDuration(value, duration)` | `Timestamp \| null` |
+
+---
+
+## 🔍 Varreduras de Qualidade (OBRIGATÓRIO)
+
+> **Documentação completa:** `docs/VARREDURA_QUALIDADE_CODIGO.md`
+
+### Prioridade de Varreduras
+
+| Prioridade | Varredura | Impacto |
+|------------|-----------|---------|
+| P0 - CRÍTICO | Undefined no Firestore | Crash imediato |
+| P0 - CRÍTICO | Null safety em .data() | Crash em runtime |
+| P1 - ALTO | Timestamps inconsistentes | Crash em conversões |
+| P2 - MÉDIO | Error handling inadequado | Dificulta debug |
+| P3 - BAIXO | Promises não tratadas | Erros silenciosos |
+| P4 - BAIXO | Comparações == vs === | Bugs sutis |
+
+### Checklist Rápido Antes de Salvar no Firestore
+
+```
+□ FIRESTORE
+  □ Usando sanitizeForFirestore() ou prepareForFirestore()?
+  □ Campos opcionais têm fallback (|| null)?
+  □ Arrays filtrados (sem undefined/null)?
+  □ Verificou .exists antes de .data()?
+
+□ DATAS
+  □ Usando toDate() / toTimestampSafe()?
+  □ Verificando null no retorno?
+
+□ PROMISES
+  □ Todas as promises têm .catch()?
+  □ Fire-and-forget tem .catch() explícito?
+
+□ TIPOS
+  □ Sem any desnecessário?
+  □ === em vez de == (exceto == null)?
+```
+
+### Comandos de Validação
+
+```bash
+npm run type-check   # Verificar tipos
+npm run lint         # Verificar ESLint
+npm test             # Executar testes
+npm run build        # Verificar build
+```
+
 ---
 
 ## 🤖 Integração com IA
@@ -697,6 +1143,7 @@ npm run test:watch         # Watch mode
 ## 📚 Documentação de Referência
 
 ### Interna
+- `docs/VARREDURA_QUALIDADE_CODIGO.md` - Guia de varreduras e qualidade de código
 - `docs/security/SECURITY_LAYERS_GUIDE.md` - Guia de segurança
 - `docs/api/OPENAPI_SPEC.yaml` - Especificação da API
 - `docs/guides/CONTRIBUTING.md` - Guia de contribuição
@@ -713,6 +1160,41 @@ npm run test:watch         # Watch mode
 **Versão:** 1.0.0
 **Última Atualização:** 2025-12-28
 **Status:** Desenvolvimento inicial
+
+---
+
+## 🚀 Deploy na Vercel (VERIFICAÇÃO OBRIGATÓRIA)
+
+> **REGRA CRÍTICA:** Antes de QUALQUER deploy na Vercel, SEMPRE verificar a conta/equipe correta.
+
+### Conta Correta
+
+| Atributo | Valor Esperado |
+|----------|---------------|
+| **Conta** | devforgeflow-glitch |
+| **Equipe** | DEVForge (devf-orge) |
+| **Projeto** | devforge |
+| **URL** | https://devforge-two.vercel.app |
+
+### Verificação Pré-Deploy (OBRIGATÓRIO)
+
+```bash
+# SEMPRE executar antes de qualquer deploy:
+vercel whoami
+
+# Deve retornar: devforgeflow-glitch
+# Se retornar outro usuário (ex: fastmobel), fazer logout e login correto:
+vercel logout
+vercel login
+```
+
+### Regras de Deploy
+
+- ✅ SEMPRE verificar `vercel whoami` antes de deploy
+- ✅ SEMPRE confirmar que está na equipe DEVForge
+- ✅ SEMPRE usar `vercel --prod` para produção
+- ❌ NUNCA fazer deploy sem verificar a conta
+- ❌ NUNCA fazer deploy na conta fastmobel (conta da empresa)
 
 ---
 

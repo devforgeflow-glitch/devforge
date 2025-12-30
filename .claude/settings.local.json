@@ -27,7 +27,8 @@
       "Bash(dir:*)",
       "Bash(xargs:*)",
       "Bash(npx storybook@latest init:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(node -e:*)"
     ]
   }
 }

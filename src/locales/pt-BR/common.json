@@ -1098,19 +1098,21 @@
       },
       "whatsappSection": {
         "title": "Botão Flutuante WhatsApp",
+        "number": "Número do WhatsApp",
         "numberLabel": "Número do WhatsApp",
         "numberPlaceholder": "41999998888",
         "numberHint": "Insira apenas números, incluindo o DDD. Deixe vazio para desativar o botão.",
+        "defaultMessage": "Mensagem Padrão",
         "messageLabel": "Mensagem Padrão",
         "messagePlaceholder": "Olá! Vi seu site e gostaria de mais informações...",
+        "agentName": "Nome do Atendente",
         "agentLabel": "Nome do Atendente",
         "agentPlaceholder": "Suporte DevForge",
+        "welcomeMessage": "Mensagem de Boas-vindas",
         "welcomeLabel": "Mensagem de Boas-vindas",
-        "welcomePlaceholder": "Olá! Como podemos ajudar?"
-      },
-      "preview": {
-        "title": "Preview do Link",
-        "testLink": "Testar link →"
+        "welcomePlaceholder": "Olá! Como podemos ajudar?",
+        "preview": "Preview do Link",
+        "testLink": "Testar link"
       },
       "socialSection": {
         "title": "Redes Sociais",

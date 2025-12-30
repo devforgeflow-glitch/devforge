@@ -1098,19 +1098,21 @@
       },
       "whatsappSection": {
         "title": "WhatsApp Floating Button",
+        "number": "WhatsApp Number",
         "numberLabel": "WhatsApp Number",
         "numberPlaceholder": "41999998888",
         "numberHint": "Enter only numbers, including area code. Leave empty to disable the button.",
+        "defaultMessage": "Default Message",
         "messageLabel": "Default Message",
         "messagePlaceholder": "Hi! I saw your website and would like more information...",
+        "agentName": "Agent Name",
         "agentLabel": "Agent Name",
         "agentPlaceholder": "DevForge Support",
+        "welcomeMessage": "Welcome Message",
         "welcomeLabel": "Welcome Message",
-        "welcomePlaceholder": "Hi! How can we help you?"
-      },
-      "preview": {
-        "title": "Link Preview",
-        "testLink": "Test link →"
+        "welcomePlaceholder": "Hi! How can we help you?",
+        "preview": "Link Preview",
+        "testLink": "Test link"
       },
       "socialSection": {
         "title": "Social Media",

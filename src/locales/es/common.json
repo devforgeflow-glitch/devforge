@@ -1098,19 +1098,21 @@
       },
       "whatsappSection": {
         "title": "Botón Flotante WhatsApp",
+        "number": "Número de WhatsApp",
         "numberLabel": "Número de WhatsApp",
         "numberPlaceholder": "41999998888",
         "numberHint": "Ingresa solo números, incluyendo código de área. Deja vacío para desactivar el botón.",
+        "defaultMessage": "Mensaje Predeterminado",
         "messageLabel": "Mensaje Predeterminado",
         "messagePlaceholder": "¡Hola! Vi tu sitio web y me gustaría más información...",
+        "agentName": "Nombre del Agente",
         "agentLabel": "Nombre del Agente",
         "agentPlaceholder": "Soporte DevForge",
+        "welcomeMessage": "Mensaje de Bienvenida",
         "welcomeLabel": "Mensaje de Bienvenida",
-        "welcomePlaceholder": "¡Hola! ¿Cómo podemos ayudarte?"
-      },
-      "preview": {
-        "title": "Vista Previa del Enlace",
-        "testLink": "Probar enlace →"
+        "welcomePlaceholder": "¡Hola! ¿Cómo podemos ayudarte?",
+        "preview": "Vista Previa del Enlace",
+        "testLink": "Probar enlace"
       },
       "socialSection": {
         "title": "Redes Sociales",

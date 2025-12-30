@@ -1168,7 +1168,19 @@
       },
       "filters": {
         "searchPlaceholder": "Search by name, email or message...",
-        "allStatus": "All Status"
+        "allStatuses": "All Status"
+      },
+      "status": {
+        "novo": "New",
+        "em_andamento": "In Progress",
+        "resolvido": "Resolved"
+      },
+      "subjects": {
+        "orcamento": "Quote",
+        "duvida": "Question",
+        "parceria": "Partnership",
+        "suporte": "Support",
+        "outro": "Other"
       },
       "list": {
         "noResults": "No messages found"
@@ -1177,11 +1189,13 @@
         "receivedAt": "Received at",
         "replies": "Replies",
         "emailSent": "Email sent",
-        "replySection": "Reply",
+        "selectPrompt": "Select a message to view details"
+      },
+      "actions": {
+        "reply": "Reply",
         "replyPlaceholder": "Type your reply...",
         "markResolved": "Mark Resolved",
-        "send": "Send",
-        "selectToView": "Select a message to view details"
+        "send": "Send"
       },
       "time": {
         "now": "Now",

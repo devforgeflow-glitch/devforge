@@ -1168,7 +1168,19 @@
       },
       "filters": {
         "searchPlaceholder": "Buscar por nombre, email o mensaje...",
-        "allStatus": "Todos los Estados"
+        "allStatuses": "Todos los Estados"
+      },
+      "status": {
+        "novo": "Nuevo",
+        "em_andamento": "En Progreso",
+        "resolvido": "Resuelto"
+      },
+      "subjects": {
+        "orcamento": "Presupuesto",
+        "duvida": "Pregunta",
+        "parceria": "Asociación",
+        "suporte": "Soporte",
+        "outro": "Otro"
       },
       "list": {
         "noResults": "No se encontraron mensajes"
@@ -1177,11 +1189,13 @@
         "receivedAt": "Recibido el",
         "replies": "Respuestas",
         "emailSent": "Email enviado",
-        "replySection": "Responder",
+        "selectPrompt": "Selecciona un mensaje para ver los detalles"
+      },
+      "actions": {
+        "reply": "Responder",
         "replyPlaceholder": "Escribe tu respuesta...",
         "markResolved": "Marcar Resuelto",
-        "send": "Enviar",
-        "selectToView": "Selecciona un mensaje para ver los detalles"
+        "send": "Enviar"
       },
       "time": {
         "now": "Ahora",

@@ -1642,7 +1642,7 @@
     "currency": "$",
     "disclaimer": {
       "title": "This page is a demonstration model",
-      "description": "The plans and prices shown below are <strong>just examples</strong> of what we can develop for your business. <strong>They do not represent DevForge prices.</strong>",
+      "description": "The plans and prices shown below are JUST EXAMPLES of what we can develop for your business. They DO NOT represent DevForge prices.",
       "factors": "The actual investment for your project depends on factors such as:",
       "factor1": "Project size and scope",
       "factor2": "Level of technical complexity",

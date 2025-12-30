@@ -102,10 +102,9 @@ export default function PricingPage() {
                     <h3 className="font-semibold text-amber-800 dark:text-amber-200 mb-2">
                       {t('pricing.disclaimer.title')}
                     </h3>
-                    <p
-                      className="text-sm text-amber-700 dark:text-amber-300 mb-3"
-                      dangerouslySetInnerHTML={{ __html: t('pricing.disclaimer.description') }}
-                    />
+                    <p className="text-sm text-amber-700 dark:text-amber-300 mb-3">
+                      {t('pricing.disclaimer.description')}
+                    </p>
                     <p className="text-sm text-amber-700 dark:text-amber-300">
                       {t('pricing.disclaimer.factors')}
                     </p>

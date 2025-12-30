@@ -1642,7 +1642,7 @@
     "currency": "$",
     "disclaimer": {
       "title": "Esta página es un modelo demostrativo",
-      "description": "Los planes y valores mostrados abajo son <strong>solo ejemplos</strong> de lo que podemos desarrollar para tu negocio. <strong>No representan los valores de DevForge.</strong>",
+      "description": "Los planes y valores mostrados abajo son SOLO EJEMPLOS de lo que podemos desarrollar para tu negocio. NO representan los valores de DevForge.",
       "factors": "La inversión real de tu proyecto depende de factores como:",
       "factor1": "Tamaño y alcance del proyecto",
       "factor2": "Nivel de complejidad técnica",

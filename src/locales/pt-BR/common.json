@@ -1136,24 +1136,31 @@
       },
       "filters": {
         "searchPlaceholder": "Buscar por nome ou conteúdo...",
-        "allStatus": "Todos os Status"
+        "allStatuses": "Todos os Status"
+      },
+      "status": {
+        "aguardando": "Aguardando",
+        "approved": "Aprovado",
+        "rejected": "Rejeitado"
       },
       "list": {
         "anonymous": "Anônimo",
         "noResults": "Nenhum depoimento encontrado"
       },
       "detail": {
-        "visibleOnSite": "(Visível no site)",
-        "hidden": "(Oculto)",
-        "sentAt": "Enviado em",
-        "actions": "Ações",
+        "visible": "Visível no site",
+        "hidden": "Oculto",
+        "sentOn": "Enviado em",
+        "selectPrompt": "Selecione um depoimento para ver os detalhes"
+      },
+      "actions": {
+        "title": "Ações",
         "approve": "Aprovar",
         "reject": "Rejeitar",
         "hide": "Ocultar",
         "show": "Mostrar",
         "delete": "Excluir",
-        "deleteConfirm": "Tem certeza que deseja excluir este depoimento?",
-        "selectToView": "Selecione um depoimento para ver os detalhes"
+        "confirmDelete": "Tem certeza que deseja excluir este depoimento?"
       }
     },
     "messages": {
@@ -1724,5 +1731,81 @@
       "submitFailed": "Erro ao enviar respostas. Tente novamente.",
       "unsupportedType": "Tipo de pergunta não suportado"
     }
+  },
+  "privacy": {
+    "meta": {
+      "title": "Política de Privacidade - DevForge",
+      "description": "Conheça como protegemos seus dados e respeitamos sua privacidade."
+    },
+    "title": "Política de Privacidade",
+    "description": "Como coletamos, usamos e protegemos suas informações",
+    "lastUpdated": "Última atualização",
+    "contact": "Dúvidas sobre privacidade? Entre em contato: contato@devforge.com",
+    "sections": {
+      "collection": {
+        "title": "Coleta de Dados",
+        "content": "Coletamos apenas as informações necessárias para fornecer nossos serviços:\n\n• Dados de cadastro (nome, email)\n• Informações de uso da plataforma\n• Respostas de pesquisas (anonimizadas quando solicitado)"
+      },
+      "security": {
+        "title": "Segurança dos Dados",
+        "content": "Utilizamos 18 camadas de segurança para proteger suas informações:\n\n• Criptografia de ponta a ponta\n• Armazenamento seguro em servidores certificados\n• Monitoramento 24/7 contra ameaças"
+      },
+      "usage": {
+        "title": "Uso dos Dados",
+        "content": "Seus dados são utilizados exclusivamente para:\n\n• Fornecer e melhorar nossos serviços\n• Gerar relatórios e análises solicitados\n• Enviar comunicações importantes sobre sua conta"
+      },
+      "rights": {
+        "title": "Seus Direitos (LGPD)",
+        "content": "Você tem direito a:\n\n• Acessar seus dados pessoais\n• Corrigir informações incorretas\n• Solicitar exclusão de seus dados\n• Exportar seus dados em formato portátil"
+      }
+    }
+  },
+  "terms": {
+    "meta": {
+      "title": "Termos de Uso - DevForge",
+      "description": "Leia os termos e condições de uso da plataforma DevForge."
+    },
+    "title": "Termos de Uso",
+    "description": "Condições para uso da plataforma DevForge",
+    "lastUpdated": "Última atualização",
+    "contact": "Dúvidas sobre os termos? Entre em contato: contato@devforge.com",
+    "sections": {
+      "acceptance": {
+        "title": "Aceitação dos Termos",
+        "content": "Ao acessar e utilizar a plataforma DevForge, você concorda com estes termos de uso. Se você não concordar com alguma parte, não utilize nossos serviços."
+      },
+      "usage": {
+        "title": "Uso da Plataforma",
+        "content": "A DevForge oferece uma plataforma para criação de pesquisas e coleta de feedback. Você é responsável por:\n\n• Manter a segurança de sua conta\n• Garantir a veracidade das informações fornecidas\n• Respeitar os direitos de terceiros"
+      },
+      "restrictions": {
+        "title": "Restrições de Uso",
+        "content": "É expressamente proibido:\n\n• Usar a plataforma para fins ilegais\n• Coletar dados sem consentimento adequado\n• Tentar acessar sistemas ou dados não autorizados\n• Distribuir malware ou conteúdo malicioso"
+      },
+      "liability": {
+        "title": "Limitação de Responsabilidade",
+        "content": "A DevForge não se responsabiliza por:\n\n• Conteúdo criado pelos usuários\n• Interrupções temporárias do serviço\n• Danos indiretos decorrentes do uso da plataforma\n\nNossa responsabilidade máxima está limitada ao valor pago pelos serviços."
+      }
+    }
+  },
+  "profile": {
+    "meta": {
+      "title": "Meu Perfil - DevForge"
+    },
+    "title": "Meu Perfil",
+    "description": "Gerencie suas informações pessoais",
+    "anonymous": "Usuário",
+    "member": "Membro",
+    "editInfo": "Editar Informações",
+    "fields": {
+      "name": "Nome Completo",
+      "namePlaceholder": "Seu nome",
+      "email": "Email",
+      "emailNote": "O email não pode ser alterado",
+      "company": "Empresa",
+      "companyPlaceholder": "Nome da sua empresa"
+    },
+    "save": "Salvar Alterações",
+    "saving": "Salvando..."
   }
 }

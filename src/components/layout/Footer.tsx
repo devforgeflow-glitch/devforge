@@ -91,8 +91,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/docs" className="hover:text-foreground transition-colors">
-                  {t('nav.docs')}
+                <Link href="/recursos" className="hover:text-foreground transition-colors">
+                  {t('nav.features')}
                 </Link>
               </li>
             </ul>
@@ -115,8 +115,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-foreground transition-colors">
-                  Blog
+                <Link href="/como-foi-feito" className="hover:text-foreground transition-colors">
+                  {t('nav.about')}
                 </Link>
               </li>
             </ul>
@@ -158,12 +158,9 @@ export function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 sm:mt-12 border-t pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs sm:text-sm text-muted-foreground">
+        <div className="mt-8 sm:mt-12 border-t pt-6 sm:pt-8 text-center text-xs sm:text-sm text-muted-foreground">
           <p>
             &copy; {currentYear} DevForge. {t('footer.rights')}
-          </p>
-          <p className="text-center sm:text-right">
-            {t('footer.madeWith')} ❤️ {t('footer.byTeam')}
           </p>
         </div>
       </div>

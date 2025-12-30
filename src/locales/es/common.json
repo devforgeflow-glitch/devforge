@@ -271,7 +271,18 @@
     "signup": "Registrarse",
     "dashboard": "Panel",
     "logout": "Cerrar Sesión",
-    "settings": "Configuración"
+    "settings": "Configuración",
+    "surveys": "Encuestas",
+    "responses": "Respuestas",
+    "analytics": "Analytics",
+    "notifications": "Notificaciones",
+    "profile": "Mi Perfil",
+    "testimonial": "Enviar Testimonio",
+    "howItWasMade": "Cómo Fue Hecho",
+    "adminPanel": "Panel Admin",
+    "messages": "Mensajes",
+    "testimonials": "Testimonios",
+    "whatsapp": "WhatsApp"
   },
   "theme": {
     "light": "Claro",

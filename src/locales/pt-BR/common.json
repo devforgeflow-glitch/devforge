@@ -271,7 +271,18 @@
     "signup": "Criar Conta",
     "dashboard": "Painel",
     "logout": "Sair",
-    "settings": "Configurações"
+    "settings": "Configurações",
+    "surveys": "Pesquisas",
+    "responses": "Respostas",
+    "analytics": "Analytics",
+    "notifications": "Notificações",
+    "profile": "Meu Perfil",
+    "testimonial": "Enviar Depoimento",
+    "howItWasMade": "Como Foi Feito",
+    "adminPanel": "Painel Admin",
+    "messages": "Mensagens",
+    "testimonials": "Depoimentos",
+    "whatsapp": "WhatsApp"
   },
   "theme": {
     "light": "Claro",

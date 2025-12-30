@@ -271,7 +271,18 @@
     "signup": "Sign Up",
     "dashboard": "Dashboard",
     "logout": "Sign Out",
-    "settings": "Settings"
+    "settings": "Settings",
+    "surveys": "Surveys",
+    "responses": "Responses",
+    "analytics": "Analytics",
+    "notifications": "Notifications",
+    "profile": "My Profile",
+    "testimonial": "Submit Testimonial",
+    "howItWasMade": "How It Was Made",
+    "adminPanel": "Admin Panel",
+    "messages": "Messages",
+    "testimonials": "Testimonials",
+    "whatsapp": "WhatsApp"
   },
   "theme": {
     "light": "Light",

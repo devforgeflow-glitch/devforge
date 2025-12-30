@@ -20,6 +20,10 @@ import {
   MessageCircle,
   Users,
   Phone,
+  Code2,
+  Mail,
+  User,
+  Award,
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useAuth, useLayout } from '@/contexts';
@@ -37,7 +41,7 @@ import { Button } from '@/components/ui';
 
 interface NavLink {
   href: string;
-  label: string;
+  labelKey: string;
   icon: React.ElementType;
   badge?: string;
 }
@@ -46,36 +50,40 @@ interface NavLink {
  * Links publicos (visiveis para usuarios NAO logados)
  */
 const PUBLIC_LINKS: NavLink[] = [
-  { href: '/', label: 'Inicio', icon: Home },
-  { href: '/features', label: 'Recursos', icon: Zap },
-  { href: '/pricing', label: 'Planos', icon: Star },
-  { href: '/about', label: 'Sobre', icon: HelpCircle },
+  { href: '/', labelKey: 'nav.home', icon: Home },
+  { href: '/features', labelKey: 'nav.features', icon: Zap },
+  { href: '/pricing', labelKey: 'nav.pricing', icon: Star },
+  { href: '/about', labelKey: 'nav.about', icon: HelpCircle },
+  { href: '/como-foi-feito', labelKey: 'nav.howItWasMade', icon: Code2 },
+  { href: '/contact', labelKey: 'nav.contact', icon: Mail },
 ];
 
 /**
  * Links para usuários autenticados
  */
 const USER_LINKS: NavLink[] = [
-  { href: '/app/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/app/surveys', label: 'Pesquisas', icon: FileText },
-  { href: '/app/responses', label: 'Respostas', icon: MessageSquare },
-  { href: '/app/analytics', label: 'Analytics', icon: BarChart3 },
-  { href: '/app/settings', label: 'Configurações', icon: Settings },
+  { href: '/app/dashboard', labelKey: 'nav.dashboard', icon: LayoutDashboard },
+  { href: '/app/surveys', labelKey: 'nav.surveys', icon: FileText },
+  { href: '/app/responses', labelKey: 'nav.responses', icon: MessageSquare },
+  { href: '/app/analytics', labelKey: 'nav.analytics', icon: BarChart3 },
+  { href: '/app/testimonial', labelKey: 'nav.testimonial', icon: Award },
+  { href: '/app/profile', labelKey: 'nav.profile', icon: User },
+  { href: '/app/settings', labelKey: 'nav.settings', icon: Settings },
 ];
 
 /**
  * Links administrativos (apenas para admins)
  */
 const ADMIN_LINKS: NavLink[] = [
-  { href: '/app/admin/messages', label: 'Mensagens', icon: MessageCircle },
-  { href: '/app/admin/testimonials', label: 'Depoimentos', icon: Users },
-  { href: '/app/admin/whatsapp', label: 'WhatsApp', icon: Phone },
+  { href: '/app/admin/messages', labelKey: 'nav.messages', icon: MessageCircle },
+  { href: '/app/admin/testimonials', labelKey: 'nav.testimonials', icon: Users },
+  { href: '/app/admin/whatsapp', labelKey: 'nav.whatsapp', icon: Phone },
 ];
 
 /**
  * Componente de Link do Menu
  */
-function NavItem({ link, isActive, onClick }: { link: NavLink; isActive: boolean; onClick: () => void }) {
+function NavItem({ link, isActive, onClick, t }: { link: NavLink; isActive: boolean; onClick: () => void; t: ReturnType<typeof useTranslations> }) {
   const Icon = link.icon;
 
   return (
@@ -90,7 +98,7 @@ function NavItem({ link, isActive, onClick }: { link: NavLink; isActive: boolean
       )}
     >
       <Icon className="h-5 w-5 flex-shrink-0" />
-      <span>{link.label}</span>
+      <span>{t(link.labelKey)}</span>
       {link.badge && (
         <span className="ml-auto text-xs bg-primary text-primary-foreground px-2 py-0.5 rounded-full">
           {link.badge}
@@ -202,6 +210,7 @@ export function Sidebar() {
                 link={link}
                 isActive={router.pathname === link.href}
                 onClick={closeSidebar}
+                t={t}
               />
             ))}
 
@@ -211,7 +220,7 @@ export function Sidebar() {
                 <div className="flex items-center gap-2 px-4 py-2 mb-2">
                   <Shield className="h-4 w-4 text-amber-500" />
                   <span className="text-xs font-semibold uppercase tracking-wider text-amber-500">
-                    Painel Admin
+                    {t('nav.adminPanel')}
                   </span>
                 </div>
                 {ADMIN_LINKS.map((link) => (
@@ -220,6 +229,7 @@ export function Sidebar() {
                     link={link}
                     isActive={router.pathname === link.href}
                     onClick={closeSidebar}
+                    t={t}
                   />
                 ))}
               </div>

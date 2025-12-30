@@ -241,7 +241,7 @@ function HeaderApp() {
                   onClick={() => setIsUserMenuOpen(false)}
                 >
                   <User className="h-4 w-4" />
-                  Meu Perfil
+                  {t('nav.profile')}
                 </Link>
 
                 <Link
@@ -250,7 +250,7 @@ function HeaderApp() {
                   onClick={() => setIsUserMenuOpen(false)}
                 >
                   <Settings className="h-4 w-4" />
-                  Configuracoes
+                  {t('nav.settings')}
                 </Link>
 
                 <div className="border-t my-1" />
@@ -260,7 +260,7 @@ function HeaderApp() {
                   className="w-full flex items-center gap-2 px-4 py-2 text-sm text-destructive hover:bg-destructive/10 transition-colors"
                 >
                   <LogOut className="h-4 w-4" />
-                  Sair
+                  {t('nav.logout')}
                 </button>
               </div>
             )}

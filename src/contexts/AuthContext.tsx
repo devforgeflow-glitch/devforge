@@ -24,8 +24,11 @@ import { auth, isFirebaseConfigured } from '@/lib/firebase';
  *
  * Gerencia estado de autenticacao do usuario usando Firebase Auth.
  * Suporta login com email/senha, cadastro, logout e recuperacao de senha.
+ * Inclui modo de demonstracao quando Firebase nao configurado.
  *
- * @version 1.0.0
+ * Para criar usuarios de teste, execute: npx ts-node scripts/createTestAdmin.ts
+ *
+ * @version 1.1.0
  */
 
 export interface User {
@@ -34,7 +37,11 @@ export interface User {
   displayName: string | null;
   photoURL: string | null;
   emailVerified: boolean;
+  role?: 'user' | 'admin';
 }
+
+const AUTH_STORAGE_KEY = 'devforge_auth_user';
+const DEMO_USERS_KEY = 'devforge_demo_users';
 
 interface AuthContextValue {
   user: User | null;
@@ -74,8 +81,19 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   // Observar mudancas no estado de autenticacao
   useEffect(() => {
-    // Se Firebase nao esta configurado, nao observar
+    // Se Firebase nao esta configurado, verificar localStorage para modo demo
     if (!isFirebaseConfigured || !auth) {
+      // Verificar se ha usuario salvo no localStorage
+      if (typeof window !== 'undefined') {
+        const savedUser = localStorage.getItem(AUTH_STORAGE_KEY);
+        if (savedUser) {
+          try {
+            setUser(JSON.parse(savedUser));
+          } catch {
+            localStorage.removeItem(AUTH_STORAGE_KEY);
+          }
+        }
+      }
       setLoading(false);
       return;
     }
@@ -94,14 +112,45 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   /**
    * Login com email e senha
+   * Suporta modo demo com usuarios de teste quando Firebase nao configurado
+   * Usuarios de teste sao criados via script: npx ts-node scripts/createTestAdmin.ts
    */
   const signIn = useCallback(async (email: string, password: string) => {
-    if (!auth) {
-      setError('Firebase nao configurado');
-      throw new Error('Firebase nao configurado');
-    }
     setError(null);
     setLoading(true);
+
+    // Modo demo: usar usuarios de teste do localStorage
+    if (!isFirebaseConfigured || !auth) {
+      try {
+        // Simular delay de rede
+        await new Promise((resolve) => setTimeout(resolve, 800));
+
+        // Buscar usuarios de teste do localStorage (criados via script)
+        const demoUsersStr = localStorage.getItem(DEMO_USERS_KEY);
+        if (!demoUsersStr) {
+          throw new Error('Nenhum usuario de teste configurado. Execute: npm run seed:demo');
+        }
+
+        const demoUsers = JSON.parse(demoUsersStr) as Record<string, { password: string; user: User }>;
+        const testUser = demoUsers[email.toLowerCase()];
+
+        if (testUser && testUser.password === password) {
+          setUser(testUser.user);
+          localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(testUser.user));
+          return;
+        }
+
+        throw new Error('Credenciais invalidas');
+      } catch (err) {
+        const message = err instanceof Error ? err.message : 'Erro de autenticacao';
+        setError(message);
+        throw new Error(message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    // Firebase configurado: usar autenticacao real
     try {
       await signInWithEmailAndPassword(auth, email, password);
     } catch (err) {
@@ -147,11 +196,16 @@ export function AuthProvider({ children }: AuthProviderProps) {
    * Logout
    */
   const signOut = useCallback(async () => {
-    if (!auth) {
-      setError('Firebase nao configurado');
-      throw new Error('Firebase nao configurado');
-    }
     setError(null);
+
+    // Modo demo: apenas limpar estado e localStorage
+    if (!isFirebaseConfigured || !auth) {
+      setUser(null);
+      localStorage.removeItem(AUTH_STORAGE_KEY);
+      return;
+    }
+
+    // Firebase configurado: fazer logout real
     try {
       await firebaseSignOut(auth);
       setUser(null);

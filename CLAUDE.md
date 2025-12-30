@@ -1114,29 +1114,29 @@ npm run test:watch         # Watch mode
 ## 🚀 Roadmap de Funcionalidades
 
 ### Fase 1: Core (Semana 1-2)
-- [ ] Migração do template FastMobel
-- [ ] Dark Mode
-- [ ] i18n (PT-BR, EN, ES)
-- [ ] Storybook setup
+- [x] Migracao do template FastMobel
+- [x] Dark Mode
+- [x] i18n (PT-BR, EN, ES)
+- [x] Storybook setup (stories criadas, build com issue de compatibilidade)
 
 ### Fase 2: Features (Semana 2-3)
-- [ ] BullMQ setup
-- [ ] AI Integration
-- [ ] White-label básico
+- [x] BullMQ setup
+- [x] AI Integration (OpenAI/Claude)
+- [x] White-label basico
 
 ### Fase 3: Produto (Semana 3-5)
-- [ ] Landing page
-- [ ] CRUD Pesquisas
-- [ ] Coleta de respostas
-- [ ] Dashboard Analytics
-- [ ] Billing
+- [x] Landing page
+- [x] CRUD Pesquisas
+- [x] Coleta de respostas
+- [x] Dashboard Analytics
+- [x] Billing (Mercado Pago)
 
 ### Fase 4: Polish (Semana 5-6)
-- [ ] Página /recursos
-- [ ] Página /como-foi-feito
-- [ ] Documentação OpenAPI
-- [ ] Testes E2E
-- [ ] Deploy produção
+- [x] Pagina /recursos
+- [x] Pagina /como-foi-feito
+- [x] Documentacao OpenAPI
+- [x] Testes E2E (Playwright)
+- [x] Deploy producao (Vercel)
 
 ---
 

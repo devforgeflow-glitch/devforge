@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Head from 'next/head';
 import { Eye, EyeOff } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button, Input, Checkbox, Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui';
 
@@ -15,6 +16,7 @@ import { Button, Input, Checkbox, Card, CardHeader, CardTitle, CardDescription, 
  */
 
 export default function SignupPage() {
+  const t = useTranslations();
   const router = useRouter();
   const { signUp, loading, error, clearError, isConfigured } = useAuth();
 
@@ -34,31 +36,31 @@ export default function SignupPage() {
 
     // Validacao
     if (!name || !email || !password || !confirmPassword) {
-      setLocalError('Preencha todos os campos');
+      setLocalError(t('auth.signup.errors.fillAllFields'));
       return;
     }
 
     if (password !== confirmPassword) {
-      setLocalError('As senhas nao conferem');
+      setLocalError(t('auth.signup.errors.passwordsDoNotMatch'));
       return;
     }
 
     if (password.length < 6) {
-      setLocalError('A senha deve ter pelo menos 6 caracteres');
+      setLocalError(t('auth.signup.errors.passwordTooShort'));
       return;
     }
 
     if (!acceptTerms) {
-      setLocalError('Voce precisa aceitar os termos de uso');
+      setLocalError(t('auth.signup.errors.acceptTermsRequired'));
       return;
     }
 
     try {
       await signUp(email, password, name);
-      // Redireciona para dashboard apos cadastro
+      // Redireciona para dashboard após cadastro
       router.push('/app/dashboard');
     } catch {
-      // Erro ja esta no contexto
+      // Erro já está no contexto
     }
   };
 
@@ -67,8 +69,8 @@ export default function SignupPage() {
   return (
     <>
       <Head>
-        <title>Criar Conta | DevForge</title>
-        <meta name="description" content="Crie sua conta na plataforma DevForge" />
+        <title>{t('auth.signup.meta.title')}</title>
+        <meta name="description" content={t('auth.signup.meta.description')} />
       </Head>
 
       <div className="min-h-screen flex items-center justify-center bg-background px-4 py-12">
@@ -89,15 +91,15 @@ export default function SignupPage() {
                 />
               </svg>
             </div>
-            <CardTitle className="text-2xl">Criar conta</CardTitle>
-            <CardDescription>Preencha seus dados para comecar</CardDescription>
+            <CardTitle className="text-2xl">{t('auth.signup.title')}</CardTitle>
+            <CardDescription>{t('auth.signup.description')}</CardDescription>
           </CardHeader>
 
           <form onSubmit={handleSubmit}>
             <CardContent className="space-y-4">
               {!isConfigured && (
                 <div className="rounded-lg bg-yellow-50 dark:bg-yellow-900/20 p-4 text-sm text-yellow-800 dark:text-yellow-200">
-                  Firebase nao configurado. Configure as credenciais para habilitar autenticacao.
+                  {t('auth.signup.firebaseNotConfigured')}
                 </div>
               )}
 
@@ -108,9 +110,9 @@ export default function SignupPage() {
               )}
 
               <Input
-                label="Nome completo"
+                label={t('auth.signup.fullName')}
                 type="text"
-                placeholder="Seu nome"
+                placeholder={t('auth.signup.namePlaceholder')}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 disabled={loading || !isConfigured}
@@ -118,9 +120,9 @@ export default function SignupPage() {
               />
 
               <Input
-                label="Email"
+                label={t('auth.signup.email')}
                 type="email"
-                placeholder="seu@email.com"
+                placeholder={t('auth.signup.emailPlaceholder')}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={loading || !isConfigured}
@@ -129,12 +131,12 @@ export default function SignupPage() {
 
               <div className="space-y-1">
                 <label className="block text-sm font-medium text-foreground">
-                  Senha
+                  {t('auth.signup.password')}
                 </label>
                 <div className="relative">
                   <input
                     type={showPassword ? 'text' : 'password'}
-                    placeholder="Minimo 6 caracteres"
+                    placeholder={t('auth.signup.passwordPlaceholder')}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     disabled={loading || !isConfigured}
@@ -150,17 +152,17 @@ export default function SignupPage() {
                     {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
                 </div>
-                <p className="text-xs text-muted-foreground">Use pelo menos 6 caracteres</p>
+                <p className="text-xs text-muted-foreground">{t('auth.signup.passwordHint')}</p>
               </div>
 
               <div className="space-y-1">
                 <label className="block text-sm font-medium text-foreground">
-                  Confirmar senha
+                  {t('auth.signup.confirmPassword')}
                 </label>
                 <div className="relative">
                   <input
                     type={showConfirmPassword ? 'text' : 'password'}
-                    placeholder="Repita a senha"
+                    placeholder={t('auth.signup.confirmPasswordPlaceholder')}
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     disabled={loading || !isConfigured}
@@ -179,7 +181,7 @@ export default function SignupPage() {
               </div>
 
               <Checkbox
-                label="Aceito os termos de uso e politica de privacidade"
+                label={t('auth.signup.acceptTerms')}
                 checked={acceptTerms}
                 onChange={(e) => setAcceptTerms(e.target.checked)}
                 disabled={loading || !isConfigured}
@@ -193,13 +195,13 @@ export default function SignupPage() {
                 isLoading={loading}
                 disabled={!isConfigured}
               >
-                Criar conta
+                {t('auth.signup.submit')}
               </Button>
 
               <p className="text-center text-sm text-muted-foreground">
-                Ja tem uma conta?{' '}
+                {t('auth.signup.hasAccount')}{' '}
                 <Link href="/auth/login" className="text-primary hover:underline">
-                  Entrar
+                  {t('auth.signup.login')}
                 </Link>
               </p>
             </CardFooter>

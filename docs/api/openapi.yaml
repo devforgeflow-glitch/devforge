@@ -46,6 +46,8 @@ servers:
     description: Desenvolvimento Local
 
 tags:
+  - name: Auth
+    description: Autenticacao e gerenciamento de usuarios
   - name: Surveys
     description: Gerenciamento de pesquisas
   - name: Responses
@@ -54,10 +56,279 @@ tags:
     description: Metricas e analises
   - name: AI
     description: Funcionalidades de IA
+  - name: Contact
+    description: Formulario de contato
   - name: Health
     description: Status do servico
 
 paths:
+  # ===== Auth Endpoints =====
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Login de usuario
+      description: Autentica usuario e retorna tokens JWT
+      operationId: login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: usuario@exemplo.com
+                password:
+                  type: string
+                  format: password
+                  minLength: 8
+      responses:
+        '200':
+          description: Login bem-sucedido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          description: Credenciais invalidas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error:
+                  code: INVALID_CREDENTIALS
+                  message: Email ou senha incorretos
+
+  /auth/register:
+    post:
+      tags:
+        - Auth
+      summary: Registro de usuario
+      description: Cria uma nova conta de usuario
+      operationId: register
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterInput'
+      responses:
+        '201':
+          description: Usuario criado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '409':
+          description: Email ja cadastrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error:
+                  code: EMAIL_EXISTS
+                  message: Este email ja esta cadastrado
+
+  /auth/forgot-password:
+    post:
+      tags:
+        - Auth
+      summary: Solicitar recuperacao de senha
+      description: Envia email com link para redefinir senha
+      operationId: forgotPassword
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+              properties:
+                email:
+                  type: string
+                  format: email
+      responses:
+        '200':
+          description: Email enviado (sempre retorna sucesso por seguranca)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                    example: Se o email existir, voce recebera instrucoes de recuperacao
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /auth/reset-password:
+    post:
+      tags:
+        - Auth
+      summary: Redefinir senha
+      description: Redefine a senha usando token recebido por email
+      operationId: resetPassword
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - token
+                - password
+              properties:
+                token:
+                  type: string
+                  description: Token recebido por email
+                password:
+                  type: string
+                  format: password
+                  minLength: 8
+      responses:
+        '200':
+          description: Senha alterada com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          description: Token invalido ou expirado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error:
+                  code: INVALID_TOKEN
+                  message: Token invalido ou expirado
+
+  /auth/refresh:
+    post:
+      tags:
+        - Auth
+      summary: Renovar token
+      description: Renova o access token usando refresh token
+      operationId: refreshToken
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - refreshToken
+              properties:
+                refreshToken:
+                  type: string
+      responses:
+        '200':
+          description: Token renovado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '401':
+          description: Refresh token invalido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /auth/logout:
+    post:
+      tags:
+        - Auth
+      summary: Logout
+      description: Invalida o refresh token atual
+      operationId: logout
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Logout realizado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /auth/me:
+    get:
+      tags:
+        - Auth
+      summary: Obter usuario atual
+      description: Retorna dados do usuario autenticado
+      operationId: getCurrentUser
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Dados do usuario
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  # ===== Contact Endpoint =====
+  /contact:
+    post:
+      tags:
+        - Contact
+      summary: Enviar mensagem de contato
+      description: Envia mensagem pelo formulario de contato
+      operationId: sendContactMessage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactInput'
+      responses:
+        '200':
+          description: Mensagem enviada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                    example: Mensagem enviada com sucesso. Entraremos em contato em breve.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  # ===== Health Endpoint =====
   /health:
     get:
       tags:
@@ -715,6 +986,115 @@ components:
               type: string
             details:
               type: object
+
+    # ===== Auth Schemas =====
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+          format: email
+        name:
+          type: string
+        role:
+          type: string
+          enum:
+            - user
+            - admin
+            - owner
+        organizationId:
+          type: string
+        avatar:
+          type: string
+          format: uri
+        emailVerified:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        lastLoginAt:
+          type: string
+          format: date-time
+
+    AuthResponse:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        accessToken:
+          type: string
+          description: JWT access token (expira em 15 minutos)
+        refreshToken:
+          type: string
+          description: Refresh token (expira em 7 dias)
+        expiresIn:
+          type: integer
+          description: Tempo de expiracao do access token em segundos
+
+    RegisterInput:
+      type: object
+      required:
+        - email
+        - password
+        - name
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          format: password
+          minLength: 8
+          description: Minimo 8 caracteres, 1 maiuscula, 1 numero
+        name:
+          type: string
+          minLength: 2
+          maxLength: 100
+        organizationName:
+          type: string
+          description: Nome da organizacao (opcional, cria nova org se fornecido)
+
+    # ===== Contact Schema =====
+    ContactInput:
+      type: object
+      required:
+        - name
+        - email
+        - subject
+        - message
+      properties:
+        name:
+          type: string
+          minLength: 2
+          maxLength: 100
+          example: Joao Silva
+        email:
+          type: string
+          format: email
+          example: joao@exemplo.com
+        phone:
+          type: string
+          description: Telefone com DDD
+          example: (11) 99999-9999
+        company:
+          type: string
+          maxLength: 100
+          example: Minha Empresa Ltda
+        subject:
+          type: string
+          enum:
+            - sales
+            - support
+            - partnership
+            - other
+          description: Assunto do contato
+        message:
+          type: string
+          minLength: 10
+          maxLength: 2000
+          example: Gostaria de mais informacoes sobre os planos...
 
   responses:
     BadRequest:

@@ -16,6 +16,10 @@ import {
   X,
   LogIn,
   UserPlus,
+  Shield,
+  MessageCircle,
+  Users,
+  Phone,
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useAuth, useLayout } from '@/contexts';
@@ -49,13 +53,23 @@ const PUBLIC_LINKS: NavLink[] = [
 ];
 
 /**
- * Links para usuarios autenticados
+ * Links para usuários autenticados
  */
 const USER_LINKS: NavLink[] = [
   { href: '/app/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/app/surveys', label: 'Pesquisas', icon: FileText },
+  { href: '/app/responses', label: 'Respostas', icon: MessageSquare },
   { href: '/app/analytics', label: 'Analytics', icon: BarChart3 },
-  { href: '/app/settings', label: 'Configuracoes', icon: Settings },
+  { href: '/app/settings', label: 'Configurações', icon: Settings },
+];
+
+/**
+ * Links administrativos (apenas para admins)
+ */
+const ADMIN_LINKS: NavLink[] = [
+  { href: '/app/admin/messages', label: 'Mensagens', icon: MessageCircle },
+  { href: '/app/admin/testimonials', label: 'Depoimentos', icon: Users },
+  { href: '/app/admin/whatsapp', label: 'WhatsApp', icon: Phone },
 ];
 
 /**
@@ -179,7 +193,7 @@ export function Sidebar() {
           </button>
         </div>
 
-        {/* Navegacao */}
+        {/* Navegação */}
         <nav className="flex flex-col h-[calc(100%-3.5rem)] overflow-y-auto">
           <div className="flex-1 p-4 space-y-1">
             {links.map((link) => (
@@ -190,6 +204,26 @@ export function Sidebar() {
                 onClick={closeSidebar}
               />
             ))}
+
+            {/* Painel Administrativo - apenas para admins */}
+            {user?.role === 'admin' && (
+              <div className="mt-6 pt-4 border-t">
+                <div className="flex items-center gap-2 px-4 py-2 mb-2">
+                  <Shield className="h-4 w-4 text-amber-500" />
+                  <span className="text-xs font-semibold uppercase tracking-wider text-amber-500">
+                    Painel Admin
+                  </span>
+                </div>
+                {ADMIN_LINKS.map((link) => (
+                  <NavItem
+                    key={link.href}
+                    link={link}
+                    isActive={router.pathname === link.href}
+                    onClick={closeSidebar}
+                  />
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Footer da Sidebar */}
@@ -201,21 +235,21 @@ export function Sidebar() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium truncate">
-                    {user.displayName || 'Usuario'}
+                    {user.displayName || 'Usuário'}
                   </p>
                   <p className="text-xs text-muted-foreground truncate">{user.email}</p>
                 </div>
               </div>
             ) : (
-              <div className="space-y-2">
-                <Link href="/auth/login" onClick={closeSidebar}>
+              <div className="flex flex-col gap-3">
+                <Link href="/auth/login" onClick={closeSidebar} className="block">
                   <Button variant="outline" className="w-full justify-start gap-2">
                     <LogIn className="h-4 w-4" />
                     {t('actions.login')}
                   </Button>
                 </Link>
-                <Link href="/auth/signup" onClick={closeSidebar}>
-                  <Button className="w-full justify-start gap-2 rounded-full">
+                <Link href="/auth/signup" onClick={closeSidebar} className="block">
+                  <Button className="w-full justify-start gap-2">
                     <UserPlus className="h-4 w-4" />
                     {t('actions.signup')}
                   </Button>

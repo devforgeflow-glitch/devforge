@@ -2,31 +2,31 @@
   "title": "Dashboard",
   "welcome": "Bem-vindo, {name}!",
   "welcomeBack": "Bem-vindo de volta, {name}!",
-  "overview": "Visao Geral",
+  "overview": "Visão Geral",
   "stats": {
     "totalSurveys": "Total de Pesquisas",
     "activeSurveys": "Pesquisas Ativas",
     "totalResponses": "Total de Respostas",
     "responsesToday": "Respostas Hoje",
     "responseRate": "Taxa de Resposta",
-    "avgCompletionTime": "Tempo Medio",
+    "avgCompletionTime": "Tempo Médio",
     "npsScore": "NPS Score",
-    "satisfaction": "Satisfacao"
+    "satisfaction": "Satisfação"
   },
   "charts": {
     "responsesOverTime": "Respostas ao Longo do Tempo",
     "responsesByDevice": "Respostas por Dispositivo",
     "topSurveys": "Pesquisas Mais Respondidas",
-    "sentimentDistribution": "Distribuicao de Sentimento",
-    "completionFunnel": "Funil de Conclusao"
+    "sentimentDistribution": "Distribuição de Sentimento",
+    "completionFunnel": "Funil de Conclusão"
   },
   "periods": {
     "today": "Hoje",
     "yesterday": "Ontem",
-    "last7days": "Ultimos 7 dias",
-    "last30days": "Ultimos 30 dias",
-    "thisMonth": "Este mes",
-    "lastMonth": "Mes passado",
+    "last7days": "Últimos 7 dias",
+    "last30days": "Últimos 30 dias",
+    "thisMonth": "Este mês",
+    "lastMonth": "Mês passado",
     "thisYear": "Este ano",
     "custom": "Personalizado"
   },
@@ -46,12 +46,12 @@
     "responses": "{count} respostas"
   },
   "quickActions": {
-    "title": "Acoes Rapidas",
+    "title": "Ações Rápidas",
     "createSurvey": "Criar Pesquisa",
     "viewResponses": "Ver Respostas",
     "exportData": "Exportar Dados",
     "inviteTeam": "Convidar Equipe",
-    "settings": "Configuracoes"
+    "settings": "Configurações"
   },
   "tips": {
     "title": "Dicas",
@@ -61,19 +61,19 @@
     },
     "tip2": {
       "title": "Compartilhe via QR Code",
-      "description": "Gere um QR Code para facilitar o acesso a pesquisa"
+      "description": "Gere um QR Code para facilitar o acesso à pesquisa"
     },
     "tip3": {
       "title": "Analise sentimentos",
-      "description": "Ative a analise de IA para entender o tom das respostas"
+      "description": "Ative a análise de IA para entender o tom das respostas"
     },
     "dismiss": "Dispensar"
   },
   "notifications": {
-    "title": "Notificacoes",
-    "empty": "Nenhuma notificacao",
+    "title": "Notificações",
+    "empty": "Nenhuma notificação",
     "markAllRead": "Marcar todas como lidas",
-    "settings": "Configurar notificacoes"
+    "settings": "Configurar notificações"
   },
   "sidebar": {
     "dashboard": "Dashboard",
@@ -81,16 +81,16 @@
     "responses": "Respostas",
     "analytics": "Analytics",
     "team": "Equipe",
-    "integrations": "Integracoes",
-    "settings": "Configuracoes",
+    "integrations": "Integrações",
+    "settings": "Configurações",
     "help": "Ajuda",
     "billing": "Faturamento"
   },
   "header": {
     "search": "Buscar...",
-    "notifications": "Notificacoes",
+    "notifications": "Notificações",
     "profile": "Perfil",
-    "settings": "Configuracoes",
+    "settings": "Configurações",
     "logout": "Sair",
     "upgrade": "Fazer Upgrade"
   },
@@ -100,8 +100,8 @@
     "action": "Criar Pesquisa"
   },
   "upgrade": {
-    "title": "Faca upgrade para desbloquear",
-    "features": "Acesse recursos avancados como analise de IA, exportacao ilimitada e mais.",
+    "title": "Faça upgrade para desbloquear",
+    "features": "Acesse recursos avançados como análise de IA, exportação ilimitada e mais.",
     "action": "Ver planos"
   }
 }

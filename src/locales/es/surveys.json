@@ -6,20 +6,20 @@
     "button": "Crear Encuesta",
     "withAI": "Crear con IA",
     "steps": {
-      "basics": "Informacion Basica",
+      "basics": "Información Básica",
       "questions": "Preguntas",
-      "settings": "Configuracion",
+      "settings": "Configuración",
       "preview": "Vista previa",
       "publish": "Publicar"
     }
   },
   "form": {
-    "title": "Titulo de la encuesta",
-    "titlePlaceholder": "Ej: Encuesta de Satisfaccion 2024",
-    "description": "Descripcion",
+    "title": "Título de la encuesta",
+    "titlePlaceholder": "Ej: Encuesta de Satisfacción 2024",
+    "description": "Descripción",
     "descriptionPlaceholder": "Describe el objetivo de tu encuesta...",
     "type": "Tipo de encuesta",
-    "category": "Categoria",
+    "category": "Categoría",
     "language": "Idioma de respuestas"
   },
   "types": {
@@ -29,7 +29,7 @@
     },
     "csat": {
       "name": "CSAT",
-      "description": "Customer Satisfaction - Mide la satisfaccion general"
+      "description": "Customer Satisfaction - Mide la satisfacción general"
     },
     "ces": {
       "name": "CES",
@@ -52,35 +52,35 @@
     "types": {
       "text": "Texto corto",
       "textarea": "Texto largo",
-      "rating": "Calificacion (1-5)",
+      "rating": "Calificación (1-5)",
       "nps": "NPS (0-10)",
-      "choice": "Opcion multiple",
-      "checkbox": "Casillas de verificacion",
+      "choice": "Opción múltiple",
+      "checkbox": "Casillas de verificación",
       "dropdown": "Lista desplegable",
       "matrix": "Matriz",
       "date": "Fecha",
-      "email": "Correo electronico",
-      "phone": "Telefono"
+      "email": "Correo electrónico",
+      "phone": "Teléfono"
     },
     "placeholders": {
-      "questionText": "Escribe tu pregunta aqui...",
-      "option": "Opcion {number}",
-      "addOption": "Agregar opcion"
+      "questionText": "Escribe tu pregunta aquí...",
+      "option": "Opción {number}",
+      "addOption": "Agregar opción"
     }
   },
   "settings": {
-    "title": "Configuracion",
+    "title": "Configuración",
     "general": "General",
     "responses": "Respuestas",
     "notifications": "Notificaciones",
     "advanced": "Avanzado",
     "anonymous": {
-      "label": "Respuestas anonimas",
-      "description": "No recopilar datos de identificacion de los encuestados"
+      "label": "Respuestas anónimas",
+      "description": "No recopilar datos de identificación de los encuestados"
     },
     "multipleResponses": {
-      "label": "Permitir multiples respuestas",
-      "description": "El mismo usuario puede responder mas de una vez"
+      "label": "Permitir múltiples respuestas",
+      "description": "El mismo usuario puede responder más de una vez"
     },
     "showProgress": {
       "label": "Mostrar progreso",
@@ -88,28 +88,28 @@
     },
     "randomizeQuestions": {
       "label": "Aleatorizar preguntas",
-      "description": "El orden de las preguntas sera diferente para cada encuestado"
+      "description": "El orden de las preguntas será diferente para cada encuestado"
     },
     "responseLimit": {
-      "label": "Limite de respuestas",
-      "placeholder": "Sin limite"
+      "label": "Límite de respuestas",
+      "placeholder": "Sin límite"
     },
     "expirationDate": {
-      "label": "Fecha de expiracion",
-      "placeholder": "Sin expiracion"
+      "label": "Fecha de expiración",
+      "placeholder": "Sin expiración"
     },
     "redirectUrl": {
-      "label": "URL de redireccion",
+      "label": "URL de redirección",
       "placeholder": "https://...",
-      "description": "Redirigir despues de completar"
+      "description": "Redirigir después de completar"
     },
     "notifyOnResponse": {
       "label": "Notificar nuevas respuestas",
       "description": "Recibir correo cuando haya nuevas respuestas"
     },
     "aiAnalysis": {
-      "label": "Analisis con IA",
-      "description": "Analizar sentimiento y generar insights automaticamente"
+      "label": "Análisis con IA",
+      "description": "Analizar sentimiento y generar insights automáticamente"
     }
   },
   "status": {
@@ -137,17 +137,17 @@
     "title": "Compartir Encuesta",
     "link": "Enlace de la encuesta",
     "copy": "Copiar enlace",
-    "copied": "Enlace copiado!",
-    "qrCode": "Codigo QR",
-    "downloadQR": "Descargar codigo QR",
+    "copied": "¡Enlace copiado!",
+    "qrCode": "Código QR",
+    "downloadQR": "Descargar código QR",
     "embed": "Incrustar",
-    "embedCode": "Codigo de incrustacion",
+    "embedCode": "Código de incrustación",
     "email": "Enviar por correo",
     "socialMedia": "Redes sociales"
   },
   "list": {
     "empty": {
-      "title": "Aun no hay encuestas",
+      "title": "Aún no hay encuestas",
       "description": "Crea tu primera encuesta y comienza a recopilar comentarios",
       "action": "Crear primera encuesta"
     },
@@ -158,10 +158,10 @@
       "closed": "Cerradas"
     },
     "sort": {
-      "newest": "Mas recientes",
-      "oldest": "Mas antiguas",
-      "mostResponses": "Mas respuestas",
-      "alphabetical": "Alfabetico"
+      "newest": "Más recientes",
+      "oldest": "Más antiguas",
+      "mostResponses": "Más respuestas",
+      "alphabetical": "Alfabético"
     },
     "search": "Buscar encuestas..."
   },
@@ -183,33 +183,33 @@
     }
   },
   "analytics": {
-    "title": "Analiticas",
+    "title": "Analíticas",
     "overview": "Resumen",
     "responseRate": "Tasa de respuesta",
-    "completionRate": "Tasa de finalizacion",
+    "completionRate": "Tasa de finalización",
     "averageTime": "Tiempo promedio",
     "sentiment": {
-      "title": "Analisis de Sentimiento",
+      "title": "Análisis de Sentimiento",
       "positive": "Positivo",
       "neutral": "Neutral",
       "negative": "Negativo"
     },
     "nps": {
-      "score": "Puntuacion NPS",
+      "score": "Puntuación NPS",
       "promoters": "Promotores",
       "passives": "Pasivos",
       "detractors": "Detractores"
     }
   },
   "delete": {
-    "title": "Eliminar encuesta?",
-    "message": "Esta accion no se puede deshacer. Todas las respuestas seran eliminadas permanentemente.",
-    "confirm": "Si, eliminar",
+    "title": "¿Eliminar encuesta?",
+    "message": "Esta acción no se puede deshacer. Todas las respuestas serán eliminadas permanentemente.",
+    "confirm": "Sí, eliminar",
     "cancel": "Cancelar"
   },
   "ai": {
     "generating": "Generando preguntas con IA...",
-    "generated": "Preguntas generadas exitosamente!",
+    "generated": "¡Preguntas generadas exitosamente!",
     "contextPlaceholder": "Describe el objetivo de la encuesta para que la IA genere preguntas relevantes...",
     "regenerate": "Regenerar",
     "accept": "Aceptar sugerencias",

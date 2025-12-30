@@ -51,7 +51,7 @@ export default function CompleteProfilePage() {
     setLoading(true);
 
     try {
-      // Aqui voce implementaria a atualizacao do perfil no Firebase
+      // Aqui você implementaria a atualizacao do perfil no Firebase
       // await updateUserProfile({ name, phone, company });
 
       // Simula delay de API

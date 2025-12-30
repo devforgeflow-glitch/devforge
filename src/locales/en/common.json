@@ -17,6 +17,218 @@
     "featuresSubtitle": "All the features an enterprise project needs",
     "techTitle": "Tech Stack",
     "techSubtitle": "Built with the best technologies in the market",
+    "trustBadges": {
+      "security": "Bank-level security",
+      "deploy": "5-second deploy",
+      "languages": "3 languages"
+    },
+    "techSection": {
+      "badge": "Tech Stack",
+      "description": "The same technologies used by Netflix, Uber, and Airbnb. Every choice has a reason - and we explain it simply.",
+      "seeDetails": "See detailed explanation of each technology"
+    },
+    "payments": {
+      "badge": "Payments",
+      "title": "Choose How to Receive",
+      "description": "We integrate with major payment gateways. You choose what makes the most sense for your business.",
+      "recommended": "Recommended",
+      "feeLabel": "Fee per sale",
+      "settlementLabel": "Settlement time",
+      "methodsLabel": "Available methods:",
+      "idealFor": "Ideal for:"
+    },
+    "adminPanel": {
+      "badge": "Admin Panel",
+      "title": "Full Control Without a Programmer",
+      "description": "Everything you need to manage is just a few clicks away. Change prices, send emails, view reports - without depending on anyone.",
+      "more": "And much more: Feature Flags, A/B Testing, Auditing, SEO...",
+      "seeAll": "See all features"
+    },
+    "differentials": {
+      "badge": "Differentials",
+      "title": "What's Included",
+      "description": "Features that other companies charge extra for. Here, most are already included."
+    },
+    "securitySection": {
+      "badge": "Security",
+      "title": "18 Layers of Protection",
+      "description": "Your system protected by bank-level technology. Each layer has a specific function - and we explain them all simply.",
+      "items": [
+        "End-to-end encryption",
+        "Protection against automated attacks",
+        "Validation of all data",
+        "24/7 monitoring",
+        "Automatic backup",
+        "LGPD compliance"
+      ],
+      "seeAll": "See all 18 layers",
+      "sslDesc": "Encrypted connection",
+      "firewallDesc": "Attack blocking",
+      "auditDesc": "Complete logs",
+      "lgpdDesc": "Protected data"
+    },
+    "testimonials": {
+      "badge": "Testimonials",
+      "title": "What Our Customers",
+      "titleHighlight": "Say",
+      "description": "Companies of all sizes trust our platform to collect feedback and improve their products.",
+      "joinThem": "Join Them"
+    },
+    "finalCta": {
+      "title": "Ready to Transform Your Business?",
+      "description": "Contact us and receive a personalized quote. Each project is unique and deserves a custom solution.",
+      "requestQuote": "Request Quote",
+      "seePlans": "See Plan Examples",
+      "footer": "Free quote • English support • Custom project"
+    },
+    "techStack": {
+      "nextjs": {
+        "category": "Framework",
+        "benefit": "Ultra-fast loading",
+        "description": "Your site loads in less than 1 second, improving sales and Google ranking."
+      },
+      "firebase": {
+        "category": "Database",
+        "benefit": "Always secure data",
+        "description": "Google infrastructure with automatic backup and bank-level security."
+      },
+      "redis": {
+        "category": "Performance",
+        "benefit": "10x faster system",
+        "description": "Ultra-fast memory that speeds up searches and protects against attacks."
+      },
+      "typescript": {
+        "category": "Quality",
+        "benefit": "Fewer bugs",
+        "description": "Automatically verified code, reducing errors by up to 15%."
+      },
+      "tailwind": {
+        "category": "Design",
+        "benefit": "Professional look",
+        "description": "Design system used by NASA and OpenAI for modern interfaces."
+      },
+      "jest": {
+        "category": "Testing",
+        "benefit": "Reliability",
+        "description": "Automatic tests that ensure nothing breaks after updates."
+      },
+      "ai": {
+        "category": "AI",
+        "benefit": "Smart automation",
+        "description": "Same technology as ChatGPT to automate tasks and generate insights."
+      },
+      "pwa": {
+        "category": "Mobile",
+        "benefit": "Works offline",
+        "description": "Your site becomes an app that works even without internet."
+      }
+    },
+    "paymentGateways": {
+      "mercadoPago": {
+        "fees": "4.99% + R$0.99",
+        "settlement": "14 days (or D+1 with fee)",
+        "bestFor": "Best for Brazilian market - highest consumer trust",
+        "description": "The most popular option in Brazil. Your customers already know and trust it."
+      },
+      "stripe": {
+        "fees": "3.99% + R$0.39",
+        "settlement": "2 business days",
+        "bestFor": "Best for international sales and modern checkout",
+        "description": "Used by Amazon, Google and Shopify. Most beautiful checkout in the market."
+      },
+      "pix": {
+        "fees": "0% (bank fee only)",
+        "settlement": "Instant",
+        "bestFor": "Best cost-benefit for cash sales",
+        "description": "No intermediaries - money goes directly to your account instantly."
+      },
+      "pagSeguro": {
+        "fees": "4.99% + R$0.40",
+        "settlement": "14 days (or D+1 with fee)",
+        "bestFor": "Best if you already use PagSeguro card machine",
+        "description": "Complete integration with physical card machines and in-person sales."
+      }
+    },
+    "adminFeatures": {
+      "dashboard": {
+        "title": "Complete Dashboard",
+        "description": "See sales, users and metrics in real-time. Beautiful charts anyone can understand.",
+        "preview": "Revenue, active users, conversions, all in one screen"
+      },
+      "users": {
+        "title": "User Management",
+        "description": "See who your customers are, when they bought, how much they spent. Block or unblock access with one click.",
+        "preview": "Customer list, filters, batch actions"
+      },
+      "plans": {
+        "title": "Plans and Pricing",
+        "description": "Create, edit or deactivate plans without needing a programmer. Change prices instantly.",
+        "preview": "Visual plan editor, discount coupons"
+      },
+      "emails": {
+        "title": "Automatic Emails",
+        "description": "Configure welcome emails, password recovery, payment notices - all from the panel.",
+        "preview": "Ready templates, visual editor"
+      },
+      "notifications": {
+        "title": "Notifications",
+        "description": "Send notices to all users or specific groups. Push, email or on the site itself.",
+        "preview": "Create notification, schedule sending"
+      },
+      "customization": {
+        "title": "Customization",
+        "description": "Change colors, logo, texts and images without touching code. Your site, your style.",
+        "preview": "Color editor, logo upload"
+      },
+      "content": {
+        "title": "Content",
+        "description": "Edit texts on any page, add FAQs, change testimonials - all from the panel.",
+        "preview": "Text editor, image gallery"
+      },
+      "reports": {
+        "title": "Reports",
+        "description": "Export data to Excel, see sales reports by period, compare months.",
+        "preview": "Charts, export, date filters"
+      },
+      "security": {
+        "title": "Security",
+        "description": "See suspicious login attempts, block IPs, enable two-factor authentication.",
+        "preview": "Security logs, settings"
+      }
+    },
+    "valueFeatures": {
+      "multiLanguage": {
+        "title": "Multi-language",
+        "description": "Your site in Portuguese, English and Spanish. Expand to new markets at no extra cost.",
+        "tag": "Included"
+      },
+      "pwa": {
+        "title": "Mobile App (PWA)",
+        "description": "Your customers install your site as an app on their phone. Works offline and sends notifications.",
+        "tag": "Included"
+      },
+      "security": {
+        "title": "18 Security Layers",
+        "description": "Bank-level protection against hackers, leaks and attacks.",
+        "tag": "Included"
+      },
+      "ai": {
+        "title": "AI Integration",
+        "description": "ChatGPT and Claude to automate service, generate content and analyze data.",
+        "tag": "Optional"
+      },
+      "whiteLabel": {
+        "title": "White-Label",
+        "description": "Remove our brand completely. Your domain, your brand, 100% yours.",
+        "tag": "Optional"
+      },
+      "api": {
+        "title": "Complete API",
+        "description": "Integrate with any external system - ERP, CRM, automations.",
+        "tag": "Included"
+      }
+    },
+    "example": "Example:",
     "ctaTitle": "Ready to start?",
     "ctaSubtitle": "Clone this repository and start your next project",
     "ctaButton": "View on GitHub",
@@ -109,6 +321,61 @@
     "maxLength": "Maximum {max} characters",
     "passwordMismatch": "Passwords do not match"
   },
+  "contact": {
+    "meta": {
+      "title": "Contact - DevForge",
+      "description": "Get in touch with us. We are ready to help with your project."
+    },
+    "hero": {
+      "badge": "Contact Us",
+      "title": "Let's Talk About",
+      "titleHighlight": "Your Project",
+      "description": "Have questions, need a quote or want to learn more about our services? Fill out the form below and we'll respond within 24 hours."
+    },
+    "info": {
+      "email": {
+        "title": "Email",
+        "value": "contact@devforge.com.br"
+      },
+      "responseTime": {
+        "title": "Response Time",
+        "value": "Up to 24 business hours"
+      },
+      "data": {
+        "title": "Your Data",
+        "value": "Protected by LGPD"
+      }
+    },
+    "form": {
+      "title": "Send Your Message",
+      "fields": {
+        "name": "Full Name",
+        "namePlaceholder": "Your name",
+        "email": "Email",
+        "emailPlaceholder": "your@email.com",
+        "phone": "Phone",
+        "phonePlaceholder": "(11) 99999-9999",
+        "company": "Company",
+        "companyPlaceholder": "Your company name",
+        "subject": "Subject",
+        "message": "Message",
+        "messagePlaceholder": "Describe how we can help..."
+      },
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "privacyNote": "By submitting, you agree to our",
+      "privacyLink": "Privacy Policy"
+    },
+    "success": {
+      "title": "Message Sent!",
+      "description": "We received your message and will respond soon. Check your email for confirmation.",
+      "newMessage": "Send New Message"
+    },
+    "error": {
+      "title": "Error sending",
+      "generic": "Error sending message. Please try again."
+    }
+  },
   "footer": {
     "rights": "All rights reserved",
     "privacy": "Privacy",
@@ -122,7 +389,270 @@
     "about": "About",
     "contact": "Contact"
   },
+  "recursos": {
+    "meta": {
+      "title": "Features - DevForge",
+      "description": "Discover all features and functionalities of the DevForge platform."
+    },
+    "hero": {
+      "badge": "Features",
+      "title": "Powerful",
+      "titleHighlight": "Features",
+      "description": "A complete platform to create surveys, collect feedback and transform data into actionable insights."
+    },
+    "items": {
+      "surveys": {
+        "title": "Survey Creation",
+        "description": "Create custom surveys with various question types: multiple choice, scale, NPS, free text and much more.",
+        "features": ["Intuitive visual editor", "Ready templates", "Conditional logic", "Full customization"]
+      },
+      "analytics": {
+        "title": "Advanced Analytics",
+        "description": "Complete dashboard with real-time metrics, interactive charts and automatic insights.",
+        "features": ["Real-time charts", "Data export", "Advanced filters", "Automatic reports"]
+      },
+      "respondents": {
+        "title": "Respondent Management",
+        "description": "Manage your contact base, segment audiences and track response rates.",
+        "features": ["Audience segmentation", "Response history", "Tags and categories", "Bulk import"]
+      },
+      "automations": {
+        "title": "Automations",
+        "description": "Configure automatic actions based on responses, like sending emails or webhooks.",
+        "features": ["Custom triggers", "Webhook integrations", "Automatic notifications", "Conditional flows"]
+      },
+      "security": {
+        "title": "Enterprise Security",
+        "description": "18 security layers, end-to-end encryption and LGPD compliance.",
+        "features": ["AES-256 encryption", "2FA authentication", "Audit logs", "LGPD compliance"]
+      },
+      "multilang": {
+        "title": "Multi-language",
+        "description": "Native support for multiple languages with automatic survey translation.",
+        "features": ["Portuguese, English, Spanish", "Automatic translation", "RTL support", "Date localization"]
+      },
+      "mobile": {
+        "title": "Mobile First",
+        "description": "Responsive design and PWA for access on any device, online or offline.",
+        "features": ["Installable app (PWA)", "Offline mode", "Push notifications", "Responsive design"]
+      },
+      "notifications": {
+        "title": "Notifications",
+        "description": "Stay informed with real-time notifications about responses and events.",
+        "features": ["Push notifications", "Email alerts", "Daily summaries", "Custom settings"]
+      },
+      "export": {
+        "title": "Export",
+        "description": "Export your data in various formats for external analysis or archiving.",
+        "features": ["CSV, Excel, PDF", "Scheduled export", "Data API", "Automatic backup"]
+      },
+      "whitelabel": {
+        "title": "White Label",
+        "description": "Customize appearance with your brand, colors and custom domain.",
+        "features": ["Custom logo", "Brand colors", "Custom domain", "Branding removal"]
+      },
+      "api": {
+        "title": "API and Integrations",
+        "description": "Complete RESTful API to integrate with your existing systems.",
+        "features": ["Documented API", "Webhooks", "Zapier", "SDK available"]
+      },
+      "access": {
+        "title": "Access Control",
+        "description": "Manage permissions with advanced RBAC and invite team members.",
+        "features": ["Custom roles", "Granular permissions", "Audit trail", "SSO available"]
+      }
+    },
+    "cta": {
+      "title": "Ready to get started?",
+      "description": "Create your free account and start collecting feedback from your customers in minutes.",
+      "primary": "Start for Free",
+      "secondary": "Talk to Sales"
+    }
+  },
+  "howItWasMade": {
+    "meta": {
+      "title": "How It Was Made - DevForge",
+      "description": "Discover the tech stack and architecture behind the DevForge platform."
+    },
+    "hero": {
+      "badge": "Technology",
+      "title": "Built with the",
+      "titleHighlight": "Best Technologies",
+      "description": "A modern, scalable and secure architecture. Developed following industry best practices."
+    },
+    "stack": {
+      "title": "Tech Stack",
+      "frontend": {
+        "title": "Frontend",
+        "description": "Modern and responsive interface"
+      },
+      "backend": {
+        "title": "Backend",
+        "description": "Robust and scalable API"
+      },
+      "security": {
+        "title": "Security",
+        "description": "18 layers of protection"
+      },
+      "ai": {
+        "title": "Artificial Intelligence",
+        "description": "Integrated AI for insights"
+      },
+      "i18n": {
+        "title": "Internationalization",
+        "description": "Native multi-language"
+      },
+      "devops": {
+        "title": "DevOps",
+        "description": "Deploy and monitoring"
+      }
+    },
+    "architecture": {
+      "title": "Architecture and Patterns",
+      "folders": {
+        "title": "Folder Architecture",
+        "items": [
+          "src/pages - Application routes (Pages Router)",
+          "src/api - Backend logic (services, middleware)",
+          "src/components - Reusable React components",
+          "src/hooks - Custom hooks",
+          "src/contexts - Global state providers",
+          "src/locales - Translation files"
+        ]
+      },
+      "patterns": {
+        "title": "Code Patterns",
+        "items": [
+          "Clean Code - Small and focused functions",
+          "SOLID - OO design principles",
+          "DRY - Avoid code duplication",
+          "Semantic Commits - feat, fix, docs, etc.",
+          "JSDoc - Complete inline documentation"
+        ]
+      },
+      "quality": {
+        "title": "Quality",
+        "items": [
+          "ESLint + Prettier - Linting and formatting",
+          "TypeScript strict - Rigorous typing",
+          "Storybook - Component documentation",
+          "Unit and integration tests",
+          "Monitored code coverage"
+        ]
+      },
+      "versioning": {
+        "title": "Versioning",
+        "items": [
+          "Git Flow - feature, develop, main branches",
+          "Pull Requests - Mandatory code review",
+          "Semantic Versioning - Version control",
+          "Automatic changelog"
+        ]
+      }
+    },
+    "sections": {
+      "stack": "Technology Stack",
+      "architecture": "Architecture and Patterns",
+      "numbers": "In Numbers"
+    },
+    "numbers": {
+      "security": {
+        "value": "18",
+        "label": "Security layers"
+      },
+      "components": {
+        "value": "50+",
+        "label": "UI Components"
+      },
+      "languages": {
+        "value": "3",
+        "label": "Languages supported"
+      },
+      "typescript": {
+        "value": "100%",
+        "label": "TypeScript"
+      }
+    },
+    "cta": {
+      "title": "Want a project like this?",
+      "description": "Get in touch to discuss how we can help build your next application with the same quality and attention to detail.",
+      "primary": "Request Quote",
+      "secondary": "View on GitHub"
+    }
+  },
   "auth": {
+    "login": {
+      "meta": {
+        "title": "Sign In | DevForge",
+        "description": "Sign in to the DevForge platform"
+      },
+      "title": "Welcome back",
+      "description": "Enter your credentials to continue",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "password": "Password",
+      "passwordPlaceholder": "Your password",
+      "forgotPassword": "Forgot password?",
+      "submit": "Sign In",
+      "noAccount": "Don't have an account?",
+      "createAccount": "Create account",
+      "demoMode": {
+        "title": "Demo Mode",
+        "description": "To test the platform, set up the demo users.",
+        "setupButton": "Set Up Test Users"
+      },
+      "errors": {
+        "fillAllFields": "Please fill in all fields"
+      }
+    },
+    "signup": {
+      "meta": {
+        "title": "Create Account | DevForge",
+        "description": "Create your account on the DevForge platform"
+      },
+      "title": "Create account",
+      "description": "Fill in your details to get started",
+      "fullName": "Full name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "password": "Password",
+      "passwordPlaceholder": "Minimum 6 characters",
+      "passwordHint": "Use at least 6 characters",
+      "confirmPassword": "Confirm password",
+      "confirmPasswordPlaceholder": "Repeat password",
+      "acceptTerms": "I accept the terms of use and privacy policy",
+      "submit": "Create account",
+      "hasAccount": "Already have an account?",
+      "login": "Sign In",
+      "firebaseNotConfigured": "Firebase not configured. Set up credentials to enable authentication.",
+      "errors": {
+        "fillAllFields": "Please fill in all fields",
+        "passwordsDoNotMatch": "Passwords do not match",
+        "passwordTooShort": "Password must be at least 6 characters",
+        "acceptTermsRequired": "You must accept the terms of use"
+      }
+    },
+    "forgotPassword": {
+      "meta": {
+        "title": "Reset Password | DevForge",
+        "description": "Reset your DevForge platform password"
+      },
+      "title": "Reset password",
+      "description": "Enter your email to receive recovery instructions",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "submit": "Send instructions",
+      "backToLogin": "Back to login",
+      "success": {
+        "title": "Email sent!",
+        "description": "Check your inbox and follow the instructions to reset your password."
+      },
+      "firebaseNotConfigured": "Firebase not configured. Set up credentials to enable authentication.",
+      "errors": {
+        "enterEmail": "Enter your email"
+      }
+    },
     "loginTitle": "Sign in to your account",
     "signupTitle": "Create new account",
     "email": "Email",
@@ -168,6 +698,542 @@
     "unauthorized": "You need to be logged in to access this page",
     "forbidden": "You don't have permission to access this page",
     "serverError": "Server error. Please try again later."
+  },
+  "dashboardPage": {
+    "meta": {
+      "title": "Dashboard | DevForge",
+      "description": "DevForge control panel"
+    },
+    "title": "Dashboard",
+    "description": "Overview of your surveys and metrics",
+    "welcome": "Hello, {name}!",
+    "welcomeDefault": "Hello, User!",
+    "summary": "Here's a summary of your surveys and metrics.",
+    "stats": {
+      "totalSurveys": {
+        "title": "Total Surveys",
+        "change": "+2 this month"
+      },
+      "responses": {
+        "title": "Responses Collected",
+        "change": "+180 this week"
+      },
+      "responseRate": {
+        "title": "Response Rate",
+        "change": "+5% vs previous"
+      },
+      "nps": {
+        "title": "Average NPS",
+        "change": "Excellent"
+      }
+    },
+    "actions": {
+      "newSurvey": "New Survey",
+      "exportData": "Export Data"
+    },
+    "recentSurveys": {
+      "title": "Recent Surveys",
+      "viewAll": "View all",
+      "createdAt": "Created on {date}",
+      "responses": "{count} responses"
+    },
+    "status": {
+      "active": "Active",
+      "draft": "Draft",
+      "closed": "Closed"
+    },
+    "tip": {
+      "title": "Tip: Use AI to create questions",
+      "description": "Our AI can generate relevant questions based on your survey's objective. Try it when creating a new survey!"
+    }
+  },
+  "settingsPage": {
+    "meta": {
+      "title": "Settings | DevForge"
+    },
+    "title": "Settings",
+    "description": "Manage your preferences and account",
+    "tabs": {
+      "profile": "Profile",
+      "notifications": "Notifications",
+      "security": "Security",
+      "billing": "Billing",
+      "preferences": "Preferences"
+    },
+    "profile": {
+      "defaultUser": "User",
+      "roleAdmin": "Administrator",
+      "roleUser": "User",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Your name",
+      "email": "Email",
+      "phone": "Phone",
+      "phonePlaceholder": "(11) 99999-9999",
+      "company": "Company",
+      "companyPlaceholder": "Company name"
+    },
+    "notifications": {
+      "email": {
+        "title": "Email Notifications",
+        "description": "Receive alerts about new responses"
+      },
+      "push": {
+        "title": "Push Notifications",
+        "description": "Browser notifications"
+      },
+      "weekly": {
+        "title": "Weekly Report",
+        "description": "Weekly summary of your surveys"
+      }
+    },
+    "security": {
+      "changePassword": {
+        "title": "Change Password",
+        "description": "Update your password regularly",
+        "currentPassword": "Current Password",
+        "currentPasswordPlaceholder": "Enter your current password",
+        "newPassword": "New Password",
+        "newPasswordPlaceholder": "Enter new password",
+        "confirmPassword": "Confirm New Password",
+        "confirmPasswordPlaceholder": "Confirm new password",
+        "button": "Change Password"
+      },
+      "twoFactor": {
+        "title": "Two-Factor Authentication",
+        "description": "Add an extra layer of security",
+        "button": "Configure"
+      }
+    },
+    "billing": {
+      "currentPlan": "Current Plan",
+      "free": "Free",
+      "freeDescription": "3 active surveys, 100 responses/month",
+      "upgrade": "Upgrade",
+      "demoMode": {
+        "title": "Demo Mode",
+        "description": "This is a demonstration. In production, you would manage your plan, payment methods, and invoice history here."
+      }
+    },
+    "preferences": {
+      "language": "Language",
+      "timezone": "Timezone",
+      "theme": {
+        "title": "Theme",
+        "description": "Theme can be changed in the top menu using the sun/moon button."
+      },
+      "languages": {
+        "pt-BR": "Português (Brasil)",
+        "en": "English",
+        "es": "Español"
+      },
+      "timezones": {
+        "sao_paulo": "Brasília (GMT-3)",
+        "new_york": "New York (GMT-5)",
+        "london": "London (GMT+0)"
+      }
+    },
+    "save": {
+      "button": "Save Changes",
+      "success": "Changes saved!"
+    }
+  },
+  "analyticsPage": {
+    "meta": {
+      "title": "Analytics | DevForge",
+      "description": "Analytics dashboard"
+    },
+    "title": "Analytics",
+    "description": "Metrics and charts dashboard",
+    "header": {
+      "title": "Analytics Dashboard",
+      "subtitle": "Overview of all your surveys"
+    },
+    "periods": {
+      "7d": "7 days",
+      "30d": "30 days",
+      "90d": "90 days",
+      "1y": "1 year"
+    },
+    "stats": {
+      "surveys": "Surveys",
+      "surveysActive": "{count} active",
+      "responses": "Responses",
+      "responsesChange": "+18% vs previous",
+      "averageNps": "Average NPS",
+      "npsExcellent": "Excellent",
+      "responseRate": "Response Rate",
+      "responseRateChange": "+5% vs previous",
+      "avgTime": "Average Time",
+      "avgTimeUnit": "min:sec",
+      "completion": "Completion",
+      "completionOf": "of surveys"
+    },
+    "charts": {
+      "responseTrend": "Response Trend",
+      "responsesTooltip": "{count} responses",
+      "npsDistribution": "NPS Distribution",
+      "netPromoterScore": "Net Promoter Score",
+      "promoters": "Promoters (9-10)",
+      "passives": "Passives (7-8)",
+      "detractors": "Detractors (0-6)"
+    },
+    "topSurveys": {
+      "title": "Top Surveys",
+      "badge": "By responses",
+      "responses": "{count} responses"
+    },
+    "recentResponses": {
+      "title": "Recent Responses",
+      "badge": "Live"
+    },
+    "aiInsights": {
+      "title": "AI Insights",
+      "positive": {
+        "label": "Positive trend:",
+        "text": "NPS increased 8 points in the last 30 days, indicating higher customer satisfaction."
+      },
+      "opportunity": {
+        "label": "Opportunity:",
+        "text": "24% of respondents are passive. Consider actions to convert them to promoters."
+      },
+      "highlight": {
+        "label": "Highlight:",
+        "text": "The \"Customer Service Evaluation\" survey has the highest NPS (81). Analyze what's working well."
+      }
+    }
+  },
+  "responsesPage": {
+    "meta": {
+      "title": "Responses | DevForge"
+    },
+    "title": "Responses",
+    "description": "View all responses from your surveys",
+    "stats": {
+      "total": "Total Responses",
+      "thisWeek": "This Week",
+      "avgRating": "Average Rating",
+      "avgTime": "Average Time"
+    },
+    "filters": {
+      "searchPlaceholder": "Search by survey or respondent...",
+      "allSentiments": "All Sentiments",
+      "positive": "Positive",
+      "neutral": "Neutral",
+      "negative": "Negative",
+      "export": "Export"
+    },
+    "list": {
+      "title": "Recent Responses",
+      "noResults": "No responses found",
+      "view": "View"
+    },
+    "sentiment": {
+      "positive": "Positive",
+      "neutral": "Neutral",
+      "negative": "Negative"
+    },
+    "modal": {
+      "title": "Response Details",
+      "answersCount": "Answers ({count})",
+      "close": "Close",
+      "export": "Export"
+    }
+  },
+  "surveysPage": {
+    "list": {
+      "meta": {
+        "title": "Surveys | DevForge",
+        "description": "Manage your surveys"
+      },
+      "title": "Surveys",
+      "description": "Manage and track your surveys",
+      "header": {
+        "title": "My Surveys",
+        "subtitle": "Manage and track your feedback surveys"
+      },
+      "newSurvey": "New Survey",
+      "searchPlaceholder": "Search surveys...",
+      "filters": {
+        "all": "All",
+        "active": "Active",
+        "draft": "Drafts",
+        "paused": "Paused",
+        "closed": "Closed"
+      },
+      "empty": {
+        "noResults": "No surveys found",
+        "noResultsDescription": "Try adjusting the filters or search terms.",
+        "noSurveys": "No surveys yet",
+        "noSurveysDescription": "Create your first survey to start collecting feedback."
+      },
+      "metrics": {
+        "total": "Total Surveys",
+        "active": "Active Surveys",
+        "responses": "Total Responses",
+        "average": "Average per Survey"
+      }
+    },
+    "new": {
+      "meta": {
+        "title": "New Survey | DevForge",
+        "description": "Create a new survey"
+      },
+      "title": "New Survey",
+      "description": "Create a survey to collect feedback",
+      "saveDraft": "Save Draft",
+      "publish": "Publish Survey",
+      "basicInfo": {
+        "title": "Basic Information",
+        "titleLabel": "Survey Title *",
+        "titlePlaceholder": "E.g.: Customer Satisfaction Survey 2024",
+        "descriptionLabel": "Description (optional)",
+        "descriptionPlaceholder": "Describe the survey's objective..."
+      },
+      "ai": {
+        "title": "Generate Questions with AI",
+        "description": "Describe your survey's objective and our AI will generate relevant questions.",
+        "placeholder": "E.g.: I want to measure customer satisfaction with our support...",
+        "generate": "Generate",
+        "generating": "Generating..."
+      },
+      "questions": {
+        "title": "Questions",
+        "add": "Add Question",
+        "empty": {
+          "title": "No questions yet",
+          "description": "Add questions manually or use AI to generate automatically.",
+          "addFirst": "Add First Question"
+        }
+      },
+      "settings": {
+        "title": "Settings",
+        "allowAnonymous": "Allow anonymous responses",
+        "requireEmail": "Require respondent email",
+        "showProgressBar": "Show progress bar"
+      },
+      "summary": {
+        "title": "Summary",
+        "surveyTitle": "Title",
+        "questions": "Questions",
+        "required": "Required"
+      },
+      "tips": {
+        "title": "Tips",
+        "tip1": "Short surveys have higher response rates",
+        "tip2": "Use NPS questions to measure loyalty",
+        "tip3": "Leave open text questions for insights"
+      },
+      "validation": {
+        "titleRequired": "Please enter a title for the survey.",
+        "questionsRequired": "Add at least one question to the survey.",
+        "saveError": "Error saving survey. Please try again."
+      }
+    },
+    "detail": {
+      "loading": "Loading...",
+      "status": {
+        "active": "Active",
+        "draft": "Draft",
+        "paused": "Paused",
+        "closed": "Closed"
+      },
+      "actions": {
+        "publish": "Publish",
+        "pause": "Pause",
+        "resume": "Resume",
+        "edit": "Edit"
+      },
+      "share": {
+        "title": "Share Link",
+        "description": "Share this link to collect responses",
+        "copy": "Copy",
+        "copied": "Copied!"
+      },
+      "metrics": {
+        "responses": "Responses",
+        "averageRating": "Average Rating",
+        "npsScore": "NPS Score",
+        "completionRate": "Completion Rate"
+      },
+      "questions": {
+        "title": "Questions",
+        "options": "options"
+      },
+      "questionTypes": {
+        "text": "Text",
+        "rating": "Rating",
+        "nps": "NPS",
+        "choice": "Multiple Choice",
+        "matrix": "Matrix",
+        "date": "Date"
+      },
+      "info": {
+        "title": "Information",
+        "createdAt": "Created at",
+        "publishedAt": "Published at",
+        "averageTime": "Average time"
+      },
+      "settingsCard": {
+        "title": "Settings",
+        "anonymousResponses": "Anonymous responses",
+        "emailRequired": "Email required",
+        "progressBar": "Progress bar"
+      },
+      "actionsCard": {
+        "title": "Actions",
+        "viewResponses": "View Responses",
+        "analytics": "Analytics",
+        "exportCsv": "Export CSV"
+      }
+    }
+  },
+  "adminPages": {
+    "whatsapp": {
+      "meta": { "title": "Configure WhatsApp - Admin - DevForge" },
+      "title": "Configure WhatsApp",
+      "description": "Manage floating button and social media",
+      "header": {
+        "title": "Contact Settings",
+        "subtitle": "Configure WhatsApp button and social media"
+      },
+      "whatsappSection": {
+        "title": "WhatsApp Floating Button",
+        "numberLabel": "WhatsApp Number",
+        "numberPlaceholder": "41999998888",
+        "numberHint": "Enter only numbers, including area code. Leave empty to disable the button.",
+        "messageLabel": "Default Message",
+        "messagePlaceholder": "Hi! I saw your website and would like more information...",
+        "agentLabel": "Agent Name",
+        "agentPlaceholder": "DevForge Support",
+        "welcomeLabel": "Welcome Message",
+        "welcomePlaceholder": "Hi! How can we help you?"
+      },
+      "preview": {
+        "title": "Link Preview",
+        "testLink": "Test link →"
+      },
+      "socialSection": {
+        "title": "Social Media",
+        "description": "Configure the links that will appear in the website footer. Leave empty to hide."
+      },
+      "actions": {
+        "restore": "Restore Default",
+        "save": "Save Settings",
+        "saving": "Saving..."
+      },
+      "success": "Settings saved successfully!"
+    },
+    "testimonials": {
+      "meta": { "title": "Manage Testimonials - Admin - DevForge" },
+      "title": "Manage Testimonials",
+      "description": "Moderate and manage testimonials",
+      "stats": {
+        "total": "Total",
+        "pending": "Pending",
+        "approved": "Approved",
+        "rejected": "Rejected",
+        "average": "Average"
+      },
+      "filters": {
+        "searchPlaceholder": "Search by name or content...",
+        "allStatus": "All Status"
+      },
+      "list": {
+        "anonymous": "Anonymous",
+        "noResults": "No testimonials found"
+      },
+      "detail": {
+        "visibleOnSite": "(Visible on site)",
+        "hidden": "(Hidden)",
+        "sentAt": "Sent at",
+        "actions": "Actions",
+        "approve": "Approve",
+        "reject": "Reject",
+        "hide": "Hide",
+        "show": "Show",
+        "delete": "Delete",
+        "deleteConfirm": "Are you sure you want to delete this testimonial?",
+        "selectToView": "Select a testimonial to view details"
+      }
+    },
+    "messages": {
+      "meta": { "title": "Contact Messages - Admin - DevForge" },
+      "title": "Contact Messages",
+      "description": "Manage received messages",
+      "stats": {
+        "total": "Total",
+        "new": "New",
+        "inProgress": "In Progress",
+        "resolved": "Resolved"
+      },
+      "filters": {
+        "searchPlaceholder": "Search by name, email or message...",
+        "allStatus": "All Status"
+      },
+      "list": {
+        "noResults": "No messages found"
+      },
+      "detail": {
+        "receivedAt": "Received at",
+        "replies": "Replies",
+        "emailSent": "Email sent",
+        "replySection": "Reply",
+        "replyPlaceholder": "Type your reply...",
+        "markResolved": "Mark Resolved",
+        "send": "Send",
+        "selectToView": "Select a message to view details"
+      },
+      "time": {
+        "now": "Now",
+        "hoursAgo": "{hours}h ago",
+        "daysAgo": "{days}d ago"
+      }
+    }
+  },
+  "testimonialPage": {
+    "meta": {
+      "title": "Submit Testimonial - DevForge"
+    },
+    "title": "Submit Testimonial",
+    "description": "Share your experience with us",
+    "header": {
+      "title": "Tell Us About Your Experience",
+      "description": "Your testimonial helps others learn about our work. After submission, it will be reviewed and published on our website."
+    },
+    "success": {
+      "title": "Testimonial Submitted!",
+      "description": "Thank you for sharing your experience. Your testimonial will be reviewed and published soon.",
+      "sendAnother": "Send Another Testimonial"
+    },
+    "form": {
+      "ratingLabel": "How do you rate our platform? *",
+      "ratingHint": "Click the stars to rate",
+      "testimonialLabel": "Your Testimonial *",
+      "testimonialPlaceholder": "Tell us about your experience using our platform. What did you like most? How did it help your business?",
+      "testimonialHint": "Minimum of 50 characters to ensure a complete testimonial.",
+      "optionalInfo": "Optional information",
+      "nameLabel": "Your Name",
+      "namePlaceholder": "How would you like to be identified",
+      "roleLabel": "Your Role",
+      "rolePlaceholder": "E.g.: CEO, Manager, etc.",
+      "companyLabel": "Your Company",
+      "companyPlaceholder": "Your company name",
+      "submit": "Submit Testimonial",
+      "submitting": "Submitting...",
+      "reviewNotice": "Your testimonial will be reviewed before being published on the website."
+    },
+    "rating": {
+      "select": "Select a rating",
+      "1": "Poor",
+      "2": "Fair",
+      "3": "Good",
+      "4": "Very good",
+      "5": "Excellent!"
+    },
+    "error": {
+      "title": "Error submitting",
+      "description": "An error occurred while submitting your testimonial. Please try again."
+    }
   },
   "feedback": {
     "title": "Feedback",
@@ -304,7 +1370,48 @@
         "Complete action audit",
         "Daily automatic backup",
         "LGPD and GDPR compliance"
-      ]
+      ],
+      "seeDetails": "See detailed explanation of each protection",
+      "clickToLearn": "Click each badge to understand what it means",
+      "technicalTerm": "Technical term:"
+    },
+    "highlightExplanations": {
+      "uptime": "The system stays online virtually all the time - less than 9 hours of maintenance per year",
+      "response": "Your actions are processed in less than the blink of an eye - ultra fast",
+      "encryption": "Your data is encoded with the same level of security used by banks",
+      "compliance": "We follow data protection law - your data, your rights"
+    },
+    "securityBadges": {
+      "ssl": {
+        "label": "SSL/TLS",
+        "simpleName": "Secure Connection",
+        "explanation": "The lock that appears in your browser. Ensures no one can intercept your data while browsing."
+      },
+      "waf": {
+        "label": "WAF",
+        "simpleName": "Web Firewall",
+        "explanation": "A digital \"guard\" that automatically blocks attack attempts before they reach the system."
+      },
+      "sast": {
+        "label": "SAST/DAST",
+        "simpleName": "Automatic Scanning",
+        "explanation": "Robots that constantly analyze the code looking for vulnerabilities, like an advanced antivirus."
+      },
+      "soc2": {
+        "label": "SOC 2",
+        "simpleName": "International Certification",
+        "explanation": "American certification that proves we follow the world's best security practices."
+      },
+      "lgpd": {
+        "label": "LGPD",
+        "simpleName": "Brazilian Law",
+        "explanation": "Compliance with Brazil's General Data Protection Law. You have full control over your data."
+      },
+      "gdpr": {
+        "label": "GDPR",
+        "simpleName": "European Law",
+        "explanation": "Compliance with the world's most stringent data protection law, from the European Union."
+      }
     }
   },
   "about": {
@@ -318,6 +1425,15 @@
       "titleHighlight": "best technologies",
       "description": "DevForge is an enterprise-grade template that demonstrates modern architecture, best practices, and AI integration."
     },
+    "transparency": "Total transparency: we explain every choice in simple terms",
+    "buttons": {
+      "demo": "Schedule Demo",
+      "resources": "View All Resources"
+    },
+    "whyTech": {
+      "title": "Why these technologies?",
+      "description": "Each technology was carefully chosen. We don't use what's cheapest or easiest - we use what the world's largest companies use. Below we explain each choice and show who else trusts these tools."
+    },
     "cta": {
       "github": "View on GitHub",
       "docs": "Documentation"
@@ -325,31 +1441,65 @@
     "techStack": {
       "title": "Tech Stack",
       "subtitle": "Modern and battle-tested technologies",
+      "intro": "We use the same technologies as companies like Netflix, Uber, and Airbnb. Below we explain what each one does and why it's the best option.",
       "frontend": "Frontend",
       "backend": "Backend",
       "ai": "Artificial Intelligence",
-      "devops": "DevOps"
+      "devops": "DevOps",
+      "categories": {
+        "frontend": "The visual part you see and interact with - buttons, forms, menus",
+        "backend": "The \"behind the scenes\" part that processes data and keeps everything running",
+        "ai": "Artificial Intelligence that automates tasks and generates insights",
+        "devops": "Tools that keep the system always online and working well"
+      }
+    },
+    "labels": {
+      "whyChosen": "Why we chose:",
+      "technicalTerm": "Technical term:",
+      "components": "Components:",
+      "phase": "Phase"
     },
     "architecture": {
       "title": "Layered Architecture",
       "subtitle": "Clear separation of responsibilities",
+      "intro": "The system is organized in layers, like a building. Each floor has a specific function, and together they form a solid structure.",
       "presentation": "Presentation",
       "apiRoutes": "API Routes",
       "services": "Services",
-      "infrastructure": "Infrastructure"
+      "infrastructure": "Infrastructure",
+      "layers": {
+        "presentation": "Everything you see on screen - menus, buttons, forms",
+        "apiRoutes": "Entry gates that verify and direct your requests",
+        "services": "The \"brain\" that processes your information and executes actions",
+        "infrastructure": "The solid foundation where your data is stored securely"
+      },
+      "components": {
+        "presentation": ["Pages", "Components", "Hooks", "Contexts"],
+        "apiRoutes": ["Middlewares", "Validators", "Controllers"],
+        "services": ["Surveys", "Responses", "Artificial Intelligence"],
+        "infrastructure": ["Database", "Cache", "Queues", "AI APIs"]
+      }
     },
     "security": {
       "badge": "Enterprise Grade",
       "title": "18 Security Layers",
-      "subtitle": "Complete protection across all application layers"
+      "subtitle": "Complete protection across all application layers",
+      "intro": "We don't use technical jargon to impress. Below we explain each protection in a way anyone can understand its real value."
     },
     "timeline": {
       "title": "Development Roadmap",
       "subtitle": "Built in 4 incremental phases",
+      "intro": "The project was built in phases, each adding more value. All phases have been completed successfully.",
       "phase1": "Core",
       "phase2": "Features",
       "phase3": "Product",
-      "phase4": "Polish"
+      "phase4": "Polish",
+      "items": {
+        "phase1": ["Dark Mode", "Multi-language", "Component Library"],
+        "phase2": ["Background Processing", "AI Integration", "Visual Customization"],
+        "phase3": ["Survey Creation", "Response Collection", "Analytics Dashboards", "Payments"],
+        "phase4": ["Resources Page", "Documentation", "Automated Tests", "Launch"]
+      }
     },
     "credits": {
       "title": "Developed with AI",
@@ -449,6 +1599,14 @@
       "q4": {
         "question": "Can I change plans later?",
         "answer": "Of course! You can upgrade or downgrade your plan at any time. Changes are applied immediately."
+      },
+      "q5": {
+        "question": "Is my data secure?",
+        "answer": "Absolutely! We use bank-level encryption (256-bit), firewall-protected servers, and comply with LGPD and GDPR. Your data is never shared with third parties."
+      },
+      "q6": {
+        "question": "How does support work?",
+        "answer": "Free plan: email support within 48h. Pro plan: priority support within 24h. Enterprise: dedicated account manager with response within 4h."
       }
     },
     "cta": {
@@ -458,7 +1616,28 @@
       "contact": "Talk to Sales"
     },
     "period": "month",
-    "currency": "$"
+    "currency": "$",
+    "disclaimer": {
+      "title": "This page is a demonstration model",
+      "description": "The plans and prices shown below are <strong>just examples</strong> of what we can develop for your business. <strong>They do not represent DevForge prices.</strong>",
+      "factors": "The actual investment for your project depends on factors such as:",
+      "factor1": "Project size and scope",
+      "factor2": "Level of technical complexity",
+      "factor3": "Business model and specific features",
+      "factor4": "Integration with existing systems",
+      "requestQuote": "Request Custom Quote"
+    },
+    "faqFooter": {
+      "notFound": "Didn't find your question?",
+      "contactUs": "Contact Us"
+    },
+    "ctaSection": {
+      "title": "Like what you see?",
+      "description": "These are just examples of what we can create for you. Contact us and receive a personalized quote for your project.",
+      "note": "Each project is unique - we analyze your needs and create a custom proposal for your business.",
+      "requestQuote": "Request Quote",
+      "knowMore": "Learn About DevForge"
+    }
   },
   "pwa": {
     "install": {
@@ -470,6 +1649,66 @@
     "offline": {
       "message": "You are offline. Some features may be limited.",
       "retry": "Try again"
+    }
+  },
+  "seedDemo": {
+    "meta": {
+      "title": "Configure Demo | DevForge"
+    },
+    "title": "Configure Demo Mode",
+    "description": "Create test users to explore the platform",
+    "success": {
+      "alreadyExists": "Users already configured!",
+      "created": "Users created successfully!"
+    },
+    "users": {
+      "admin": {
+        "title": "Admin",
+        "description": "Full access to admin panel"
+      },
+      "user": {
+        "title": "User",
+        "description": "Standard platform access"
+      },
+      "email": "Email:",
+      "password": "Password:"
+    },
+    "info": {
+      "description": "This page creates demo users in your browser so you can test all platform features.",
+      "note": "Users are stored only in your browser (localStorage). In production, use Firebase Authentication."
+    },
+    "actions": {
+      "goToLogin": "Go to Login",
+      "recreate": "Recreate Users",
+      "create": "Create Test Users",
+      "backHome": "Back to Home"
+    }
+  },
+  "surveyPublic": {
+    "thankYou": {
+      "title": "Thank you!",
+      "heading": "Thank you for your response!",
+      "message": "Your answers have been submitted successfully. Your opinion is very important to us.",
+      "backHome": "Back to home"
+    },
+    "progress": {
+      "question": "Question {current} of {total}"
+    },
+    "email": {
+      "label": "Your email (for contact)"
+    },
+    "navigation": {
+      "previous": "Previous",
+      "next": "Next",
+      "submit": "Submit",
+      "submitting": "Submitting..."
+    },
+    "footer": {
+      "poweredBy": "Powered by"
+    },
+    "errors": {
+      "submitFailed": "Error submitting responses. Please try again.",
+      "unsupportedType": "Unsupported question type"
     }
   }
 }

@@ -2,7 +2,8 @@ import { useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { AuthLayout } from '@/components/layout/AuthLayout';
+import { useTranslations } from 'next-intl';
+import { Layout } from '@/components/layout';
 import {
   Card,
   CardHeader,
@@ -18,9 +19,9 @@ import { QuestionEditor, type EditorQuestion } from '@/components/surveys/Questi
 import { ulid } from 'ulid';
 
 /**
- * Pagina de Criacao de Pesquisa
+ * Página de Criação de Pesquisa
  *
- * Formulario completo para criar uma nova pesquisa.
+ * Formulário completo para criar uma nova pesquisa.
  *
  * @version 1.0.0
  */
@@ -48,6 +49,7 @@ const DEFAULT_FORM_DATA: SurveyFormData = {
 };
 
 export default function NewSurveyPage() {
+  const t = useTranslations();
   const router = useRouter();
   const [formData, setFormData] = useState<SurveyFormData>(DEFAULT_FORM_DATA);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -116,7 +118,7 @@ export default function NewSurveyPage() {
 
     setIsGeneratingAI(true);
 
-    // Simula geracao de perguntas por IA
+    // Simula geração de perguntas por IA
     // TODO: Integrar com endpoint real de IA
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
@@ -124,27 +126,27 @@ export default function NewSurveyPage() {
       {
         id: ulid(),
         type: 'rating',
-        text: 'Como voce avalia sua experiencia geral?',
+        text: 'Como você avalia sua experiência geral?',
         required: true,
       },
       {
         id: ulid(),
         type: 'nps',
-        text: 'De 0 a 10, qual a probabilidade de voce nos recomendar?',
+        text: 'De 0 a 10, qual a probabilidade de você nos recomendar?',
         required: true,
       },
       {
         id: ulid(),
         type: 'choice',
-        text: 'Qual aspecto voce mais valoriza?',
-        options: ['Qualidade', 'Preco', 'Atendimento', 'Rapidez'],
+        text: 'Qual aspecto você mais valoriza?',
+        options: ['Qualidade', 'Preço', 'Atendimento', 'Rapidez'],
         required: false,
       },
       {
         id: ulid(),
         type: 'text',
         text: 'O que podemos melhorar?',
-        description: 'Sua opiniao e muito importante para nos.',
+        description: 'Sua opinião é muito importante para nós.',
         required: false,
       },
     ];
@@ -162,12 +164,12 @@ export default function NewSurveyPage() {
    */
   const handleSubmit = async (asDraft: boolean = false) => {
     if (!formData.title.trim()) {
-      alert('Por favor, informe um titulo para a pesquisa.');
+      alert(t('surveysPage.new.validation.titleRequired'));
       return;
     }
 
     if (formData.questions.length === 0) {
-      alert('Adicione pelo menos uma pergunta a pesquisa.');
+      alert(t('surveysPage.new.validation.questionsRequired'));
       return;
     }
 
@@ -184,7 +186,7 @@ export default function NewSurveyPage() {
       router.push('/app/surveys');
     } catch (error) {
       console.error('Erro ao salvar pesquisa:', error);
-      alert('Erro ao salvar pesquisa. Tente novamente.');
+      alert(t('surveysPage.new.validation.saveError'));
     } finally {
       setIsSubmitting(false);
     }
@@ -193,11 +195,12 @@ export default function NewSurveyPage() {
   return (
     <>
       <Head>
-        <title>Nova Pesquisa | DevForge</title>
-        <meta name="description" content="Criar uma nova pesquisa" />
+        <title>{t('surveysPage.new.meta.title')}</title>
+        <meta name="description" content={t('surveysPage.new.meta.description')} />
       </Head>
 
-      <AuthLayout title="Nova Pesquisa">
+      <Layout title={t('surveysPage.new.title')} description={t('surveysPage.new.description')}>
+        <div className="container-app py-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-4">
@@ -210,9 +213,9 @@ export default function NewSurveyPage() {
               </svg>
             </Link>
             <div>
-              <h2 className="text-2xl font-bold">Nova Pesquisa</h2>
+              <h2 className="text-2xl font-bold">{t('surveysPage.new.title')}</h2>
               <p className="text-muted-foreground">
-                Crie uma pesquisa para coletar feedbacks
+                {t('surveysPage.new.description')}
               </p>
             </div>
           </div>
@@ -223,43 +226,43 @@ export default function NewSurveyPage() {
               onClick={() => handleSubmit(true)}
               disabled={isSubmitting}
             >
-              Salvar Rascunho
+              {t('surveysPage.new.saveDraft')}
             </Button>
             <Button onClick={() => handleSubmit(false)} disabled={isSubmitting}>
               {isSubmitting ? <Spinner size="sm" className="mr-2" /> : null}
-              Publicar Pesquisa
+              {t('surveysPage.new.publish')}
             </Button>
           </div>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-3">
-          {/* Coluna principal - Formulario */}
+          {/* Coluna principal - Formulário */}
           <div className="lg:col-span-2 space-y-6">
-            {/* Informacoes basicas */}
+            {/* Informações básicas */}
             <Card>
               <CardHeader>
-                <CardTitle>Informacoes Basicas</CardTitle>
+                <CardTitle>{t('surveysPage.new.basicInfo.title')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
                   <label className="text-sm font-medium mb-1.5 block">
-                    Titulo da Pesquisa *
+                    {t('surveysPage.new.basicInfo.titleLabel')}
                   </label>
                   <Input
                     value={formData.title}
                     onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                    placeholder="Ex: Pesquisa de Satisfacao 2024"
+                    placeholder={t('surveysPage.new.basicInfo.titlePlaceholder')}
                   />
                 </div>
 
                 <div>
                   <label className="text-sm font-medium mb-1.5 block">
-                    Descricao (opcional)
+                    {t('surveysPage.new.basicInfo.descriptionLabel')}
                   </label>
                   <Textarea
                     value={formData.description}
                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                    placeholder="Descreva o objetivo da pesquisa..."
+                    placeholder={t('surveysPage.new.basicInfo.descriptionPlaceholder')}
                     rows={3}
                   />
                 </div>
@@ -273,18 +276,18 @@ export default function NewSurveyPage() {
                   <svg className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                   </svg>
-                  Gerar Perguntas com IA
+                  {t('surveysPage.new.ai.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Descreva o objetivo da sua pesquisa e nossa IA gerara perguntas relevantes.
+                  {t('surveysPage.new.ai.description')}
                 </p>
                 <div className="flex gap-2">
                   <Input
                     value={aiContext}
                     onChange={(e) => setAiContext(e.target.value)}
-                    placeholder="Ex: Quero medir a satisfacao dos clientes com nosso suporte..."
+                    placeholder={t('surveysPage.new.ai.placeholder')}
                     className="flex-1"
                   />
                   <Button
@@ -294,10 +297,10 @@ export default function NewSurveyPage() {
                     {isGeneratingAI ? (
                       <>
                         <Spinner size="sm" className="mr-2" />
-                        Gerando...
+                        {t('surveysPage.new.ai.generating')}
                       </>
                     ) : (
-                      'Gerar'
+                      t('surveysPage.new.ai.generate')
                     )}
                   </Button>
                 </div>
@@ -308,13 +311,13 @@ export default function NewSurveyPage() {
             <div>
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold">
-                  Perguntas ({formData.questions.length})
+                  {t('surveysPage.new.questions.title')} ({formData.questions.length})
                 </h3>
                 <Button variant="outline" onClick={handleAddQuestion}>
                   <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                   </svg>
-                  Adicionar Pergunta
+                  {t('surveysPage.new.questions.add')}
                 </Button>
               </div>
 
@@ -326,12 +329,12 @@ export default function NewSurveyPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
-                    <h4 className="font-medium mb-2">Nenhuma pergunta ainda</h4>
+                    <h4 className="font-medium mb-2">{t('surveysPage.new.questions.empty.title')}</h4>
                     <p className="text-sm text-muted-foreground mb-4">
-                      Adicione perguntas manualmente ou use a IA para gerar automaticamente.
+                      {t('surveysPage.new.questions.empty.description')}
                     </p>
                     <Button variant="outline" onClick={handleAddQuestion}>
-                      Adicionar Primeira Pergunta
+                      {t('surveysPage.new.questions.empty.addFirst')}
                     </Button>
                   </CardContent>
                 </Card>
@@ -357,11 +360,11 @@ export default function NewSurveyPage() {
             </div>
           </div>
 
-          {/* Coluna lateral - Configuracoes */}
+          {/* Coluna lateral - Configurações */}
           <div className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Configuracoes</CardTitle>
+                <CardTitle>{t('surveysPage.new.settings.title')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <Checkbox
@@ -372,7 +375,7 @@ export default function NewSurveyPage() {
                       settings: { ...formData.settings, allowAnonymous: e.target.checked },
                     })
                   }
-                  label="Permitir respostas anonimas"
+                  label={t('surveysPage.new.settings.allowAnonymous')}
                 />
 
                 <Checkbox
@@ -383,7 +386,7 @@ export default function NewSurveyPage() {
                       settings: { ...formData.settings, requireEmail: e.target.checked },
                     })
                   }
-                  label="Exigir email do respondente"
+                  label={t('surveysPage.new.settings.requireEmail')}
                 />
 
                 <Checkbox
@@ -394,7 +397,7 @@ export default function NewSurveyPage() {
                       settings: { ...formData.settings, showProgressBar: e.target.checked },
                     })
                   }
-                  label="Mostrar barra de progresso"
+                  label={t('surveysPage.new.settings.showProgressBar')}
                 />
               </CardContent>
             </Card>
@@ -402,22 +405,22 @@ export default function NewSurveyPage() {
             {/* Preview */}
             <Card>
               <CardHeader>
-                <CardTitle>Resumo</CardTitle>
+                <CardTitle>{t('surveysPage.new.summary.title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <dl className="space-y-3 text-sm">
                   <div className="flex justify-between">
-                    <dt className="text-muted-foreground">Titulo</dt>
+                    <dt className="text-muted-foreground">{t('surveysPage.new.summary.surveyTitle')}</dt>
                     <dd className="font-medium truncate max-w-[150px]">
                       {formData.title || '-'}
                     </dd>
                   </div>
                   <div className="flex justify-between">
-                    <dt className="text-muted-foreground">Perguntas</dt>
+                    <dt className="text-muted-foreground">{t('surveysPage.new.summary.questions')}</dt>
                     <dd className="font-medium">{formData.questions.length}</dd>
                   </div>
                   <div className="flex justify-between">
-                    <dt className="text-muted-foreground">Obrigatorias</dt>
+                    <dt className="text-muted-foreground">{t('surveysPage.new.summary.required')}</dt>
                     <dd className="font-medium">
                       {formData.questions.filter((q) => q.required).length}
                     </dd>
@@ -433,23 +436,24 @@ export default function NewSurveyPage() {
                   <svg className="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  Dicas
+                  {t('surveysPage.new.tips.title')}
                 </h4>
                 <ul className="text-sm text-muted-foreground space-y-2">
-                  <li>• Pesquisas curtas tem maior taxa de resposta</li>
-                  <li>• Use perguntas NPS para medir fidelidade</li>
-                  <li>• Deixe perguntas de texto abertas para insights</li>
+                  <li>• {t('surveysPage.new.tips.tip1')}</li>
+                  <li>• {t('surveysPage.new.tips.tip2')}</li>
+                  <li>• {t('surveysPage.new.tips.tip3')}</li>
                 </ul>
               </CardContent>
             </Card>
           </div>
         </div>
-      </AuthLayout>
+        </div>
+      </Layout>
     </>
   );
 }
 
-// Carregar traducoes
+// Carregar traduções
 export async function getStaticProps({ locale }: { locale?: string }) {
   const { loadMessages } = await import('@/i18n');
   return {

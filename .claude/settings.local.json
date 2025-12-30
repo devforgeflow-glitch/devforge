@@ -23,7 +23,11 @@
       "Bash(npx eslint:*)",
       "Bash(npx storybook build:*)",
       "WebFetch(domain:devforge-q0a54wpgp-devf-orge.vercel.app)",
-      "WebFetch(domain:devforge-i0ybm7769-devf-orge.vercel.app)"
+      "WebFetch(domain:devforge-i0ybm7769-devf-orge.vercel.app)",
+      "Bash(dir:*)",
+      "Bash(xargs:*)",
+      "Bash(npx storybook@latest init:*)",
+      "Bash(grep:*)"
     ]
   }
 }

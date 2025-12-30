@@ -32,7 +32,7 @@ export default function LoginPage() {
 
     // Validacao basica
     if (!email || !password) {
-      setLocalError('Preencha todos os campos');
+      setLocalError(t('auth.login.errors.fillAllFields'));
       return;
     }
 
@@ -51,8 +51,8 @@ export default function LoginPage() {
   return (
     <>
       <Head>
-        <title>Entrar | DevForge</title>
-        <meta name="description" content="Faca login na plataforma DevForge" />
+        <title>{t('auth.login.meta.title')}</title>
+        <meta name="description" content={t('auth.login.meta.description')} />
       </Head>
 
       <div className="min-h-screen flex items-center justify-center bg-background px-4 py-12">
@@ -73,15 +73,24 @@ export default function LoginPage() {
                 />
               </svg>
             </div>
-            <CardTitle className="text-2xl">Bem-vindo de volta</CardTitle>
-            <CardDescription>Entre com suas credenciais para continuar</CardDescription>
+            <CardTitle className="text-2xl">{t('auth.login.title')}</CardTitle>
+            <CardDescription>{t('auth.login.description')}</CardDescription>
           </CardHeader>
 
           <form onSubmit={handleSubmit}>
             <CardContent className="space-y-4">
               {!isConfigured && (
-                <div className="rounded-lg bg-yellow-50 dark:bg-yellow-900/20 p-4 text-sm text-yellow-800 dark:text-yellow-200">
-                  Firebase nao configurado. Configure as credenciais para habilitar autenticacao.
+                <div className="rounded-lg bg-blue-50 dark:bg-blue-900/20 p-4 text-sm text-blue-800 dark:text-blue-200">
+                  <p className="font-semibold mb-2">{t('auth.login.demoMode.title')}</p>
+                  <p className="mb-3">
+                    {t('auth.login.demoMode.description')}
+                  </p>
+                  <Link
+                    href="/seed-demo"
+                    className="inline-flex items-center gap-2 px-3 py-2 bg-blue-600 text-white text-xs font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    {t('auth.login.demoMode.setupButton')}
+                  </Link>
                 </div>
               )}
 
@@ -92,26 +101,26 @@ export default function LoginPage() {
               )}
 
               <Input
-                label="Email"
+                label={t('auth.login.email')}
                 type="email"
-                placeholder="seu@email.com"
+                placeholder={t('auth.login.emailPlaceholder')}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                disabled={loading || !isConfigured}
+                disabled={loading}
                 autoComplete="email"
               />
 
               <div className="space-y-1">
                 <label className="block text-sm font-medium text-foreground">
-                  Senha
+                  {t('auth.login.password')}
                 </label>
                 <div className="relative">
                   <input
                     type={showPassword ? 'text' : 'password'}
-                    placeholder="Sua senha"
+                    placeholder={t('auth.login.passwordPlaceholder')}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    disabled={loading || !isConfigured}
+                    disabled={loading}
                     autoComplete="current-password"
                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 pr-10 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                   />
@@ -131,7 +140,7 @@ export default function LoginPage() {
                   href="/auth/forgot-password"
                   className="text-sm text-primary hover:underline"
                 >
-                  Esqueceu a senha?
+                  {t('auth.login.forgotPassword')}
                 </Link>
               </div>
             </CardContent>
@@ -141,15 +150,14 @@ export default function LoginPage() {
                 type="submit"
                 className="w-full"
                 isLoading={loading}
-                disabled={!isConfigured}
               >
-                Entrar
+                {t('auth.login.submit')}
               </Button>
 
               <p className="text-center text-sm text-muted-foreground">
-                Nao tem uma conta?{' '}
+                {t('auth.login.noAccount')}{' '}
                 <Link href="/auth/signup" className="text-primary hover:underline">
-                  Criar conta
+                  {t('auth.login.createAccount')}
                 </Link>
               </p>
             </CardFooter>

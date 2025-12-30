@@ -2,7 +2,8 @@ import { useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { AuthLayout } from '@/components/layout/AuthLayout';
+import { useTranslations } from 'next-intl';
+import { Layout } from '@/components/layout';
 import {
   Card,
   CardHeader,
@@ -41,19 +42,19 @@ const MOCK_SURVEY = {
     {
       id: 'q1',
       type: 'rating' as QuestionType,
-      text: 'Como voce avalia sua experiencia geral?',
+      text: 'Como você avalia sua experiencia geral?',
       required: true,
     },
     {
       id: 'q2',
       type: 'nps' as QuestionType,
-      text: 'De 0 a 10, qual a probabilidade de voce nos recomendar?',
+      text: 'De 0 a 10, qual a probabilidade de você nos recomendar?',
       required: true,
     },
     {
       id: 'q3',
       type: 'choice' as QuestionType,
-      text: 'Qual aspecto voce mais valoriza?',
+      text: 'Qual aspecto você mais valoriza?',
       options: ['Qualidade', 'Preco', 'Atendimento', 'Rapidez'],
       required: false,
     },
@@ -76,41 +77,28 @@ const MOCK_METRICS = {
   responsesByDay: [12, 18, 25, 32, 28, 45, 38, 47],
 };
 
-function getStatusConfig(status: SurveyStatus) {
-  switch (status) {
-    case 'active':
-      return { variant: 'success' as const, text: 'Ativo' };
-    case 'draft':
-      return { variant: 'secondary' as const, text: 'Rascunho' };
-    case 'paused':
-      return { variant: 'warning' as const, text: 'Pausado' };
-    case 'closed':
-      return { variant: 'default' as const, text: 'Encerrado' };
-  }
-}
+const STATUS_VARIANTS: Record<SurveyStatus, 'success' | 'secondary' | 'warning' | 'default'> = {
+  active: 'success',
+  draft: 'secondary',
+  paused: 'warning',
+  closed: 'default',
+};
 
-function getQuestionTypeLabel(type: QuestionType) {
-  const labels: Record<QuestionType, string> = {
-    text: 'Texto',
-    rating: 'Avaliacao',
-    nps: 'NPS',
-    choice: 'Multipla Escolha',
-    matrix: 'Matriz',
-    date: 'Data',
-  };
-  return labels[type] || type;
-}
+const QUESTION_TYPE_KEYS: QuestionType[] = ['text', 'rating', 'nps', 'choice', 'matrix', 'date'];
 
 export default function SurveyDetailPage() {
+  const t = useTranslations();
   const router = useRouter();
   const { id } = router.query;
 
   const [isLoading] = useState(false);
   const [copied, setCopied] = useState(false);
 
+  const getStatusText = (status: SurveyStatus) => t(`surveysPage.detail.status.${status}`);
+  const getQuestionTypeLabel = (type: QuestionType) => t(`surveysPage.detail.questionTypes.${type}`);
+
   const survey = MOCK_SURVEY; // TODO: Buscar via API
   const metrics = MOCK_METRICS;
-  const statusConfig = getStatusConfig(survey.status);
 
   const shareUrl = `${typeof window !== 'undefined' ? window.location.origin : ''}/s/${id}`;
 
@@ -127,11 +115,13 @@ export default function SurveyDetailPage() {
 
   if (isLoading) {
     return (
-      <AuthLayout title="Carregando...">
-        <div className="flex items-center justify-center py-16">
-          <Spinner size="lg" />
+      <Layout title={t('surveysPage.detail.loading')}>
+        <div className="container-app py-8">
+          <div className="flex items-center justify-center py-16">
+            <Spinner size="lg" />
+          </div>
         </div>
-      </AuthLayout>
+      </Layout>
     );
   }
 
@@ -142,7 +132,8 @@ export default function SurveyDetailPage() {
         <meta name="description" content={survey.description} />
       </Head>
 
-      <AuthLayout title={survey.title}>
+      <Layout title={survey.title} description={survey.description}>
+        <div className="container-app py-8">
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-6">
           <div className="flex items-start gap-4">
@@ -157,7 +148,7 @@ export default function SurveyDetailPage() {
             <div>
               <div className="flex items-center gap-3 mb-1">
                 <h2 className="text-2xl font-bold">{survey.title}</h2>
-                <Badge variant={statusConfig.variant}>{statusConfig.text}</Badge>
+                <Badge variant={STATUS_VARIANTS[survey.status]}>{getStatusText(survey.status)}</Badge>
               </div>
               <p className="text-muted-foreground">{survey.description}</p>
             </div>
@@ -166,17 +157,17 @@ export default function SurveyDetailPage() {
           <div className="flex gap-2">
             {survey.status === 'draft' && (
               <Button onClick={() => handleStatusChange('active')}>
-                Publicar
+                {t('surveysPage.detail.actions.publish')}
               </Button>
             )}
             {survey.status === 'active' && (
               <Button variant="outline" onClick={() => handleStatusChange('paused')}>
-                Pausar
+                {t('surveysPage.detail.actions.pause')}
               </Button>
             )}
             {survey.status === 'paused' && (
               <Button onClick={() => handleStatusChange('active')}>
-                Retomar
+                {t('surveysPage.detail.actions.resume')}
               </Button>
             )}
             <Link href={`/app/surveys/${id}/edit`}>
@@ -184,7 +175,7 @@ export default function SurveyDetailPage() {
                 <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                 </svg>
-                Editar
+                {t('surveysPage.detail.actions.edit')}
               </Button>
             </Link>
           </div>
@@ -196,9 +187,9 @@ export default function SurveyDetailPage() {
             <CardContent className="py-4">
               <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                 <div className="flex-1">
-                  <p className="font-medium mb-1">Link de compartilhamento</p>
+                  <p className="font-medium mb-1">{t('surveysPage.detail.share.title')}</p>
                   <p className="text-sm text-muted-foreground">
-                    Compartilhe este link para coletar respostas
+                    {t('surveysPage.detail.share.description')}
                   </p>
                 </div>
                 <div className="flex gap-2">
@@ -208,7 +199,7 @@ export default function SurveyDetailPage() {
                     className="w-64"
                   />
                   <Button onClick={handleCopyLink}>
-                    {copied ? 'Copiado!' : 'Copiar'}
+                    {copied ? t('surveysPage.detail.share.copied') : t('surveysPage.detail.share.copy')}
                   </Button>
                 </div>
               </div>
@@ -220,25 +211,25 @@ export default function SurveyDetailPage() {
         <div className="grid gap-4 md:grid-cols-4 mb-6">
           <Card>
             <CardContent className="pt-6">
-              <p className="text-sm text-muted-foreground">Respostas</p>
+              <p className="text-sm text-muted-foreground">{t('surveysPage.detail.metrics.responses')}</p>
               <p className="text-3xl font-bold">{survey.responseCount}</p>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="pt-6">
-              <p className="text-sm text-muted-foreground">Avaliacao Media</p>
+              <p className="text-sm text-muted-foreground">{t('surveysPage.detail.metrics.averageRating')}</p>
               <p className="text-3xl font-bold">{metrics.averageRating}/5</p>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="pt-6">
-              <p className="text-sm text-muted-foreground">NPS Score</p>
+              <p className="text-sm text-muted-foreground">{t('surveysPage.detail.metrics.npsScore')}</p>
               <p className="text-3xl font-bold text-primary">{metrics.npsScore}</p>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="pt-6">
-              <p className="text-sm text-muted-foreground">Taxa de Conclusao</p>
+              <p className="text-sm text-muted-foreground">{t('surveysPage.detail.metrics.completionRate')}</p>
               <p className="text-3xl font-bold">{metrics.completionRate}%</p>
             </CardContent>
           </Card>
@@ -249,7 +240,7 @@ export default function SurveyDetailPage() {
           <div className="lg:col-span-2">
             <Card>
               <CardHeader>
-                <CardTitle>Perguntas ({survey.questions.length})</CardTitle>
+                <CardTitle>{t('surveysPage.detail.questions.title')} ({survey.questions.length})</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
@@ -274,7 +265,7 @@ export default function SurveyDetailPage() {
                           </Badge>
                           {question.options && (
                             <span className="text-xs text-muted-foreground">
-                              {question.options.length} opcoes
+                              {question.options.length} {t('surveysPage.detail.questions.options')}
                             </span>
                           )}
                         </div>
@@ -291,22 +282,22 @@ export default function SurveyDetailPage() {
             {/* Informacoes */}
             <Card>
               <CardHeader>
-                <CardTitle>Informacoes</CardTitle>
+                <CardTitle>{t('surveysPage.detail.info.title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <dl className="space-y-3 text-sm">
                   <div className="flex justify-between">
-                    <dt className="text-muted-foreground">Criado em</dt>
-                    <dd>{new Date(survey.createdAt).toLocaleDateString('pt-BR')}</dd>
+                    <dt className="text-muted-foreground">{t('surveysPage.detail.info.createdAt')}</dt>
+                    <dd>{new Date(survey.createdAt).toLocaleDateString(router.locale || 'pt-BR')}</dd>
                   </div>
                   {survey.publishedAt && (
                     <div className="flex justify-between">
-                      <dt className="text-muted-foreground">Publicado em</dt>
-                      <dd>{new Date(survey.publishedAt).toLocaleDateString('pt-BR')}</dd>
+                      <dt className="text-muted-foreground">{t('surveysPage.detail.info.publishedAt')}</dt>
+                      <dd>{new Date(survey.publishedAt).toLocaleDateString(router.locale || 'pt-BR')}</dd>
                     </div>
                   )}
                   <div className="flex justify-between">
-                    <dt className="text-muted-foreground">Tempo medio</dt>
+                    <dt className="text-muted-foreground">{t('surveysPage.detail.info.averageTime')}</dt>
                     <dd>{metrics.averageTime}</dd>
                   </div>
                 </dl>
@@ -316,7 +307,7 @@ export default function SurveyDetailPage() {
             {/* Configuracoes */}
             <Card>
               <CardHeader>
-                <CardTitle>Configuracoes</CardTitle>
+                <CardTitle>{t('surveysPage.detail.settingsCard.title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm">
@@ -330,7 +321,7 @@ export default function SurveyDetailPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                       </svg>
                     )}
-                    Respostas anonimas
+                    {t('surveysPage.detail.settingsCard.anonymousResponses')}
                   </li>
                   <li className="flex items-center gap-2">
                     {survey.settings.requireEmail ? (
@@ -342,7 +333,7 @@ export default function SurveyDetailPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                       </svg>
                     )}
-                    Email obrigatorio
+                    {t('surveysPage.detail.settingsCard.emailRequired')}
                   </li>
                   <li className="flex items-center gap-2">
                     {survey.settings.showProgressBar ? (
@@ -354,7 +345,7 @@ export default function SurveyDetailPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                       </svg>
                     )}
-                    Barra de progresso
+                    {t('surveysPage.detail.settingsCard.progressBar')}
                   </li>
                 </ul>
               </CardContent>
@@ -363,7 +354,7 @@ export default function SurveyDetailPage() {
             {/* Acoes */}
             <Card>
               <CardHeader>
-                <CardTitle>Acoes</CardTitle>
+                <CardTitle>{t('surveysPage.detail.actionsCard.title')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
                 <Link href={`/app/surveys/${id}/responses`} className="block">
@@ -371,7 +362,7 @@ export default function SurveyDetailPage() {
                     <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                     </svg>
-                    Ver Respostas
+                    {t('surveysPage.detail.actionsCard.viewResponses')}
                   </Button>
                 </Link>
                 <Link href={`/app/surveys/${id}/analytics`} className="block">
@@ -379,20 +370,21 @@ export default function SurveyDetailPage() {
                     <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                     </svg>
-                    Analytics
+                    {t('surveysPage.detail.actionsCard.analytics')}
                   </Button>
                 </Link>
                 <Button variant="outline" className="w-full justify-start">
                   <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                   </svg>
-                  Exportar CSV
+                  {t('surveysPage.detail.actionsCard.exportCsv')}
                 </Button>
               </CardContent>
             </Card>
           </div>
         </div>
-      </AuthLayout>
+        </div>
+      </Layout>
     </>
   );
 }

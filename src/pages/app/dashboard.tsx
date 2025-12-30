@@ -1,49 +1,28 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { AuthLayout } from '@/components/layout/AuthLayout';
+import { useRouter } from 'next/router';
+import { useTranslations } from 'next-intl';
+import { Layout } from '@/components/layout';
 import { Card, CardHeader, CardTitle, CardContent, Button, Badge } from '@/components/ui';
 import { useAuth } from '@/contexts/AuthContext';
 
 /**
- * Pagina do Dashboard
+ * Página do Dashboard
  *
- * Visao geral das pesquisas e metricas do usuario.
+ * Visão geral das pesquisas e métricas do usuário.
  *
  * @version 1.0.0
  */
 
 // Dados de exemplo (substituir por dados reais)
-const stats = [
-  {
-    title: 'Total de Pesquisas',
-    value: '12',
-    change: '+2 este mes',
-    trend: 'up',
-  },
-  {
-    title: 'Respostas Coletadas',
-    value: '1,234',
-    change: '+180 esta semana',
-    trend: 'up',
-  },
-  {
-    title: 'Taxa de Resposta',
-    value: '68%',
-    change: '+5% vs anterior',
-    trend: 'up',
-  },
-  {
-    title: 'NPS Medio',
-    value: '72',
-    change: 'Excelente',
-    trend: 'neutral',
-  },
-];
+const STATS_KEYS = ['totalSurveys', 'responses', 'responseRate', 'nps'] as const;
+const STATS_VALUES = ['12', '1,234', '68%', '72'];
+const STATS_TRENDS = ['up', 'up', 'up', 'neutral'] as const;
 
 const recentSurveys = [
   {
     id: '1',
-    title: 'Pesquisa de Satisfacao Q4',
+    title: 'Pesquisa de Satisfação Q4',
     status: 'active',
     responses: 245,
     createdAt: '2024-12-20',
@@ -57,7 +36,7 @@ const recentSurveys = [
   },
   {
     id: '3',
-    title: 'Avaliacao de Atendimento',
+    title: 'Avaliação de Atendimento',
     status: 'draft',
     responses: 0,
     createdAt: '2024-12-15',
@@ -72,56 +51,67 @@ const recentSurveys = [
 ];
 
 export default function DashboardPage() {
+  const t = useTranslations();
+  const router = useRouter();
   const { user } = useAuth();
 
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'active':
-        return <Badge variant="success">Ativo</Badge>;
+        return <Badge variant="success">{t('dashboardPage.status.active')}</Badge>;
       case 'draft':
-        return <Badge variant="secondary">Rascunho</Badge>;
+        return <Badge variant="secondary">{t('dashboardPage.status.draft')}</Badge>;
       case 'closed':
-        return <Badge variant="default">Encerrado</Badge>;
+        return <Badge variant="default">{t('dashboardPage.status.closed')}</Badge>;
       default:
         return <Badge>{status}</Badge>;
     }
   };
 
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString(router.locale || 'pt-BR');
+  };
+
   return (
     <>
       <Head>
-        <title>Dashboard | DevForge</title>
-        <meta name="description" content="Painel de controle DevForge" />
+        <title>{t('dashboardPage.meta.title')}</title>
+        <meta name="description" content={t('dashboardPage.meta.description')} />
       </Head>
 
-      <AuthLayout title="Dashboard">
+      <Layout title={t('dashboardPage.title')} description={t('dashboardPage.description')}>
+        <div className="container-app py-8">
         {/* Boas-vindas */}
         <div className="mb-8">
           <h2 className="text-2xl font-bold">
-            Ola, {user?.displayName || 'Usuario'}!
+            {user?.displayName
+              ? t('dashboardPage.welcome', { name: user.displayName })
+              : t('dashboardPage.welcomeDefault')
+            }
           </h2>
           <p className="text-muted-foreground">
-            Aqui esta um resumo das suas pesquisas e metricas.
+            {t('dashboardPage.summary')}
           </p>
         </div>
 
         {/* Stats Grid */}
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-8">
-          {stats.map((stat, index) => (
-            <Card key={index}>
+          {STATS_KEYS.map((key, index) => (
+            <Card key={key}>
               <CardContent className="pt-6">
                 <p className="text-sm font-medium text-muted-foreground">
-                  {stat.title}
+                  {t(`dashboardPage.stats.${key}.title`)}
                 </p>
-                <p className="text-3xl font-bold mt-2">{stat.value}</p>
+                <p className="text-3xl font-bold mt-2">{STATS_VALUES[index]}</p>
                 <p
                   className={`text-xs mt-1 ${
-                    stat.trend === 'up'
+                    STATS_TRENDS[index] === 'up'
                       ? 'text-green-600 dark:text-green-400'
                       : 'text-muted-foreground'
                   }`}
                 >
-                  {stat.change}
+                  {t(`dashboardPage.stats.${key}.change`)}
                 </p>
               </CardContent>
             </Card>
@@ -134,22 +124,22 @@ export default function DashboardPage() {
             <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
             </svg>
-            Nova Pesquisa
+            {t('dashboardPage.actions.newSurvey')}
           </Button>
           <Button variant="outline">
             <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
-            Exportar Dados
+            {t('dashboardPage.actions.exportData')}
           </Button>
         </div>
 
         {/* Recent Surveys */}
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle>Pesquisas Recentes</CardTitle>
+            <CardTitle>{t('dashboardPage.recentSurveys.title')}</CardTitle>
             <Link href="/app/surveys" className="text-sm text-primary hover:underline">
-              Ver todas
+              {t('dashboardPage.recentSurveys.viewAll')}
             </Link>
           </CardHeader>
           <CardContent>
@@ -167,12 +157,12 @@ export default function DashboardPage() {
                       {survey.title}
                     </Link>
                     <p className="text-sm text-muted-foreground">
-                      Criado em {new Date(survey.createdAt).toLocaleDateString('pt-BR')}
+                      {t('dashboardPage.recentSurveys.createdAt', { date: formatDate(survey.createdAt) })}
                     </p>
                   </div>
                   <div className="flex items-center gap-4">
                     <span className="text-sm text-muted-foreground">
-                      {survey.responses} respostas
+                      {t('dashboardPage.recentSurveys.responses', { count: survey.responses })}
                     </span>
                     {getStatusBadge(survey.status)}
                   </div>
@@ -201,20 +191,20 @@ export default function DashboardPage() {
               </svg>
             </div>
             <div>
-              <h3 className="font-medium">Dica: Use IA para criar perguntas</h3>
+              <h3 className="font-medium">{t('dashboardPage.tip.title')}</h3>
               <p className="text-sm text-muted-foreground mt-1">
-                Nossa IA pode gerar perguntas relevantes baseadas no objetivo da sua pesquisa.
-                Experimente ao criar uma nova pesquisa!
+                {t('dashboardPage.tip.description')}
               </p>
             </div>
           </CardContent>
         </Card>
-      </AuthLayout>
+        </div>
+      </Layout>
     </>
   );
 }
 
-// Carregar traducoes
+// Carregar traduções
 export async function getStaticProps({ locale }: { locale?: string }) {
   const { loadMessages } = await import('@/i18n');
   return {

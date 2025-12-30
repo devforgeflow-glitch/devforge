@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { Card, CardContent, Button, Spinner, Input } from '@/components/ui';
 import {
   TextQuestion,
@@ -65,6 +66,7 @@ const MOCK_SURVEY = {
 type AnswerValue = string | number | null;
 
 export default function PublicSurveyPage() {
+  const t = useTranslations();
   const router = useRouter();
   const { id } = router.query;
   const { brand } = useBrand();
@@ -125,7 +127,7 @@ export default function PublicSurveyPage() {
       setIsCompleted(true);
     } catch (error) {
       console.error('Erro ao enviar respostas:', error);
-      alert('Erro ao enviar respostas. Tente novamente.');
+      alert(t('surveyPublic.errors.submitFailed'));
     } finally {
       setIsSubmitting(false);
     }
@@ -198,7 +200,7 @@ export default function PublicSurveyPage() {
         );
 
       default:
-        return <p>Tipo de pergunta nao suportado</p>;
+        return <p>{t('surveyPublic.errors.unsupportedType')}</p>;
     }
   };
 
@@ -216,7 +218,7 @@ export default function PublicSurveyPage() {
     return (
       <>
         <Head>
-          <title>Obrigado! | {brand.name}</title>
+          <title>{t('surveyPublic.thankYou.title')} | {brand.name}</title>
         </Head>
         <div className="min-h-screen flex items-center justify-center bg-muted/30 p-4">
           <Card className="w-full max-w-lg text-center">
@@ -236,12 +238,12 @@ export default function PublicSurveyPage() {
                   />
                 </svg>
               </div>
-              <h1 className="text-2xl font-bold mb-3">Obrigado pela sua resposta!</h1>
+              <h1 className="text-2xl font-bold mb-3">{t('surveyPublic.thankYou.heading')}</h1>
               <p className="text-muted-foreground mb-8">
-                Suas respostas foram enviadas com sucesso. Sua opiniao e muito importante para nos.
+                {t('surveyPublic.thankYou.message')}
               </p>
               <Link href="/">
-                <Button variant="outline">Voltar ao inicio</Button>
+                <Button variant="outline">{t('surveyPublic.thankYou.backHome')}</Button>
               </Link>
             </CardContent>
           </Card>
@@ -275,7 +277,7 @@ export default function PublicSurveyPage() {
           {survey.settings.showProgressBar && (
             <div className="mb-8">
               <div className="flex justify-between text-sm text-muted-foreground mb-2">
-                <span>Pergunta {currentStep + 1} de {totalQuestions}</span>
+                <span>{t('surveyPublic.progress.question', { current: currentStep + 1, total: totalQuestions })}</span>
                 <span>{Math.round(progress)}%</span>
               </div>
               <div className="h-2 bg-muted rounded-full overflow-hidden">
@@ -299,7 +301,7 @@ export default function PublicSurveyPage() {
             <Card className="mb-6">
               <CardContent className="pt-6">
                 <label className="text-sm font-medium mb-1.5 block">
-                  Seu email (para contato)
+                  {t('surveyPublic.email.label')}
                 </label>
                 <Input
                   type="email"
@@ -321,7 +323,7 @@ export default function PublicSurveyPage() {
               <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
-              Anterior
+              {t('surveyPublic.navigation.previous')}
             </Button>
 
             <Button
@@ -331,18 +333,18 @@ export default function PublicSurveyPage() {
               {isSubmitting ? (
                 <>
                   <Spinner size="sm" className="mr-2" />
-                  Enviando...
+                  {t('surveyPublic.navigation.submitting')}
                 </>
               ) : currentStep === totalQuestions - 1 ? (
                 <>
-                  Enviar
+                  {t('surveyPublic.navigation.submit')}
                   <svg className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </>
               ) : (
                 <>
-                  Proxima
+                  {t('surveyPublic.navigation.next')}
                   <svg className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -354,7 +356,7 @@ export default function PublicSurveyPage() {
           {/* Footer */}
           <div className="mt-12 text-center text-sm text-muted-foreground">
             <p>
-              Powered by{' '}
+              {t('surveyPublic.footer.poweredBy')}{' '}
               <Link href="/" className="text-primary hover:underline">
                 {brand.name}
               </Link>

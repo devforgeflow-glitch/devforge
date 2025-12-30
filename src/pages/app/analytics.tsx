@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import Head from 'next/head';
-import { AuthLayout } from '@/components/layout/AuthLayout';
+import { useTranslations } from 'next-intl';
+import { Layout } from '@/components/layout';
 import { Card, CardHeader, CardTitle, CardContent, Button, Badge } from '@/components/ui';
 
 /**
- * Pagina de Analytics
+ * Página de Analytics
  *
- * Dashboard com metricas e graficos de todas as pesquisas.
+ * Dashboard com métricas e gráficos de todas as pesquisas.
  *
  * @version 1.0.0
  */
@@ -38,23 +39,25 @@ const MOCK_RESPONSE_TREND = [
 ];
 
 const MOCK_TOP_SURVEYS = [
-  { id: '1', title: 'Pesquisa de Satisfacao Q4', responses: 512, nps: 78 },
+  { id: '1', title: 'Pesquisa de Satisfação Q4', responses: 512, nps: 78 },
   { id: '2', title: 'Feedback de Produto', responses: 328, nps: 65 },
   { id: '3', title: 'NPS Trimestral', responses: 245, nps: 72 },
-  { id: '4', title: 'Avaliacao de Atendimento', responses: 189, nps: 81 },
+  { id: '4', title: 'Avaliação de Atendimento', responses: 189, nps: 81 },
 ];
 
 const MOCK_RECENT_RESPONSES = [
-  { surveyTitle: 'Pesquisa de Satisfacao Q4', rating: 5, time: '2 min atras' },
-  { surveyTitle: 'Feedback de Produto', rating: 4, time: '15 min atras' },
-  { surveyTitle: 'NPS Trimestral', rating: 9, time: '32 min atras' },
-  { surveyTitle: 'Pesquisa de Satisfacao Q4', rating: 5, time: '1h atras' },
-  { surveyTitle: 'Avaliacao de Atendimento', rating: 4, time: '2h atras' },
+  { surveyTitle: 'Pesquisa de Satisfação Q4', rating: 5, time: '2 min atrás' },
+  { surveyTitle: 'Feedback de Produto', rating: 4, time: '15 min atrás' },
+  { surveyTitle: 'NPS Trimestral', rating: 9, time: '32 min atrás' },
+  { surveyTitle: 'Pesquisa de Satisfação Q4', rating: 5, time: '1h atrás' },
+  { surveyTitle: 'Avaliação de Atendimento', rating: 4, time: '2h atrás' },
 ];
 
 type Period = '7d' | '30d' | '90d' | '1y';
+const PERIODS: Period[] = ['7d', '30d', '90d', '1y'];
 
 export default function AnalyticsPage() {
+  const t = useTranslations();
   const [period, setPeriod] = useState<Period>('7d');
 
   const stats = MOCK_STATS;
@@ -63,41 +66,37 @@ export default function AnalyticsPage() {
   const topSurveys = MOCK_TOP_SURVEYS;
   const recentResponses = MOCK_RECENT_RESPONSES;
 
-  // Calcula altura maxima para o grafico de barras
+  // Calcula altura máxima para o gráfico de barras
   const maxResponses = Math.max(...responseTrend.map((d) => d.count));
 
   return (
     <>
       <Head>
-        <title>Analytics | DevForge</title>
-        <meta name="description" content="Dashboard de analytics" />
+        <title>{t('analyticsPage.meta.title')}</title>
+        <meta name="description" content={t('analyticsPage.meta.description')} />
       </Head>
 
-      <AuthLayout title="Analytics">
+      <Layout title={t('analyticsPage.title')} description={t('analyticsPage.description')}>
+        <div className="container-app py-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
           <div>
-            <h2 className="text-2xl font-bold">Dashboard Analytics</h2>
+            <h2 className="text-2xl font-bold">{t('analyticsPage.header.title')}</h2>
             <p className="text-muted-foreground">
-              Visao geral de todas as suas pesquisas
+              {t('analyticsPage.header.subtitle')}
             </p>
           </div>
 
           {/* Period selector */}
           <div className="flex gap-2">
-            {[
-              { value: '7d', label: '7 dias' },
-              { value: '30d', label: '30 dias' },
-              { value: '90d', label: '90 dias' },
-              { value: '1y', label: '1 ano' },
-            ].map((p) => (
+            {PERIODS.map((p) => (
               <Button
-                key={p.value}
-                variant={period === p.value ? 'primary' : 'outline'}
+                key={p}
+                variant={period === p ? 'primary' : 'outline'}
                 size="sm"
-                onClick={() => setPeriod(p.value as Period)}
+                onClick={() => setPeriod(p)}
               >
-                {p.label}
+                {t(`analyticsPage.periods.${p}`)}
               </Button>
             ))}
           </div>
@@ -107,51 +106,51 @@ export default function AnalyticsPage() {
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 mb-8">
           <Card>
             <CardContent className="pt-6">
-              <p className="text-sm text-muted-foreground">Pesquisas</p>
+              <p className="text-sm text-muted-foreground">{t('analyticsPage.stats.surveys')}</p>
               <p className="text-3xl font-bold">{stats.totalSurveys}</p>
               <p className="text-xs text-green-600 dark:text-green-400">
-                {stats.activeSurveys} ativas
+                {t('analyticsPage.stats.surveysActive', { count: stats.activeSurveys })}
               </p>
             </CardContent>
           </Card>
 
           <Card>
             <CardContent className="pt-6">
-              <p className="text-sm text-muted-foreground">Respostas</p>
+              <p className="text-sm text-muted-foreground">{t('analyticsPage.stats.responses')}</p>
               <p className="text-3xl font-bold">{stats.totalResponses.toLocaleString()}</p>
-              <p className="text-xs text-green-600 dark:text-green-400">+18% vs anterior</p>
+              <p className="text-xs text-green-600 dark:text-green-400">{t('analyticsPage.stats.responsesChange')}</p>
             </CardContent>
           </Card>
 
           <Card>
             <CardContent className="pt-6">
-              <p className="text-sm text-muted-foreground">NPS Medio</p>
+              <p className="text-sm text-muted-foreground">{t('analyticsPage.stats.averageNps')}</p>
               <p className="text-3xl font-bold text-primary">{stats.averageNPS}</p>
-              <p className="text-xs text-muted-foreground">Excelente</p>
+              <p className="text-xs text-muted-foreground">{t('analyticsPage.stats.npsExcellent')}</p>
             </CardContent>
           </Card>
 
           <Card>
             <CardContent className="pt-6">
-              <p className="text-sm text-muted-foreground">Taxa de Resposta</p>
+              <p className="text-sm text-muted-foreground">{t('analyticsPage.stats.responseRate')}</p>
               <p className="text-3xl font-bold">{stats.responseRate}%</p>
-              <p className="text-xs text-green-600 dark:text-green-400">+5% vs anterior</p>
+              <p className="text-xs text-green-600 dark:text-green-400">{t('analyticsPage.stats.responseRateChange')}</p>
             </CardContent>
           </Card>
 
           <Card>
             <CardContent className="pt-6">
-              <p className="text-sm text-muted-foreground">Tempo Medio</p>
+              <p className="text-sm text-muted-foreground">{t('analyticsPage.stats.avgTime')}</p>
               <p className="text-3xl font-bold">{stats.averageCompletionTime}</p>
-              <p className="text-xs text-muted-foreground">min:seg</p>
+              <p className="text-xs text-muted-foreground">{t('analyticsPage.stats.avgTimeUnit')}</p>
             </CardContent>
           </Card>
 
           <Card>
             <CardContent className="pt-6">
-              <p className="text-sm text-muted-foreground">Completude</p>
+              <p className="text-sm text-muted-foreground">{t('analyticsPage.stats.completion')}</p>
               <p className="text-3xl font-bold">85%</p>
-              <p className="text-xs text-muted-foreground">das pesquisas</p>
+              <p className="text-xs text-muted-foreground">{t('analyticsPage.stats.completionOf')}</p>
             </CardContent>
           </Card>
         </div>
@@ -160,7 +159,7 @@ export default function AnalyticsPage() {
           {/* Response Trend Chart */}
           <Card>
             <CardHeader>
-              <CardTitle>Tendencia de Respostas</CardTitle>
+              <CardTitle>{t('analyticsPage.charts.responseTrend')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="h-64 flex items-end gap-2">
@@ -172,7 +171,7 @@ export default function AnalyticsPage() {
                         height: `${(day.count / maxResponses) * 100}%`,
                         minHeight: '8px',
                       }}
-                      title={`${day.count} respostas`}
+                      title={t('analyticsPage.charts.responsesTooltip', { count: day.count })}
                     />
                     <span className="text-xs text-muted-foreground">{day.date}</span>
                   </div>
@@ -184,21 +183,21 @@ export default function AnalyticsPage() {
           {/* NPS Distribution */}
           <Card>
             <CardHeader>
-              <CardTitle>Distribuicao NPS</CardTitle>
+              <CardTitle>{t('analyticsPage.charts.npsDistribution')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-6">
                 {/* NPS Score */}
                 <div className="text-center">
                   <p className="text-5xl font-bold text-primary">{stats.averageNPS}</p>
-                  <p className="text-sm text-muted-foreground">Net Promoter Score</p>
+                  <p className="text-sm text-muted-foreground">{t('analyticsPage.charts.netPromoterScore')}</p>
                 </div>
 
                 {/* Distribution bars */}
                 <div className="space-y-3">
                   <div>
                     <div className="flex justify-between text-sm mb-1">
-                      <span className="text-green-600">Promotores (9-10)</span>
+                      <span className="text-green-600">{t('analyticsPage.charts.promoters')}</span>
                       <span className="font-medium">{npsDistribution.promoters}%</span>
                     </div>
                     <div className="h-3 bg-muted rounded-full overflow-hidden">
@@ -211,7 +210,7 @@ export default function AnalyticsPage() {
 
                   <div>
                     <div className="flex justify-between text-sm mb-1">
-                      <span className="text-yellow-600">Neutros (7-8)</span>
+                      <span className="text-yellow-600">{t('analyticsPage.charts.passives')}</span>
                       <span className="font-medium">{npsDistribution.passives}%</span>
                     </div>
                     <div className="h-3 bg-muted rounded-full overflow-hidden">
@@ -224,7 +223,7 @@ export default function AnalyticsPage() {
 
                   <div>
                     <div className="flex justify-between text-sm mb-1">
-                      <span className="text-red-600">Detratores (0-6)</span>
+                      <span className="text-red-600">{t('analyticsPage.charts.detractors')}</span>
                       <span className="font-medium">{npsDistribution.detractors}%</span>
                     </div>
                     <div className="h-3 bg-muted rounded-full overflow-hidden">
@@ -244,8 +243,8 @@ export default function AnalyticsPage() {
           {/* Top Surveys */}
           <Card>
             <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle>Top Pesquisas</CardTitle>
-              <Badge variant="secondary">Por respostas</Badge>
+              <CardTitle>{t('analyticsPage.topSurveys.title')}</CardTitle>
+              <Badge variant="secondary">{t('analyticsPage.topSurveys.badge')}</Badge>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
@@ -260,7 +259,7 @@ export default function AnalyticsPage() {
                     <div className="flex-1 min-w-0">
                       <p className="font-medium truncate">{survey.title}</p>
                       <p className="text-sm text-muted-foreground">
-                        {survey.responses} respostas
+                        {t('analyticsPage.topSurveys.responses', { count: survey.responses })}
                       </p>
                     </div>
                     <div className="text-right">
@@ -276,8 +275,8 @@ export default function AnalyticsPage() {
           {/* Recent Responses */}
           <Card>
             <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle>Respostas Recentes</CardTitle>
-              <Badge variant="success">Ao vivo</Badge>
+              <CardTitle>{t('analyticsPage.recentResponses.title')}</CardTitle>
+              <Badge variant="success">{t('analyticsPage.recentResponses.badge')}</Badge>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
@@ -324,7 +323,7 @@ export default function AnalyticsPage() {
               <svg className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
               </svg>
-              Insights da IA
+              {t('analyticsPage.aiInsights.title')}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -332,33 +331,31 @@ export default function AnalyticsPage() {
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 rounded-full bg-green-500 mt-2" />
                 <p className="text-sm">
-                  <strong>Tendencia positiva:</strong> O NPS aumentou 8 pontos nos ultimos 30 dias,
-                  indicando maior satisfacao dos clientes.
+                  <strong>{t('analyticsPage.aiInsights.positive.label')}</strong> {t('analyticsPage.aiInsights.positive.text')}
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 rounded-full bg-yellow-500 mt-2" />
                 <p className="text-sm">
-                  <strong>Oportunidade:</strong> 24% dos respondentes sao neutros. Considere
-                  acoes para converte-los em promotores.
+                  <strong>{t('analyticsPage.aiInsights.opportunity.label')}</strong> {t('analyticsPage.aiInsights.opportunity.text')}
                 </p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 rounded-full bg-primary mt-2" />
                 <p className="text-sm">
-                  <strong>Destaque:</strong> A pesquisa &quot;Avaliacao de Atendimento&quot; tem o maior
-                  NPS (81). Analise o que esta funcionando bem.
+                  <strong>{t('analyticsPage.aiInsights.highlight.label')}</strong> {t('analyticsPage.aiInsights.highlight.text')}
                 </p>
               </div>
             </div>
           </CardContent>
         </Card>
-      </AuthLayout>
+        </div>
+      </Layout>
     </>
   );
 }
 
-// Carregar traducoes
+// Carregar traduções
 export async function getStaticProps({ locale }: { locale?: string }) {
   const { loadMessages } = await import('@/i18n');
   return {

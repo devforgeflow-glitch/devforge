@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
+import { useTranslations } from 'next-intl';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button, Input, Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui';
 
@@ -13,6 +14,7 @@ import { Button, Input, Card, CardHeader, CardTitle, CardDescription, CardConten
  */
 
 export default function ForgotPasswordPage() {
+  const t = useTranslations();
   const { resetPassword, loading, error, clearError, isConfigured } = useAuth();
 
   const [email, setEmail] = useState('');
@@ -26,7 +28,7 @@ export default function ForgotPasswordPage() {
     clearError();
 
     if (!email) {
-      setLocalError('Digite seu email');
+      setLocalError(t('auth.forgotPassword.errors.enterEmail'));
       return;
     }
 
@@ -43,8 +45,8 @@ export default function ForgotPasswordPage() {
   return (
     <>
       <Head>
-        <title>Recuperar Senha | DevForge</title>
-        <meta name="description" content="Recupere sua senha da plataforma DevForge" />
+        <title>{t('auth.forgotPassword.meta.title')}</title>
+        <meta name="description" content={t('auth.forgotPassword.meta.description')} />
       </Head>
 
       <div className="min-h-screen flex items-center justify-center bg-background px-4 py-12">
@@ -65,9 +67,9 @@ export default function ForgotPasswordPage() {
                 />
               </svg>
             </div>
-            <CardTitle className="text-2xl">Recuperar senha</CardTitle>
+            <CardTitle className="text-2xl">{t('auth.forgotPassword.title')}</CardTitle>
             <CardDescription>
-              Digite seu email para receber instrucoes de recuperacao
+              {t('auth.forgotPassword.description')}
             </CardDescription>
           </CardHeader>
 
@@ -88,15 +90,15 @@ export default function ForgotPasswordPage() {
                   />
                 </svg>
                 <h3 className="mt-4 text-lg font-medium text-green-800 dark:text-green-200">
-                  Email enviado!
+                  {t('auth.forgotPassword.success.title')}
                 </h3>
                 <p className="mt-2 text-sm text-green-700 dark:text-green-300">
-                  Verifique sua caixa de entrada e siga as instrucoes para redefinir sua senha.
+                  {t('auth.forgotPassword.success.description')}
                 </p>
               </div>
               <div className="text-center">
                 <Link href="/auth/login" className="text-sm text-primary hover:underline">
-                  Voltar para o login
+                  {t('auth.forgotPassword.backToLogin')}
                 </Link>
               </div>
             </CardContent>
@@ -105,7 +107,7 @@ export default function ForgotPasswordPage() {
               <CardContent className="space-y-4">
                 {!isConfigured && (
                   <div className="rounded-lg bg-yellow-50 dark:bg-yellow-900/20 p-4 text-sm text-yellow-800 dark:text-yellow-200">
-                    Firebase nao configurado. Configure as credenciais para habilitar autenticacao.
+                    {t('auth.forgotPassword.firebaseNotConfigured')}
                   </div>
                 )}
 
@@ -116,9 +118,9 @@ export default function ForgotPasswordPage() {
                 )}
 
                 <Input
-                  label="Email"
+                  label={t('auth.forgotPassword.email')}
                   type="email"
-                  placeholder="seu@email.com"
+                  placeholder={t('auth.forgotPassword.emailPlaceholder')}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={loading || !isConfigured}
@@ -133,14 +135,14 @@ export default function ForgotPasswordPage() {
                   isLoading={loading}
                   disabled={!isConfigured}
                 >
-                  Enviar instrucoes
+                  {t('auth.forgotPassword.submit')}
                 </Button>
 
                 <Link
                   href="/auth/login"
                   className="text-center text-sm text-muted-foreground hover:text-foreground"
                 >
-                  Voltar para o login
+                  {t('auth.forgotPassword.backToLogin')}
                 </Link>
               </CardFooter>
             </form>

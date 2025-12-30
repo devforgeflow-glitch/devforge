@@ -1,40 +1,40 @@
 {
   "http": {
     "400": {
-      "title": "Requisicao Invalida",
-      "message": "A requisicao nao pode ser processada. Verifique os dados enviados."
+      "title": "Requisição Inválida",
+      "message": "A requisição não pode ser processada. Verifique os dados enviados."
     },
     "401": {
-      "title": "Nao Autenticado",
-      "message": "Voce precisa fazer login para acessar este recurso."
+      "title": "Não Autenticado",
+      "message": "Você precisa fazer login para acessar este recurso."
     },
     "403": {
       "title": "Acesso Negado",
-      "message": "Voce nao tem permissao para acessar este recurso."
+      "message": "Você não tem permissão para acessar este recurso."
     },
     "404": {
-      "title": "Pagina Nao Encontrada",
-      "message": "A pagina que voce procura nao existe ou foi movida."
+      "title": "Página Não Encontrada",
+      "message": "A página que você procura não existe ou foi movida."
     },
     "408": {
       "title": "Tempo Esgotado",
-      "message": "A requisicao demorou muito para ser processada. Tente novamente."
+      "message": "A requisição demorou muito para ser processada. Tente novamente."
     },
     "429": {
-      "title": "Muitas Requisicoes",
-      "message": "Voce fez muitas requisicoes. Aguarde alguns minutos e tente novamente."
+      "title": "Muitas Requisições",
+      "message": "Você fez muitas requisições. Aguarde alguns minutos e tente novamente."
     },
     "500": {
       "title": "Erro do Servidor",
       "message": "Ocorreu um erro interno. Nossa equipe foi notificada."
     },
     "502": {
-      "title": "Gateway Invalido",
-      "message": "O servidor recebeu uma resposta invalida. Tente novamente em alguns minutos."
+      "title": "Gateway Inválido",
+      "message": "O servidor recebeu uma resposta inválida. Tente novamente em alguns minutos."
     },
     "503": {
-      "title": "Servico Indisponivel",
-      "message": "O servico esta temporariamente indisponivel. Tente novamente em breve."
+      "title": "Serviço Indisponível",
+      "message": "O serviço está temporariamente indisponível. Tente novamente em breve."
     },
     "504": {
       "title": "Gateway Timeout",
@@ -42,75 +42,75 @@
     }
   },
   "validation": {
-    "required": "Este campo e obrigatorio",
-    "email": "Digite um email valido",
-    "url": "Digite uma URL valida",
-    "minLength": "Minimo de {min} caracteres",
-    "maxLength": "Maximo de {max} caracteres",
-    "min": "O valor minimo e {min}",
-    "max": "O valor maximo e {max}",
-    "pattern": "Formato invalido",
-    "passwordStrength": "A senha deve ter pelo menos 8 caracteres, uma letra maiuscula, uma minuscula e um numero",
-    "passwordMismatch": "As senhas nao coincidem",
-    "invalidDate": "Data invalida",
+    "required": "Este campo é obrigatório",
+    "email": "Digite um email válido",
+    "url": "Digite uma URL válida",
+    "minLength": "Mínimo de {min} caracteres",
+    "maxLength": "Máximo de {max} caracteres",
+    "min": "O valor mínimo é {min}",
+    "max": "O valor máximo é {max}",
+    "pattern": "Formato inválido",
+    "passwordStrength": "A senha deve ter pelo menos 8 caracteres, uma letra maiúscula, uma minúscula e um número",
+    "passwordMismatch": "As senhas não coincidem",
+    "invalidDate": "Data inválida",
     "futureDate": "A data deve ser no futuro",
     "pastDate": "A data deve ser no passado",
-    "invalidPhone": "Numero de telefone invalido",
-    "invalidCPF": "CPF invalido",
-    "invalidCNPJ": "CNPJ invalido"
+    "invalidPhone": "Número de telefone inválido",
+    "invalidCPF": "CPF inválido",
+    "invalidCNPJ": "CNPJ inválido"
   },
   "auth": {
     "invalidCredentials": "Email ou senha incorretos",
     "accountLocked": "Conta bloqueada temporariamente. Tente novamente mais tarde",
     "accountDisabled": "Esta conta foi desativada",
     "emailNotVerified": "Por favor, verifique seu email antes de continuar",
-    "tokenExpired": "Sua sessao expirou. Faca login novamente",
-    "tokenInvalid": "Link invalido ou expirado",
-    "emailInUse": "Este email ja esta sendo usado",
+    "tokenExpired": "Sua sessão expirou. Faça login novamente",
+    "tokenInvalid": "Link inválido ou expirado",
+    "emailInUse": "Este email já está sendo usado",
     "weakPassword": "Senha muito fraca",
-    "socialAuthFailed": "Falha na autenticacao social. Tente novamente"
+    "socialAuthFailed": "Falha na autenticação social. Tente novamente"
   },
   "survey": {
-    "notFound": "Pesquisa nao encontrada",
+    "notFound": "Pesquisa não encontrada",
     "closed": "Esta pesquisa foi encerrada",
     "expired": "Esta pesquisa expirou",
     "limitReached": "Esta pesquisa atingiu o limite de respostas",
-    "alreadyResponded": "Voce ja respondeu a esta pesquisa",
-    "invalidAccess": "Voce nao tem acesso a esta pesquisa",
-    "publishFailed": "Falha ao publicar a pesquisa. Verifique se ha perguntas adicionadas",
+    "alreadyResponded": "Você já respondeu a esta pesquisa",
+    "invalidAccess": "Você não tem acesso a esta pesquisa",
+    "publishFailed": "Falha ao publicar a pesquisa. Verifique se há perguntas adicionadas",
     "deleteFailed": "Falha ao excluir a pesquisa"
   },
   "upload": {
-    "fileTooLarge": "O arquivo e muito grande. Tamanho maximo: {size}",
-    "invalidType": "Tipo de arquivo nao permitido. Use: {types}",
+    "fileTooLarge": "O arquivo é muito grande. Tamanho máximo: {size}",
+    "invalidType": "Tipo de arquivo não permitido. Use: {types}",
     "uploadFailed": "Falha no upload. Tente novamente",
-    "tooManyFiles": "Muitos arquivos. Maximo: {max}"
+    "tooManyFiles": "Muitos arquivos. Máximo: {max}"
   },
   "payment": {
-    "cardDeclined": "Cartao recusado. Verifique os dados ou tente outro cartao",
+    "cardDeclined": "Cartão recusado. Verifique os dados ou tente outro cartão",
     "insufficientFunds": "Fundos insuficientes",
-    "expiredCard": "Cartao expirado",
-    "invalidCard": "Dados do cartao invalidos",
+    "expiredCard": "Cartão expirado",
+    "invalidCard": "Dados do cartão inválidos",
     "paymentFailed": "Falha no pagamento. Tente novamente",
     "subscriptionCanceled": "Assinatura cancelada"
   },
   "network": {
-    "offline": "Voce esta offline. Verifique sua conexao com a internet",
-    "timeout": "A conexao expirou. Tente novamente",
-    "connectionError": "Erro de conexao. Verifique sua internet"
+    "offline": "Você está offline. Verifique sua conexão com a internet",
+    "timeout": "A conexão expirou. Tente novamente",
+    "connectionError": "Erro de conexão. Verifique sua internet"
   },
   "generic": {
     "unknownError": "Ocorreu um erro inesperado. Tente novamente",
     "tryAgain": "Algo deu errado. Por favor, tente novamente",
     "contactSupport": "Se o problema persistir, entre em contato com o suporte",
-    "refreshPage": "Tente atualizar a pagina"
+    "refreshPage": "Tente atualizar a página"
   },
   "actions": {
-    "goHome": "Ir para o inicio",
+    "goHome": "Ir para o início",
     "goBack": "Voltar",
     "tryAgain": "Tentar novamente",
     "contactSupport": "Contatar suporte",
     "login": "Fazer login",
-    "refresh": "Atualizar pagina"
+    "refresh": "Atualizar página"
   }
 }

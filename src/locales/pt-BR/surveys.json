@@ -6,17 +6,17 @@
     "button": "Criar Pesquisa",
     "withAI": "Criar com IA",
     "steps": {
-      "basics": "Informacoes Basicas",
+      "basics": "Informações Básicas",
       "questions": "Perguntas",
-      "settings": "Configuracoes",
+      "settings": "Configurações",
       "preview": "Visualizar",
       "publish": "Publicar"
     }
   },
   "form": {
-    "title": "Titulo da pesquisa",
-    "titlePlaceholder": "Ex: Pesquisa de Satisfacao 2024",
-    "description": "Descricao",
+    "title": "Título da pesquisa",
+    "titlePlaceholder": "Ex: Pesquisa de Satisfação 2024",
+    "description": "Descrição",
     "descriptionPlaceholder": "Descreva o objetivo da sua pesquisa...",
     "type": "Tipo de pesquisa",
     "category": "Categoria",
@@ -29,15 +29,15 @@
     },
     "csat": {
       "name": "CSAT",
-      "description": "Customer Satisfaction - Mede a satisfacao geral"
+      "description": "Customer Satisfaction - Mede a satisfação geral"
     },
     "ces": {
       "name": "CES",
-      "description": "Customer Effort Score - Mede o esforco do cliente"
+      "description": "Customer Effort Score - Mede o esforço do cliente"
     },
     "custom": {
       "name": "Personalizada",
-      "description": "Crie suas proprias perguntas"
+      "description": "Crie suas próprias perguntas"
     }
   },
   "questions": {
@@ -47,15 +47,15 @@
     "reorder": "Reordenar",
     "duplicate": "Duplicar",
     "delete": "Excluir",
-    "required": "Obrigatoria",
+    "required": "Obrigatória",
     "optional": "Opcional",
     "types": {
       "text": "Texto livre",
       "textarea": "Texto longo",
-      "rating": "Avaliacao (1-5)",
+      "rating": "Avaliação (1-5)",
       "nps": "NPS (0-10)",
-      "choice": "Multipla escolha",
-      "checkbox": "Caixas de selecao",
+      "choice": "Múltipla escolha",
+      "checkbox": "Caixas de seleção",
       "dropdown": "Lista suspensa",
       "matrix": "Matriz",
       "date": "Data",
@@ -64,23 +64,23 @@
     },
     "placeholders": {
       "questionText": "Digite sua pergunta aqui...",
-      "option": "Opcao {number}",
-      "addOption": "Adicionar opcao"
+      "option": "Opção {number}",
+      "addOption": "Adicionar opção"
     }
   },
   "settings": {
-    "title": "Configuracoes",
+    "title": "Configurações",
     "general": "Geral",
     "responses": "Respostas",
-    "notifications": "Notificacoes",
-    "advanced": "Avancado",
+    "notifications": "Notificações",
+    "advanced": "Avançado",
     "anonymous": {
-      "label": "Respostas anonimas",
-      "description": "Nao coletar dados de identificacao dos respondentes"
+      "label": "Respostas anônimas",
+      "description": "Não coletar dados de identificação dos respondentes"
     },
     "multipleResponses": {
-      "label": "Permitir multiplas respostas",
-      "description": "Mesmo usuario pode responder mais de uma vez"
+      "label": "Permitir múltiplas respostas",
+      "description": "Mesmo usuário pode responder mais de uma vez"
     },
     "showProgress": {
       "label": "Mostrar progresso",
@@ -88,27 +88,27 @@
     },
     "randomizeQuestions": {
       "label": "Aleatorizar perguntas",
-      "description": "Ordem das perguntas sera diferente para cada respondente"
+      "description": "Ordem das perguntas será diferente para cada respondente"
     },
     "responseLimit": {
       "label": "Limite de respostas",
       "placeholder": "Sem limite"
     },
     "expirationDate": {
-      "label": "Data de expiracao",
-      "placeholder": "Sem expiracao"
+      "label": "Data de expiração",
+      "placeholder": "Sem expiração"
     },
     "redirectUrl": {
       "label": "URL de redirecionamento",
       "placeholder": "https://...",
-      "description": "Redirecionar apos conclusao"
+      "description": "Redirecionar após conclusão"
     },
     "notifyOnResponse": {
       "label": "Notificar novas respostas",
       "description": "Receber email quando houver novas respostas"
     },
     "aiAnalysis": {
-      "label": "Analise com IA",
+      "label": "Análise com IA",
       "description": "Analisar sentimento e gerar insights automaticamente"
     }
   },
@@ -141,7 +141,7 @@
     "qrCode": "QR Code",
     "downloadQR": "Baixar QR Code",
     "embed": "Incorporar",
-    "embedCode": "Codigo de incorporacao",
+    "embedCode": "Código de incorporação",
     "email": "Enviar por email",
     "socialMedia": "Redes sociais"
   },
@@ -161,7 +161,7 @@
       "newest": "Mais recentes",
       "oldest": "Mais antigas",
       "mostResponses": "Mais respostas",
-      "alphabetical": "Alfabetica"
+      "alphabetical": "Alfabética"
     },
     "search": "Buscar pesquisas..."
   },
@@ -170,26 +170,26 @@
     "total": "{count} respostas",
     "today": "Hoje",
     "thisWeek": "Esta semana",
-    "thisMonth": "Este mes",
+    "thisMonth": "Este mês",
     "export": {
       "title": "Exportar Respostas",
       "format": "Formato",
       "csv": "CSV",
       "excel": "Excel",
       "pdf": "PDF",
-      "dateRange": "Periodo",
+      "dateRange": "Período",
       "all": "Todas as respostas",
       "filtered": "Apenas filtradas"
     }
   },
   "analytics": {
     "title": "Analytics",
-    "overview": "Visao Geral",
+    "overview": "Visão Geral",
     "responseRate": "Taxa de resposta",
-    "completionRate": "Taxa de conclusao",
-    "averageTime": "Tempo medio",
+    "completionRate": "Taxa de conclusão",
+    "averageTime": "Tempo médio",
     "sentiment": {
-      "title": "Analise de Sentimento",
+      "title": "Análise de Sentimento",
       "positive": "Positivo",
       "neutral": "Neutro",
       "negative": "Negativo"
@@ -203,7 +203,7 @@
   },
   "delete": {
     "title": "Excluir pesquisa?",
-    "message": "Esta acao nao pode ser desfeita. Todas as respostas serao permanentemente excluidas.",
+    "message": "Esta ação não pode ser desfeita. Todas as respostas serão permanentemente excluídas.",
     "confirm": "Sim, excluir",
     "cancel": "Cancelar"
   },
@@ -212,7 +212,7 @@
     "generated": "Perguntas geradas com sucesso!",
     "contextPlaceholder": "Descreva o objetivo da pesquisa para a IA gerar perguntas relevantes...",
     "regenerate": "Gerar novamente",
-    "accept": "Aceitar sugestoes",
+    "accept": "Aceitar sugestões",
     "modify": "Modificar"
   }
 }

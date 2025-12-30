@@ -1,7 +1,7 @@
 {
   "title": "Panel de Control",
-  "welcome": "Bienvenido, {name}!",
-  "welcomeBack": "Bienvenido de nuevo, {name}!",
+  "welcome": "¡Bienvenido, {name}!",
+  "welcomeBack": "¡Bienvenido de nuevo, {name}!",
   "overview": "Resumen",
   "stats": {
     "totalSurveys": "Total de Encuestas",
@@ -10,24 +10,24 @@
     "responsesToday": "Respuestas Hoy",
     "responseRate": "Tasa de Respuesta",
     "avgCompletionTime": "Tiempo Promedio",
-    "npsScore": "Puntuacion NPS",
-    "satisfaction": "Satisfaccion"
+    "npsScore": "Puntuación NPS",
+    "satisfaction": "Satisfacción"
   },
   "charts": {
     "responsesOverTime": "Respuestas a lo Largo del Tiempo",
     "responsesByDevice": "Respuestas por Dispositivo",
-    "topSurveys": "Encuestas Mas Respondidas",
-    "sentimentDistribution": "Distribucion de Sentimiento",
-    "completionFunnel": "Embudo de Finalizacion"
+    "topSurveys": "Encuestas Más Respondidas",
+    "sentimentDistribution": "Distribución de Sentimiento",
+    "completionFunnel": "Embudo de Finalización"
   },
   "periods": {
     "today": "Hoy",
     "yesterday": "Ayer",
-    "last7days": "Ultimos 7 dias",
-    "last30days": "Ultimos 30 dias",
+    "last7days": "Últimos 7 días",
+    "last30days": "Últimos 30 días",
     "thisMonth": "Este mes",
     "lastMonth": "Mes pasado",
-    "thisYear": "Este ano",
+    "thisYear": "Este año",
     "custom": "Personalizado"
   },
   "recentActivity": {
@@ -41,17 +41,17 @@
   },
   "recentSurveys": {
     "title": "Encuestas Recientes",
-    "empty": "Aun no hay encuestas",
+    "empty": "Aún no hay encuestas",
     "viewAll": "Ver todas",
     "responses": "{count} respuestas"
   },
   "quickActions": {
-    "title": "Acciones Rapidas",
+    "title": "Acciones Rápidas",
     "createSurvey": "Crear Encuesta",
     "viewResponses": "Ver Respuestas",
     "exportData": "Exportar Datos",
     "inviteTeam": "Invitar Equipo",
-    "settings": "Configuracion"
+    "settings": "Configuración"
   },
   "tips": {
     "title": "Consejos",
@@ -60,48 +60,48 @@
       "description": "Describe el objetivo y deja que la IA sugiera preguntas relevantes"
     },
     "tip2": {
-      "title": "Comparte via codigo QR",
-      "description": "Genera un codigo QR para facilitar el acceso a la encuesta"
+      "title": "Comparte vía código QR",
+      "description": "Genera un código QR para facilitar el acceso a la encuesta"
     },
     "tip3": {
       "title": "Analiza sentimientos",
-      "description": "Activa el analisis de IA para entender el tono de las respuestas"
+      "description": "Activa el análisis de IA para entender el tono de las respuestas"
     },
     "dismiss": "Descartar"
   },
   "notifications": {
     "title": "Notificaciones",
     "empty": "Sin notificaciones",
-    "markAllRead": "Marcar todas como leidas",
+    "markAllRead": "Marcar todas como leídas",
     "settings": "Configurar notificaciones"
   },
   "sidebar": {
     "dashboard": "Panel de Control",
     "surveys": "Encuestas",
     "responses": "Respuestas",
-    "analytics": "Analiticas",
+    "analytics": "Analíticas",
     "team": "Equipo",
     "integrations": "Integraciones",
-    "settings": "Configuracion",
+    "settings": "Configuración",
     "help": "Ayuda",
-    "billing": "Facturacion"
+    "billing": "Facturación"
   },
   "header": {
     "search": "Buscar...",
     "notifications": "Notificaciones",
     "profile": "Perfil",
-    "settings": "Configuracion",
-    "logout": "Cerrar sesion",
+    "settings": "Configuración",
+    "logout": "Cerrar sesión",
     "upgrade": "Mejorar plan"
   },
   "empty": {
-    "title": "Comienza ahora!",
+    "title": "¡Comienza ahora!",
     "description": "Crea tu primera encuesta y comienza a recopilar comentarios valiosos.",
     "action": "Crear Encuesta"
   },
   "upgrade": {
     "title": "Mejora para desbloquear",
-    "features": "Accede a funciones avanzadas como analisis de IA, exportaciones ilimitadas y mas.",
+    "features": "Accede a funciones avanzadas como análisis de IA, exportaciones ilimitadas y más.",
     "action": "Ver planes"
   }
 }

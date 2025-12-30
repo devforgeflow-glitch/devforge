@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { AuthLayout } from '@/components/layout/AuthLayout';
+import { useTranslations } from 'next-intl';
+import { Layout } from '@/components/layout';
 import { Button, Input, Spinner } from '@/components/ui';
 import { SurveyCard, EmptyState } from '@/components/surveys';
 import type { SurveyStatus } from '@/api/types/survey.types';
 
 /**
- * Pagina de Listagem de Pesquisas
+ * Página de Listagem de Pesquisas
  *
- * Lista todas as pesquisas do usuario com filtros e busca.
+ * Lista todas as pesquisas do usuário com filtros e busca.
  *
  * @version 1.0.0
  */
@@ -18,8 +19,8 @@ import type { SurveyStatus } from '@/api/types/survey.types';
 const MOCK_SURVEYS = [
   {
     id: '1',
-    title: 'Pesquisa de Satisfacao Q4 2024',
-    description: 'Avaliacao trimestral de satisfacao dos clientes com nossos produtos e servicos.',
+    title: 'Pesquisa de Satisfação Q4 2024',
+    description: 'Avaliação trimestral de satisfação dos clientes com nossos produtos e serviços.',
     status: 'active' as SurveyStatus,
     responseCount: 245,
     questionCount: 10,
@@ -28,7 +29,7 @@ const MOCK_SURVEYS = [
   {
     id: '2',
     title: 'Feedback de Novo Produto',
-    description: 'Coleta de opinioes sobre o lancamento do produto XYZ.',
+    description: 'Coleta de opiniões sobre o lançamento do produto XYZ.',
     status: 'active' as SurveyStatus,
     responseCount: 128,
     questionCount: 8,
@@ -36,7 +37,7 @@ const MOCK_SURVEYS = [
   },
   {
     id: '3',
-    title: 'Avaliacao de Atendimento',
+    title: 'Avaliação de Atendimento',
     description: 'Pesquisa para medir a qualidade do atendimento ao cliente.',
     status: 'draft' as SurveyStatus,
     responseCount: 0,
@@ -55,7 +56,7 @@ const MOCK_SURVEYS = [
   {
     id: '5',
     title: 'Pesquisa de Clima Organizacional',
-    description: 'Avaliacao interna do clima e satisfacao dos colaboradores.',
+    description: 'Avaliação interna do clima e satisfação dos colaboradores.',
     status: 'paused' as SurveyStatus,
     responseCount: 89,
     questionCount: 15,
@@ -64,8 +65,10 @@ const MOCK_SURVEYS = [
 ];
 
 type FilterStatus = 'all' | SurveyStatus;
+const FILTER_STATUSES: FilterStatus[] = ['all', 'active', 'draft', 'paused', 'closed'];
 
 export default function SurveysPage() {
+  const t = useTranslations();
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState<FilterStatus>('all');
   const [isLoading] = useState(false);
@@ -87,24 +90,25 @@ export default function SurveysPage() {
   };
 
   const handleDuplicate = (id: string) => {
-    // TODO: Implementar duplicacao via API
+    // TODO: Implementar duplicação via API
     console.log('Duplicate survey:', id);
   };
 
   return (
     <>
       <Head>
-        <title>Pesquisas | DevForge</title>
-        <meta name="description" content="Gerencie suas pesquisas" />
+        <title>{t('surveysPage.list.meta.title')}</title>
+        <meta name="description" content={t('surveysPage.list.meta.description')} />
       </Head>
 
-      <AuthLayout title="Pesquisas">
-        {/* Header com acoes */}
+      <Layout title={t('surveysPage.list.title')} description={t('surveysPage.list.description')}>
+        <div className="container-app py-8">
+        {/* Header com ações */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
           <div>
-            <h2 className="text-2xl font-bold">Minhas Pesquisas</h2>
+            <h2 className="text-2xl font-bold">{t('surveysPage.list.header.title')}</h2>
             <p className="text-muted-foreground">
-              Gerencie e acompanhe suas pesquisas de feedback
+              {t('surveysPage.list.header.subtitle')}
             </p>
           </div>
 
@@ -123,7 +127,7 @@ export default function SurveysPage() {
                   d="M12 4v16m8-8H4"
                 />
               </svg>
-              Nova Pesquisa
+              {t('surveysPage.list.newSurvey')}
             </Button>
           </Link>
         </div>
@@ -133,7 +137,7 @@ export default function SurveysPage() {
           {/* Busca */}
           <div className="flex-1">
             <Input
-              placeholder="Buscar pesquisas..."
+              placeholder={t('surveysPage.list.searchPlaceholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full"
@@ -142,20 +146,14 @@ export default function SurveysPage() {
 
           {/* Filtro de status */}
           <div className="flex gap-2">
-            {[
-              { value: 'all', label: 'Todos' },
-              { value: 'active', label: 'Ativos' },
-              { value: 'draft', label: 'Rascunhos' },
-              { value: 'paused', label: 'Pausados' },
-              { value: 'closed', label: 'Encerrados' },
-            ].map((filter) => (
+            {FILTER_STATUSES.map((status) => (
               <Button
-                key={filter.value}
-                variant={filterStatus === filter.value ? 'primary' : 'outline'}
+                key={status}
+                variant={filterStatus === status ? 'primary' : 'outline'}
                 size="sm"
-                onClick={() => setFilterStatus(filter.value as FilterStatus)}
+                onClick={() => setFilterStatus(status)}
               >
-                {filter.label}
+                {t(`surveysPage.list.filters.${status}`)}
               </Button>
             ))}
           </div>
@@ -191,37 +189,37 @@ export default function SurveysPage() {
         {/* Estado vazio */}
         {!isLoading && filteredSurveys.length === 0 && (
           <EmptyState
-            title={searchTerm ? 'Nenhuma pesquisa encontrada' : 'Nenhuma pesquisa ainda'}
+            title={searchTerm ? t('surveysPage.list.empty.noResults') : t('surveysPage.list.empty.noSurveys')}
             description={
               searchTerm
-                ? 'Tente ajustar os filtros ou termos de busca.'
-                : 'Crie sua primeira pesquisa para comecar a coletar feedbacks.'
+                ? t('surveysPage.list.empty.noResultsDescription')
+                : t('surveysPage.list.empty.noSurveysDescription')
             }
             showCreateButton={!searchTerm}
           />
         )}
 
-        {/* Metricas rapidas */}
+        {/* Métricas rápidas */}
         {!isLoading && MOCK_SURVEYS.length > 0 && (
           <div className="mt-8 grid gap-4 md:grid-cols-4">
             <div className="bg-card rounded-lg border border-border p-4">
-              <p className="text-sm text-muted-foreground">Total de Pesquisas</p>
+              <p className="text-sm text-muted-foreground">{t('surveysPage.list.metrics.total')}</p>
               <p className="text-2xl font-bold">{MOCK_SURVEYS.length}</p>
             </div>
             <div className="bg-card rounded-lg border border-border p-4">
-              <p className="text-sm text-muted-foreground">Pesquisas Ativas</p>
+              <p className="text-sm text-muted-foreground">{t('surveysPage.list.metrics.active')}</p>
               <p className="text-2xl font-bold text-green-600">
                 {MOCK_SURVEYS.filter((s) => s.status === 'active').length}
               </p>
             </div>
             <div className="bg-card rounded-lg border border-border p-4">
-              <p className="text-sm text-muted-foreground">Total de Respostas</p>
+              <p className="text-sm text-muted-foreground">{t('surveysPage.list.metrics.responses')}</p>
               <p className="text-2xl font-bold">
                 {MOCK_SURVEYS.reduce((acc, s) => acc + s.responseCount, 0)}
               </p>
             </div>
             <div className="bg-card rounded-lg border border-border p-4">
-              <p className="text-sm text-muted-foreground">Media por Pesquisa</p>
+              <p className="text-sm text-muted-foreground">{t('surveysPage.list.metrics.average')}</p>
               <p className="text-2xl font-bold">
                 {Math.round(
                   MOCK_SURVEYS.reduce((acc, s) => acc + s.responseCount, 0) /
@@ -231,12 +229,13 @@ export default function SurveysPage() {
             </div>
           </div>
         )}
-      </AuthLayout>
+        </div>
+      </Layout>
     </>
   );
 }
 
-// Carregar traducoes
+// Carregar traduções
 export async function getStaticProps({ locale }: { locale?: string }) {
   const { loadMessages } = await import('@/i18n');
   return {

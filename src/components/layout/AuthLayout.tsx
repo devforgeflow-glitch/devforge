@@ -3,15 +3,21 @@
 import { useEffect, type ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import {
+  Shield,
+  MessageCircle,
+  Users,
+  Phone,
+} from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
-import { ThemeToggle, Avatar, Button, Spinner } from '@/components/ui';
+import { ThemeToggle, Avatar, Spinner } from '@/components/ui';
 
 /**
  * Layout para paginas autenticadas
  *
  * Inclui sidebar de navegacao e protecao de rota.
  *
- * @version 1.0.0
+ * @version 1.1.0
  */
 
 interface AuthLayoutProps {
@@ -68,6 +74,27 @@ const navigation = [
   },
 ];
 
+/**
+ * Links administrativos (apenas para admins)
+ */
+const adminNavigation = [
+  {
+    name: 'Mensagens',
+    href: '/app/admin/messages',
+    icon: MessageCircle,
+  },
+  {
+    name: 'Depoimentos',
+    href: '/app/admin/testimonials',
+    icon: Users,
+  },
+  {
+    name: 'WhatsApp',
+    href: '/app/admin/whatsapp',
+    icon: Phone,
+  },
+];
+
 export function AuthLayout({ children, title }: AuthLayoutProps) {
   const router = useRouter();
   const { user, loading, signOut, isConfigured } = useAuth();
@@ -113,7 +140,7 @@ export function AuthLayout({ children, title }: AuthLayoutProps) {
         {/* Navigation */}
         <nav className="flex flex-col gap-1 p-4">
           {navigation.map((item) => {
-            const isActive = router.pathname === item.href;
+            const isActive = router.pathname === item.href || router.pathname.startsWith(item.href + '/');
             return (
               <Link
                 key={item.href}
@@ -129,6 +156,36 @@ export function AuthLayout({ children, title }: AuthLayoutProps) {
               </Link>
             );
           })}
+
+          {/* Painel Administrativo - apenas para admins */}
+          {user?.role === 'admin' && (
+            <div className="mt-4 pt-4 border-t border-border">
+              <div className="flex items-center gap-2 px-3 py-2 mb-1">
+                <Shield className="h-4 w-4 text-amber-500" />
+                <span className="text-xs font-semibold uppercase tracking-wider text-amber-500">
+                  Painel Admin
+                </span>
+              </div>
+              {adminNavigation.map((item) => {
+                const isActive = router.pathname === item.href;
+                const Icon = item.icon;
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                      isActive
+                        ? 'bg-primary/10 text-primary'
+                        : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                    }`}
+                  >
+                    <Icon className="h-5 w-5" />
+                    {item.name}
+                  </Link>
+                );
+              })}
+            </div>
+          )}
         </nav>
 
         {/* User section */}

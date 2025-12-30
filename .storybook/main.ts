@@ -16,7 +16,11 @@ const config: StorybookConfig = {
   ],
   framework: {
     name: '@storybook/nextjs',
-    options: {},
+    options: {
+      builder: {
+        useSWC: true,
+      },
+    },
   },
   staticDirs: ['../public'],
   docs: {
@@ -25,6 +29,9 @@ const config: StorybookConfig = {
   typescript: {
     check: false,
     reactDocgen: 'react-docgen-typescript',
+  },
+  core: {
+    disableTelemetry: true,
   },
 };
 
